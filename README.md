@@ -8,8 +8,8 @@ Premier third-party tools for Eve Online.
 
 ## Contributing
 While we are happy to take community contributions to EVE Gate, there are a few guidelines we ask you follow.
-- Work from branch `dev`. We won't be able to merge your changes otherwise.
-- Maintain the current code style of EVE Gate.
+- Work from branch `master`. We won't be able to merge your changes otherwise.
+- Maintain the current code style of EVE Gate. CodeClimate should give you a B or better.
 - Be aware that all code you submit to EVE Gate belongs to EVE Gate after the request is merged.
 
 ## Legal
