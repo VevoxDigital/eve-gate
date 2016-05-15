@@ -1,6 +1,7 @@
 # Eve Gate
 [![Build Status](https://travis-ci.org/VevoxDigital/eve-gate.svg?branch=dev)](https://travis-ci.org/VevoxDigital/eve-gate)
 [![Code Climate](https://codeclimate.com/github/VevoxDigital/eve-gate/badges/gpa.svg)](https://codeclimate.com/github/VevoxDigital/eve-gate)
+[Trello](27045a89ae207b4d8929ff57dccc8fcbee0ae483e104e50677de28f791e2df51)
 
 Premier third-party tools for Eve Online.
 
