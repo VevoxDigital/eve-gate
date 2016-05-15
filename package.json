@@ -1,0 +1,22 @@
+{
+  "name": "eve-gate",
+  "version": "0.1.0",
+  "description": "Premier third-party tools for Eve Online.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VevoxDigital/eve-gate/"
+  },
+  "author": "Vevox Digital",
+  "authors": [
+    "Matthew Struble <matt@vevox.io>"
+  ],
+  "license": "GPL-3.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+}
