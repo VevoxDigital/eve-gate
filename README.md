@@ -1,7 +1,8 @@
 # Eve Gate
-Premier third-party tools for Eve Online.
 [![Build Status](https://travis-ci.org/VevoxDigital/eve-gate.svg?branch=dev)](https://travis-ci.org/VevoxDigital/eve-gate)
 [![Code Climate](https://codeclimate.com/github/VevoxDigital/eve-gate/badges/gpa.svg)](https://codeclimate.com/github/VevoxDigital/eve-gate)
+
+Premier third-party tools for Eve Online.
 
 [EVE Gate Website](http://vevox.io)
 
