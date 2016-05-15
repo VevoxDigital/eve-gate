@@ -1,6 +1,6 @@
 # Eve Gate
 Premier third-party tools for Eve Online.
-[![Build status](https://ci.appveyor.com/api/projects/status/016pg8yl81jkb3bx?svg=true)](https://ci.appveyor.com/project/Wehttam664/eve-gate)
+[![Build Status](https://travis-ci.org/VevoxDigital/eve-gate.svg?branch=dev)](https://travis-ci.org/VevoxDigital/eve-gate)
 
 [EVE Gate Website](http://vevox.io)
 
