@@ -15,4 +15,5 @@ ratings:
   - public/**
   - src/**
   - "**.js"
-exclude_paths: []
+exclude_paths:
+  - Gruntfile.js
