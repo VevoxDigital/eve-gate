@@ -5,13 +5,9 @@
  * @name eveGateApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the eveGateApp
+ * Controller for the main landing page for EVE Gate.
  */
 angular.module('eveGateApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

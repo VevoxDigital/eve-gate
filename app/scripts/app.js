@@ -6,7 +6,7 @@
  * @description
  * # eveGateApp
  *
- * Main module of the application.
+ * Main module for EVE Gate.
  */
 angular
   .module('eveGateApp', [
@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -27,4 +28,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function ($rootScope) {
+    
   });
