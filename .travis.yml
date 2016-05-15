@@ -9,6 +9,7 @@ node_js:
 services:
   - mongodb
 before_install:
+  - gem install compass
   - npm install -g grunt-cli bower
 install:
   - npm install
@@ -23,4 +24,5 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
+      - ruby-dev
       - g++-4.8
