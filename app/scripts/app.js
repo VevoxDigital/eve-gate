@@ -60,8 +60,8 @@ angular
             href: 'logi',
             items: [
               {
-                text: 'Wormhole Mapping',
-                href: 'wormhole'
+                text: 'Starmaps',
+                href: 'maps'
               },
               {
                 text: 'System Lookup',
@@ -82,6 +82,15 @@ angular
             text: 'Industry',
             href: 'industry',
             items: [
+              {
+                text: 'Market Lookup',
+                href: 'market'
+              },
+              {
+                text: 'Profit Calculator',
+                href: 'profits'
+              },
+              {},
               {
                 text: 'Mining Statistics',
                 href: 'mining'
