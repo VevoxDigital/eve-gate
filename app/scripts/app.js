@@ -141,4 +141,11 @@ angular
       }
     };
 
+    $rootScope.randomBannerImage = function () {
+      var imgs = [ 'astero', 'cyclone_pos', 'dst_silo', 'epithal_planet', 'procurer' ];
+      var r = Math.floor(Math.random() * imgs.length);
+      console.log(r);
+      return '/images/' + imgs[r] + '.png';
+    };
+
   });

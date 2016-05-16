@@ -8,6 +8,6 @@
  * Controller for the main landing page for EVE Gate.
  */
 angular.module('eveGateApp')
-  .controller('MainCtrl', function () {
-
+  .controller('MainCtrl', function ($scope) {
+    $scope.img = $scope.randomBannerImage();
   });
