@@ -2,9 +2,81 @@
 @import "font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import "colors";
+@import "fonts";
+
+* { box-sizing: border-box; }
+
+html, body {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: Quicksand, sans-serif;
+}
+
+nav {
+  width: 100%;
+  background-color: $black1;
+  color: $white1;
+  position: relative;
+  .nav-container {
+    font-size: 12pt;
+    display: inline-block;
+    a {
+      color: $white1;
+      text-decoration: none;
+      padding: 15px 20px;
+      font-weight: lighter;
+      display: inline-block;
+      position: relative;
+      transition: color 250ms, background-color 250ms;
+      z-index: 15;
+      .fa {
+        font-size: 8pt;
+      }
+    }
+    a:hover {
+      color: $white2;
+      background-color: $black2;
+      .dropdown {
+        opacity: 1;
+      }
+    }
+  }
+  .brand {
+    color: $white1;
+    text-decoration: none;
+    font-size: 15pt;
+    padding: 10px;
+  }
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $black2;
+    width: 100%;
+    a {
+      display: block;
+      color: $white1;
+      text-decoration: none;
+      font-size: 10pt;
+      padding: 10px 15px;
+      transition: background-color 250ms;
+    }
+    a:hover {
+      background-color: $black1;
+    }
+    hr {
+      border: none;
+      border-bottom: 1px $white1 solid;
+      margin: 10px;
+    }
+  }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-
+  nav .nav-mobile-menu { display: none; }
 }
 
 /* Responsive: Desktops and up */
