@@ -37,11 +37,13 @@
         </a>
       </div>
       <div class="nav-container float-right">
-
+        <a href="/account">
+          Sign In
+          <span ng-if="$user.isLogged()" class="fa fa-chevron-down"></span>
+          <!-- TODO Dropdown -->
+        </a>
       </div>
-      <div id="navDD" class="dropdown" style="display:none">
-
-      </div>
+      <div id="navDD" class="dropdown" style="display:none"></div>
     </nav>
 
     <div ng-view></div>
@@ -79,6 +81,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/user.js"></script>
         <!-- endbuild -->
 </body>
 </html>

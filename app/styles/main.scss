@@ -19,7 +19,7 @@ nav {
   background-color: $black1;
   color: $white1;
   position: relative;
-  .nav-container.nav-desktop-menu {
+  .nav-container {
     font-size: 12pt;
     display: none;
     a {
@@ -64,6 +64,13 @@ nav {
       .dropdown {
         opacity: 1;
       }
+    }
+  }
+  .nav-container.float-right {
+    float: right;
+    display: inline-block;
+    a {
+      padding: 12px;
     }
   }
   .nav-container.nav-mobile-menu {

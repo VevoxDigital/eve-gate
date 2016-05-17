@@ -29,7 +29,8 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($rootScope, $compile) {
+  .run(function ($rootScope, $compile, $user) {
+    $rootScope.$user = $user;
     $rootScope.$meta = {
       title: function (title) {
 
