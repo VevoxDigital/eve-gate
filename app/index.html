@@ -24,10 +24,13 @@
     <!-- Navbar -->
     <nav>
       <div class="nav-container nav-mobile-menu">
-
+        <a href="javascript:" class="fa fa-bars"></a>
+        <div class="mobile-nav">
+          
+        </div>
       </div>
       <a href="/" class="brand">EVE Gate</a>
-      <div class="nav-container">
+      <div class="nav-container nav-desktop-menu">
         <a ng-repeat="link in $meta.nav[0]" ng-href="link.href"
           ng-mouseenter="toggleNavDD($event, link)" ng-mouseleave="toggleNavDD($event)">
           {{link.text}}

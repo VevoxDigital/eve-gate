@@ -19,19 +19,43 @@ nav {
   background-color: $black1;
   color: $white1;
   position: relative;
-  .nav-container {
+  .nav-container.nav-desktop-menu {
     font-size: 12pt;
-    display: inline-block;
+    display: none;
     a {
       color: $white1;
       text-decoration: none;
-      padding: 15px 20px;
+      padding: 10px 20px;
       font-weight: lighter;
       display: inline-block;
       transition: color 250ms, background-color 250ms;
       z-index: 15;
       .fa {
         font-size: 8pt;
+      }
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $black2;
+        display: block;
+        z-index: 200;
+        a {
+          display: block;
+          color: $white1;
+          text-decoration: none;
+          font-size: 10pt;
+          padding: 10px 15px;
+          transition: background-color 250ms;
+        }
+        a:hover {
+          background-color: $black1;
+        }
+        hr {
+          border: none;
+          border-bottom: 1px $white1 solid;
+          margin: 10px;
+        }
       }
     }
     a:hover {
@@ -42,34 +66,22 @@ nav {
       }
     }
   }
+  .nav-container.nav-mobile-menu {
+    display: inline-block;
+    .fa-bars {
+      display: inline-block;
+      padding-left: 10px;
+      color: $white1;
+      text-decoration: none;
+      font-size: 15pt;
+    }
+  }
   .brand {
     color: $white1;
     text-decoration: none;
     font-size: 15pt;
     padding: 10px;
-  }
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: $black2;
-    display: block;
-    a {
-      display: block;
-      color: $white1;
-      text-decoration: none;
-      font-size: 10pt;
-      padding: 10px 15px;
-      transition: background-color 250ms;
-    }
-    a:hover {
-      background-color: $black1;
-    }
-    hr {
-      border: none;
-      border-bottom: 1px $white1 solid;
-      margin: 10px;
-    }
+    display: inline-block;
   }
 }
 
@@ -84,28 +96,35 @@ header.banner {
     text-align: center;
     color: $white1;
     font-weight: normal;
-    font-size: 90pt;
+    font-size: 40pt;
     text-transform: uppercase;
   }
   h2 {
     position: absolute;
     width: 100%;
-    top: 230px;
+    top: 130px;
     text-align: center;
     color: $white1;
     font-weight: normal;
-    font-size: 20pt;
+    font-size: 10pt;
     text-transform: uppercase;
   }
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  nav .nav-mobile-menu { display: none; }
-  header.banner { height: 45vh; }
+
 }
 
 /* Responsive: Desktops and up */
 @media screen and (min-width: 1024px) {
-
+  header.banner {
+    height: 45vh;
+    h1 { font-size: 90pt; }
+    h2 { font-size: 20pt; top: 230px; }
+  }
+  nav {
+    .nav-container.nav-desktop-menu { display: inline-block; }
+    .nav-container.nav-mobile-menu { display: none; }
+  }
 }
