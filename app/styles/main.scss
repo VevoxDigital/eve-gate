@@ -28,7 +28,6 @@ nav {
       padding: 15px 20px;
       font-weight: lighter;
       display: inline-block;
-      position: relative;
       transition: color 250ms, background-color 250ms;
       z-index: 15;
       .fa {
@@ -54,7 +53,7 @@ nav {
     top: 100%;
     left: 0;
     background-color: $black2;
-    width: 100%;
+    display: block;
     a {
       display: block;
       color: $white1;

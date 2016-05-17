@@ -87,6 +87,10 @@ angular
                 href: 'market'
               },
               {
+                text: 'Price Trends',
+                href: 'trends'
+              },
+              {
                 text: 'Profit Calculator',
                 href: 'profits'
               },
@@ -110,13 +114,17 @@ angular
                 href: 'support'
               },
               {
-                text: 'GitHub Page',
+                text: 'Contribute',
                 href: '@https://github.com/VevoxDigital/eve-gate'
               },
               {},
               {
                 text: 'The Team',
                 href: 'team'
+              },
+              {
+                text: 'Contact Us',
+                href: 'contact'
               }
             ]
           }
@@ -134,7 +142,7 @@ angular
       } else {
         if (!data.items) return;
         link.append(dd);
-        dd.show();
+        dd.css('left', link.offset().left).css('min-width', link.outerWidth());
         dd.empty();
         data.items.forEach(function (item) {
           if (item.text) {
@@ -147,13 +155,13 @@ angular
             dd.append('<hr>');
           }
         });
+        dd.show();
       }
     };
 
     $rootScope.randomBannerImage = function () {
       var imgs = [ 'astero', 'cyclone_pos', 'dst_silo', 'epithal_planet', 'procurer' ];
       var r = Math.floor(Math.random() * imgs.length);
-      console.log(r);
       return '/images/' + imgs[r] + '.png';
     };
 
