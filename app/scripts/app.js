@@ -29,7 +29,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($rootScope) {
+  .run(function ($rootScope, $compile) {
     $rootScope.$meta = {
       title: function (title) {
 
@@ -140,7 +140,7 @@ angular
       if (!data) {
         dd.hide();
       } else {
-        if (!data.items) return;
+        if (!data.items) { return; }
         link.append(dd);
         dd.css('left', link.offset().left).css('min-width', link.outerWidth());
         dd.empty();
@@ -157,6 +157,31 @@ angular
         });
         dd.show();
       }
+    };
+
+    $rootScope.toggleNavMobile = function () {
+      var nav = angular.element('#navMobile');
+      if (!nav.is(':visible')) {
+        $rootScope.$meta.nav[0].forEach(function (link) {
+          var a = $compile('<a href="/' + link.href + '">' + link.text + '</a>')($rootScope);
+          if (link.items) {
+            link.items.forEach(function (item) {
+              if (item.href) {
+                a.append(
+                  item.href.startsWith('@') ?
+                  '<a href="' + item.href.substring(1) + '" target="_blank">' + item.text + '</a>' :
+                  '<a href="/' + link.href + '/' + item.href + '">' + item.text + '</a>'
+                );
+              }
+            });
+          }
+          nav.append(a);
+        });
+        nav.css('left', -nav.outerWidth()).show();
+      }
+      nav.velocity({
+        left: nav.offset().left === 0 ? -nav.outerWidth() : 0
+      });
     };
 
     $rootScope.randomBannerImage = function () {
