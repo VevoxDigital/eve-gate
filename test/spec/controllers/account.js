@@ -17,7 +17,7 @@ describe('Controller: AccountCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(AccountCtrl.awesomeThings.length).toBe(3);
+  it('should do something', function () {
+    expect(!!AccountCtrl).toBe(true);
   });
 });
