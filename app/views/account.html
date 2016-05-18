@@ -1,0 +1,24 @@
+<h1 class="pagebanner banner-blue">Gate Account</h1>
+<div ng-if="$user.isLogged()">
+
+</div>
+<div ng-if="!$user.isLogged()" class="login">
+  <div id="loginPage" class="page" ng-style="pageHeight">
+    <div id="loginPanel" class="panel" ng-style="panelTop">
+      <h1 class="title">Welcome, Pilot</h1>
+      <form ng-submit="submitLogin" action="javascript:">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="pass" placeholder="Password">
+        <input type="password" name="pass2" placeholder="Retype Password">
+
+        <label for="checkNew">I'm new here.</label>
+        <input id="checkNew" type="checkbox" name="new">
+
+        <label for="checkTOS">I agree to the Terms of Service</label>
+        <input id="checkTOS" type="checkbox" name="tos">
+
+        <input type="submit" value="Warp Me In">
+      </form>
+    </div>
+  </div>
+</div>

@@ -25,15 +25,20 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/account', {
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl',
+        controllerAs: 'account'
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .run(function ($rootScope, $compile, $user) {
+  .run(function ($rootScope, $compile, $user, $location) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
-      title: function (title) {
-
+      route: function () {
+        return $location.path();
       },
       nav: [
         [

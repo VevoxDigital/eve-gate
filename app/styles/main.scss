@@ -9,9 +9,10 @@
 
 html, body {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   font-family: Quicksand, sans-serif;
+  background-color: $white1;
 }
 
 nav {
@@ -126,7 +127,18 @@ nav {
   }
 }
 
-div[ng-view]{
+.pagebanner {
+  width: 100%;
+  padding: 40px;
+  margin: 0;
+  color: $white1;
+  background-color: $black1;
+  font-weight: normal;
+  font-size: 30pt;
+}
+.pagebanner.banner-blue { background-color: $blue1; }
+
+div[vx-route='/']{
   header.banner {
     width: 100%;
     height: 200px;
@@ -159,18 +171,71 @@ div[ng-view]{
     width: 100%;
   }
 }
+div[vx-route='/account'] {
+  .page {
+    width: 100%;
+    background-color: $bluegreen1;
+    .panel {
+      width: 90vw;
+      max-width: 400px;
+      background-color: $white1;
+      border-radius: 10px;
+      padding: 10px 30px;
+      margin: 0 auto;
+      position: relative;
+      .title {
+        position: absolute;
+        bottom: 100%;
+        color: $white1;
+        font-weight: normal;
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+        margin-left: -30px;
+      }
+      input {
+        display: block;
+      }
+      input[type='text'], input[type='password'] {
+        background-color: $white;
+        border-radius: 5px;
+        padding: 10px;
+        color: $grey2;
+        border: 2px rgba(255,255,255,0) solid;
+        width: 100%;
+        transition: border-color 250ms;
+        font-size: 16pt;
+        margin: 25px 0;
+      }
+      input[type='text']:focus, input[type='password']:focus {
+        outline: none;
+        border-color: $bluegreen1;
+      }
+    }
+  }
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-
+  div[vx-route='/account'] {
+    .page .panel {
+      .title { font-size: 30pt; }
+    }
+  }
 }
 
 /* Responsive: Desktops and up */
 @media screen and (min-width: 1024px) {
-  div[ng-view] header.banner {
+  .pagebanner { font-size: 50pt; }
+  div[vx-route='/'] header.banner {
     height: 500px;
     h1 { font-size: 90pt; }
     h2 { font-size: 20pt; top: 230px; }
+  }
+  div[vx-route='/account'] {
+    .page .panel {
+      .title { font-size: 35pt; }
+    }
   }
   nav {
     .nav-container.nav-desktop-menu { display: inline-block; }

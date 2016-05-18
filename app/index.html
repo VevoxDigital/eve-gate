@@ -46,7 +46,7 @@
       <div id="navDD" class="dropdown" style="display:none"></div>
     </nav>
 
-    <div ng-view></div>
+    <div ng-view vx-route="{{$meta.route()}}"></div>
 
 
 
@@ -82,6 +82,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/services/user.js"></script>
+        <script src="scripts/controllers/account.js"></script>
         <!-- endbuild -->
 </body>
 </html>
