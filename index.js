@@ -1,1 +1,3 @@
-console.log('index ok');
+console.log('Hello world!');
+
+require('./lib')();
