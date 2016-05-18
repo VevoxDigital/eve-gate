@@ -134,7 +134,7 @@ nav {
   color: $white1;
   background-color: $black1;
   font-weight: normal;
-  font-size: 30pt;
+  font-size: 5vh;
 }
 .pagebanner.banner-blue { background-color: $blue1; }
 
@@ -217,6 +217,7 @@ div[vx-route='/account'] {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  //.pagebanner { font-size: 30pt; }
   div[vx-route='/account'] {
     .page .panel {
       .title { font-size: 30pt; }
@@ -226,7 +227,7 @@ div[vx-route='/account'] {
 
 /* Responsive: Desktops and up */
 @media screen and (min-width: 1024px) {
-  .pagebanner { font-size: 50pt; }
+  //.pagebanner { font-size: 40pt; }
   div[vx-route='/'] header.banner {
     height: 500px;
     h1 { font-size: 90pt; }
