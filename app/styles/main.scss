@@ -127,6 +127,44 @@ nav {
   }
 }
 
+input {
+  display: block;
+}
+input[type='text'], input[type='password'] {
+  background-color: $white;
+  border-radius: 5px;
+  padding: 10px;
+  color: $grey2;
+  border: 2px rgba(255,255,255,0) solid;
+  width: 100%;
+  transition: border-color 250ms;
+  font-size: 16pt;
+  margin: 25px 0;
+}
+input[type='text']:focus, input[type='password']:focus {
+  outline: none;
+  border-color: $bluegreen1;
+}
+input[type='checkbox'] {
+  position: absolute;
+  left: -200vw;
+}
+input[type='checkbox'] + label {
+  position: relative;
+  cursor: pointer;
+}
+input[type='checkbox'] + label:before {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: $grey1;
+  content: '';
+  width: 17px;
+  height: 17px;
+}
+input[type='checkbox']:checked + label:before {
+  background-color: $bluegreen1;
+}
+
 .pagebanner {
   width: 100%;
   padding: 40px;
@@ -192,24 +230,6 @@ div[vx-route='/account'] {
         text-align: center;
         margin: 10px;
         margin-left: -30px;
-      }
-      input {
-        display: block;
-      }
-      input[type='text'], input[type='password'] {
-        background-color: $white;
-        border-radius: 5px;
-        padding: 10px;
-        color: $grey2;
-        border: 2px rgba(255,255,255,0) solid;
-        width: 100%;
-        transition: border-color 250ms;
-        font-size: 16pt;
-        margin: 25px 0;
-      }
-      input[type='text']:focus, input[type='password']:focus {
-        outline: none;
-        border-color: $bluegreen1;
       }
     }
   }
