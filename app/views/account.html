@@ -9,7 +9,10 @@
       <form ng-submit="submitLogin" action="javascript:">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="pass" placeholder="Password">
-        <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
+        <div class="pass-input-container">
+          <div class="pass-input-holder" ng-if="!checkNew"></div>
+          <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
+        </div>
 
         <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
         <label for="checkNew">I'm new here</label>
