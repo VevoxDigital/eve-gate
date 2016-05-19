@@ -9,15 +9,15 @@
       <form ng-submit="submitLogin" action="javascript:">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="pass" placeholder="Password">
-        <input type="password" name="pass2" placeholder="Retype Password">
+        <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
 
-        <input id="checkNew" type="checkbox" name="new">
+        <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
         <label for="checkNew">I'm new here</label>
 
         <input id="checkTOS" type="checkbox" name="tos">
         <label for="checkTOS">I agree to the Terms of Service</label>
 
-        <input type="submit" value="Warp Me In">
+        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'">
       </form>
     </div>
   </div>
