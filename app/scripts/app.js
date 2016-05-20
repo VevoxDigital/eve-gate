@@ -34,7 +34,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function ($rootScope, $compile, $user, $location) {
+  .run(function ($rootScope, $compile, $user, $location, $timeout) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
       route: function () {
@@ -144,15 +144,7 @@ angular
     $rootScope.toggleNavDD = function (e, data) {
       var dd = angular.element('#navDD'), link = angular.element(e.target);
       if (!data) {
-        dd.velocity({
-          opacity: 0
-        }, {
-          duration: 250,
-          queue: false,
-          complete: function () {
-            if (dd.css('opacity') === '0') { dd.hide(); }
-          }
-        });
+        dd.hide();
       } else {
         if (!data.items) { return; }
         link.append(dd);
@@ -170,15 +162,6 @@ angular
           }
         });
         dd.show();
-        dd.velocity({
-          opacity: 1
-        }, {
-          duration: 250,
-          queue: false,
-          begin: function () {
-            dd.css('opacity', 0);
-          }
-        });
       }
     };
 
