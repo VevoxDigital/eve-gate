@@ -52,9 +52,11 @@
     "time-grunt": "^1.0.0"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "fs-extra": "^0.30.0",
+    "lodash": "^4.12.0",
     "mongoose": "^4.4.17",
     "nconf": "^0.8.4",
     "path": "^0.12.7",
