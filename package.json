@@ -52,6 +52,11 @@
     "time-grunt": "^1.0.0"
   },
   "dependencies": {
+    "express": "^4.13.4",
+    "fs-extra": "^0.30.0",
+    "nconf": "^0.8.4",
+    "path": "^0.12.7",
+    "socket.io": "^1.4.6",
     "winston": "^2.2.0"
   }
 }
