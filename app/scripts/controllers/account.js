@@ -9,7 +9,7 @@
  */
 angular.module('eveGateApp')
   .controller('AccountCtrl', function ($scope, $timeout) {
-    $timeout(function () {
+    /*$timeout(function () {
       $scope.pageHeight = function () {
         var html = angular.element('html'),
             nav = angular.element('nav'),
@@ -23,5 +23,5 @@ angular.module('eveGateApp')
           return { top: (page.outerHeight()/2) - (panel.outerHeight()/2) };
         }();
       });
-    });
+    });*/
   });

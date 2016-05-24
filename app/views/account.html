@@ -1,4 +1,3 @@
-<h1 class="pagebanner banner-blue">Gate Account</h1>
 <div ng-if="$user.isLogged()">
 
 </div>
@@ -17,10 +16,12 @@
         <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
         <label for="checkNew">I'm new here</label>
 
-        <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
-        <label for="checkTOS">I agree to the Terms of Service</label>
+        <div class="pass-tos-container" ng-show="checkNew">
+          <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
+          <label for="checkTOS">I agree to the Terms of Service</label>
+        </div>
 
-        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="!checkTOS">
+        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="checkNew &amp;&amp; !checkTOS">
       </form>
     </div>
   </div>

@@ -19,7 +19,7 @@ nav {
   width: 100%;
   background-color: $black1;
   color: $white1;
-  position: relative;
+  position: fixed;
   .nav-container {
     font-size: 12pt;
     display: none;
@@ -252,6 +252,7 @@ div[vx-route='/']{
 div[vx-route='/account'] {
   .page {
     width: 100%;
+    height: 100vh;
     background-color: $bluegreen1;
     .panel {
       width: 90vw;
@@ -260,7 +261,10 @@ div[vx-route='/account'] {
       border-radius: 10px;
       padding: 10px 30px;
       margin: 0 auto;
-      position: relative;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       .title {
         position: absolute;
         bottom: 100%;
@@ -274,18 +278,18 @@ div[vx-route='/account'] {
       .pass-input-container {
         position: relative;
         input[name='pass2'] {
-          transition: opacity 250ms, left 250ms;
+          transition: opacity 250ms, left 250ms, top 250ms;
         }
         input[name='pass2'].ng-enter, input[name='pass2'].ng-leave.ng-leave-active {
           position: absolute;
-          left: 100%;
           opacity: 0;
-          top: -25px;
+          top: -60px;
+          left: 100px;
         }
         input[name='pass2'].ng-enter.ng-enter-active, input[name='pass2'].ng-leave {
           position: absolute;
-          left: 0;
           opacity: 1;
+          left: 0;
           top: -25px;
         }
         .pass-input-holder {
