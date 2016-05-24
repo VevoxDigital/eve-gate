@@ -200,6 +200,10 @@ input[type='submit'] {
   width: 80%;
   margin: 10px auto;
 }
+.btn[disabled], input[type='submit'][disabled] {
+  background-color: $grey1;
+  cursor: default;
+}
 
 .pagebanner {
   width: 100%;

@@ -17,10 +17,10 @@
         <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
         <label for="checkNew">I'm new here</label>
 
-        <input id="checkTOS" type="checkbox" name="tos">
+        <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
         <label for="checkTOS">I agree to the Terms of Service</label>
 
-        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'">
+        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="!checkTOS">
       </form>
     </div>
   </div>
