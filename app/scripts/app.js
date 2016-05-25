@@ -30,14 +30,22 @@ angular
         controller: 'AccountCtrl',
         controllerAs: 'account'
       })
+      .when('/error/:code', {
+        templateUrl: 'views/error.html',
+        controller: 'ErrorCtrl',
+        controllerAs: 'error'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/error/404'
       });
   })
   .run(function ($rootScope, $compile, $user, $location, $timeout) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
-      route: $location.path(),
+      path: function () {
+        var path = $location.path();
+        return path.indexOf('/', 1) > 0 ? path.substring(0, path.indexOf('/', 1)) : path;
+      },
       pause: function (ms) {
         var until = new Date().getTime() + ms;
         while (new Date().getTime() < until) { /* no-op */ }
@@ -197,16 +205,5 @@ angular
       var r = Math.floor(Math.random() * imgs.length);
       return '/images/' + imgs[r] + '.png';
     };
-
-    $rootScope.$on('$routeChangeSuccess', function (e, to) {
-      /*$timeout(function () {
-        angular.element('[ng-view]:not(.ng-enter)').attr('vx-route', $location.path());
-      });*/
-    });
-    $rootScope.$on('$routeChangeStart', function (e, to) {
-      $timeout(function () {
-        angular.element('.ng-enter[ng-view]').attr('vx-route', $location.path());
-      });
-    });
 
   });

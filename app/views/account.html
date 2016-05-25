@@ -1,28 +1,30 @@
-<div ng-if="$user.isLogged()">
+<div vx-route="/account">
+  <div ng-if="$user.isLogged()">
 
-</div>
-<div ng-if="!$user.isLogged()" class="login">
-  <div id="loginPage" class="page" ng-style="pageHeight">
-    <div id="loginPanel" class="panel" ng-style="panelTop">
-      <h1 class="title">Welcome, Pilot</h1>
-      <form ng-submit="submitLogin" action="javascript:">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="pass" placeholder="Password">
-        <div class="pass-input-container">
-          <div class="pass-input-holder" ng-if="!checkNew"></div>
-          <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
-        </div>
+  </div>
+  <div ng-if="!$user.isLogged()" class="login">
+    <div id="loginPage" class="page" ng-style="pageHeight">
+      <div id="loginPanel" class="panel" ng-style="panelTop">
+        <h1 class="title">Welcome, Pilot</h1>
+        <form ng-submit="submitLogin" action="javascript:">
+          <input type="text" name="email" placeholder="Email">
+          <input type="password" name="pass" placeholder="Password">
+          <div class="pass-input-container">
+            <div class="pass-input-holder" ng-if="!checkNew"></div>
+            <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
+          </div>
 
-        <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
-        <label for="checkNew">I'm new here</label>
+          <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
+          <label for="checkNew">I'm new here</label>
 
-        <div class="pass-tos-container" ng-show="checkNew">
-          <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
-          <label for="checkTOS">I agree to the Terms of Service</label>
-        </div>
+          <div class="pass-tos-container" ng-show="checkNew">
+            <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
+            <label for="checkTOS">I agree to the Terms of Service</label>
+          </div>
 
-        <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="checkNew &amp;&amp; !checkTOS">
-      </form>
+          <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="checkNew &amp;&amp; !checkTOS">
+        </form>
+      </div>
     </div>
   </div>
 </div>
