@@ -37,8 +37,10 @@ angular
   .run(function ($rootScope, $compile, $user, $location, $timeout) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
-      route: function () {
-        return $location.path();
+      route: $location.path(),
+      pause: function (ms) {
+        var until = new Date().getTime() + ms;
+        while (new Date().getTime() < until) { /* no-op */ }
       },
       nav: [
         [
@@ -195,5 +197,16 @@ angular
       var r = Math.floor(Math.random() * imgs.length);
       return '/images/' + imgs[r] + '.png';
     };
+
+    $rootScope.$on('$routeChangeSuccess', function (e, to) {
+      /*$timeout(function () {
+        angular.element('[ng-view]:not(.ng-enter)').attr('vx-route', $location.path());
+      });*/
+    });
+    $rootScope.$on('$routeChangeStart', function (e, to) {
+      $timeout(function () {
+        angular.element('.ng-enter[ng-view]').attr('vx-route', $location.path());
+      });
+    });
 
   });
