@@ -9,15 +9,19 @@ div[vx-route='/error'] {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      width: 90vw;
       h1, h2, h3 {
         font-weight: normal;
         text-align: center;
         margin: 0;
       }
+      h1 { font-size: 16pt; }
+      h2, h3 { font-size: 10pt; }
       hr {
         border: none;
         border-bottom: 1px $white1 solid;
-        margin: 30px auto;
+        opacity: 0.5;
+        margin: 10px auto;
         width: 80%;
       }
     }
@@ -25,9 +29,18 @@ div[vx-route='/error'] {
 }
 
 @media screen and (min-width: 768px) {
-  div[vx-route='/error'] .page h1 { font-size: 35pt; }
+  div[vx-route='/error'] .page .err {
+    h1 { font-size: 35pt; }
+    h2 { font-size: 20pt; }
+    h3 { font-size: 16pt; }
+    hr {
+      margin: 30px auto;
+      border-bottom: 1px $white1 solid;
+      opacity: 1;
+    }
+  }
 }
 
 @media screen and (min-width: 1024px) {
-  div[vx-route='/error'] .page h1 { font-size: 45pt; }
+  div[vx-route='/error'] .page .err h1 { font-size: 45pt; }
 }
