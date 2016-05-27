@@ -1,0 +1,33 @@
+div[vx-route='/error'] {
+  .page {
+    width: 100%;
+    height: 100vh;
+    background-color: $bluegreen1;
+    .err {
+      color: $white1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      h1, h2, h3 {
+        font-weight: normal;
+        text-align: center;
+        margin: 0;
+      }
+      hr {
+        border: none;
+        border-bottom: 1px $white1 solid;
+        margin: 30px auto;
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  div[vx-route='/error'] .page h1 { font-size: 35pt; }
+}
+
+@media screen and (min-width: 1024px) {
+  div[vx-route='/error'] .page h1 { font-size: 45pt; }
+}

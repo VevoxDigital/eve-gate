@@ -32,9 +32,12 @@ nav {
       display: inline-block;
       transition: color 250ms, background-color 250ms;
       z-index: 15;
-      .fa {
-        font-size: 8pt;
+      &:hover {
+        color: $white2;
+        background-color: $black2;
+        .dropdown { opacity: 1; }
       }
+      .fa { font-size: 8pt; }
       .dropdown {
         position: absolute;
         top: 100%;
@@ -49,9 +52,7 @@ nav {
           font-size: 10pt;
           padding: 10px 15px;
           transition: background-color 250ms;
-        }
-        a:hover {
-          background-color: $black1;
+          &:hover { background-color: $black1; }
         }
         hr {
           border: none;
@@ -60,20 +61,11 @@ nav {
         }
       }
     }
-    a:hover {
-      color: $white2;
-      background-color: $black2;
-      .dropdown {
-        opacity: 1;
-      }
-    }
   }
   .nav-container.float-right {
     float: right;
     display: inline-block;
-    a {
-      padding: 12px;
-    }
+    a { padding: 12px; }
   }
   .nav-container.nav-mobile-menu {
     display: inline-block;
@@ -106,16 +98,12 @@ nav {
         background-color: $black2;
         transition: background-color 250ms, color 250ms;
         font-size: 16pt;
-        a {
-          font-size: 12pt;
+        a { font-size: 12pt; }
+        a:hover { color: $white2; }
+        &:hover {
+          background-color: $black1;
+          a { background-color: $black1; }
         }
-        a:hover {
-          color: $white2;
-        }
-      }
-      a:hover {
-        background-color: $black1;
-        a { background-color: $black1; }
       }
     }
   }
@@ -141,10 +129,10 @@ input[type='text'], input[type='password'] {
   transition: border-color 250ms;
   font-size: 16pt;
   margin: 25px 0;
-}
-input[type='text']:focus, input[type='password']:focus {
-  outline: none;
-  border-color: $bluegreen1;
+  &:focus {
+    outline: none;
+    border-color: $bluegreen1;
+  }
 }
 
 // TODO This style still needs cleanup.
@@ -159,29 +147,22 @@ input[type='checkbox'] + label {
   color: $grey2;
   transition: color 250ms;
   font-size: 14pt;
+  &:hover { color: $bluegreen1; }
+  &:before {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $white2;
+    position: relative;
+    top: 6px;
+    margin-right: 4px;
+    content: '';
+    width: 23px;
+    height: 23px;
+    transition: background-color 250ms;
+  }
+  &:after { display: block; content: ''; }
 }
-input[type='checkbox'] + label:hover {
-  color: $bluegreen1;
-}
-input[type='checkbox'] + label:before {
-  display: inline-block;
-  border-radius: 5px;
-  background-color: $white2;
-  position: relative;
-  top: 6px;
-  margin-right: 4px;
-  content: '';
-  width: 23px;
-  height: 23px;
-  transition: background-color 250ms;
-}
-input[type='checkbox'] + label:after {
-  display: block;
-  content: '';
-}
-input[type='checkbox']:checked + label:before {
-  background-color: $bluegreen1;
-}
+input[type='checkbox']:checked + label:before { background-color: $bluegreen1; }
 
 .btn, input[type='submit'] {
   border-radius: 5px;
@@ -193,17 +174,12 @@ input[type='checkbox']:checked + label:before {
   outline: none;
   cursor: pointer;
   transition: background-color 250ms;
-}
-.btn:hover, input[type='submit']:hover {
-  background-color: $blue2;
+  &:hover { background-color: $blue2; }
+  &[disabled] { background-color: $grey1; cursor: default; }
 }
 input[type='submit'] {
   width: 80%;
   margin: 10px auto;
-}
-.btn[disabled], input[type='submit'][disabled] {
-  background-color: $grey1;
-  cursor: default;
 }
 
 .pagebanner {
@@ -214,8 +190,8 @@ input[type='submit'] {
   background-color: $black1;
   font-weight: normal;
   font-size: 5vh;
+  &.banner-blue { background-color: $blue1; }
 }
-.pagebanner.banner-blue { background-color: $blue1; }
 .nav-spacer {
   width: 100%;
   height: 43px;
@@ -235,161 +211,16 @@ div[ng-view] {
   }
 }
 
-div[vx-route='/']{
-  header.banner {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-color: $bluegreen1;
-    h1 {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      color: $white1;
-      font-weight: normal;
-      font-size: 40pt;
-      text-transform: uppercase;
-    }
-    h2 {
-      position: absolute;
-      width: 100%;
-      top: 130px;
-      text-align: center;
-      color: $white1;
-      font-weight: normal;
-      font-size: 10pt;
-      text-transform: uppercase;
-    }
-  }
-  .tagline {
-    padding: 80px 0;
-    background-color: $bluegreen1;
-    width: 100%;
-  }
-}
-div[vx-route='/account'] {
-  .page {
-    width: 100%;
-    height: 100vh;
-    background-color: $bluegreen1;
-    .panel {
-      width: 90vw;
-      max-width: 400px;
-      background-color: $white1;
-      border-radius: 10px;
-      padding: 10px 30px;
-      margin: 0 auto;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      .title {
-        position: absolute;
-        bottom: 100%;
-        color: $white1;
-        font-weight: normal;
-        width: 100%;
-        text-align: center;
-        margin: 10px;
-        margin-left: -30px;
-      }
-      .pass-input-container {
-        position: relative;
-        input[name='pass2'] {
-          transition: opacity 250ms, left 250ms, top 250ms;
-        }
-        input[name='pass2'].ng-enter, input[name='pass2'].ng-leave.ng-leave-active {
-          position: absolute;
-          opacity: 0;
-          top: -60px;
-          left: 100px;
-        }
-        input[name='pass2'].ng-enter.ng-enter-active, input[name='pass2'].ng-leave {
-          position: absolute;
-          opacity: 1;
-          left: 0;
-          top: -25px;
-        }
-        .pass-input-holder {
-          transition: height 250ms;
-          display: block;
-        }
-        .pass-input-holder.ng-enter {
-          height: 70px;
-        }
-        .pass-input-holder.ng-enter.ng-enter-active {
-          height: 0;
-        }
-        .pass-input-holder.ng-leave {
-          height: 0;
-        }
-        .pass-input-holder.ng-leave.ng-leave-active {
-          height: 70px;
-        }
-      }
-    }
-  }
-}
-div[vx-route='/error'] {
-  .page {
-    width: 100%;
-    height: 100vh;
-    background-color: $bluegreen1;
-    .err {
-      color: $white1;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h1, h2, h3 {
-        font-weight: normal;
-        text-align: center;
-        margin: 0;
-      }
-      hr {
-        border: none;
-        border-bottom: 1px $white1 solid;
-        margin: 30px auto;
-        width: 80%;
-      }
-    }
-  }
-}
+// Include pages.
+@import 'pages/main';
+@import 'pages/account';
+@import 'pages/error';
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  //.pagebanner { font-size: 30pt; }
-  div[vx-route='/account'] {
-    .page .panel {
-      .title { font-size: 30pt; }
-    }
-  }
-  div[vx-route='/error'] {
-    .page {
-      h1 { font-size: 35pt; }
-    }
-  }
-}
+@media screen and (min-width: 768px) { }
 
 /* Responsive: Desktops and up */
 @media screen and (min-width: 1024px) {
-  //.pagebanner { font-size: 40pt; }
-  div[vx-route='/'] header.banner {
-    height: 500px;
-    h1 { font-size: 90pt; }
-    h2 { font-size: 20pt; top: 230px; }
-  }
-  div[vx-route='/account'] {
-    .page .panel {
-      .title { font-size: 35pt; }
-    }
-  }
-  div[vx-route='/error'] {
-    .page {
-      h1 { font-size: 45pt; }
-    }
-  }
   nav {
     .nav-container.nav-desktop-menu { display: inline-block; }
     .nav-container.nav-mobile-menu { display: none; }

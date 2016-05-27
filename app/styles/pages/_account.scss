@@ -1,0 +1,61 @@
+div[vx-route='/account'] {
+  .page {
+    width: 100%;
+    height: 100vh;
+    background-color: $bluegreen1;
+    .panel {
+      width: 90vw;
+      max-width: 400px;
+      background-color: $white1;
+      border-radius: 10px;
+      padding: 10px 30px;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .title {
+        position: absolute;
+        bottom: 100%;
+        color: $white1;
+        font-weight: normal;
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+        margin-left: -30px;
+      }
+      .pass-input-container {
+        position: relative;
+        input[name='pass2'] {
+          transition: opacity 250ms, left 250ms, top 250ms;
+          &.ng-enter, &.ng-leave-active {
+            position: absolute;
+            opacity: 0;
+            top: -60px;
+            left: 100px;
+          }
+          &.ng-enter-active, &.ng-leave {
+            position: absolute;
+            opacity: 1;
+            left: 0;
+            top: -25px;
+          }
+        }
+        .pass-input-holder {
+          transition: height 250ms;
+          display: block;
+          &.ng-enter, &.ng-leave-active { height: 70px; }
+          &.ng-enter-active, &.ng-leave { height: 0; }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  div[vx-route='/account'] .page .panel .title { font-size: 30pt; }
+}
+
+@media screen and (min-width: 1024px) {
+  div[vx-route='/account'] .page .panel .title { font-size: 35pt; }
+}
