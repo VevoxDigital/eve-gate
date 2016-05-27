@@ -28,13 +28,13 @@ div[vx-route='/account'] {
         position: relative;
         input[name='pass2'] {
           transition: opacity 250ms, left 250ms, top 250ms;
-          &.ng-enter, &.ng-leave-active {
+          &.ng-enter, &.ng-leave.ng-leave-active {
             position: absolute;
             opacity: 0;
             top: -60px;
             left: 100px;
           }
-          &.ng-enter-active, &.ng-leave {
+          &.ng-enter.ng-enter-active, &.ng-leave {
             position: absolute;
             opacity: 1;
             left: 0;
@@ -44,8 +44,9 @@ div[vx-route='/account'] {
         .pass-input-holder {
           transition: height 250ms;
           display: block;
-          &.ng-enter, &.ng-leave-active { height: 70px; }
-          &.ng-enter-active, &.ng-leave { height: 0; }
+          height: 0;
+          &.ng-enter, &.ng-leave.ng-leave-active { height: 70px; }
+          &.ng-enter.ng-enter-active, &.ng-leave { height: 0; }
         }
       }
     }
@@ -57,5 +58,7 @@ div[vx-route='/account'] {
 }
 
 @media screen and (min-width: 1024px) {
-  div[vx-route='/account'] .page .panel .title { font-size: 35pt; }
+  div[vx-route='/account'] {
+    .title { font-size: 35pt; }
+  }
 }
