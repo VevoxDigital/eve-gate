@@ -8,8 +8,9 @@
  * Service in the eveGateApp.
  */
 angular.module('eveGateApp')
-  .service('$user', function () {
+  .service('$user', function ($timeout) {
     var user = {};
+    this.logging = false;
 
     this.isLogged = function () {
       return !!user.id;

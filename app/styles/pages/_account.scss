@@ -14,6 +14,15 @@ div[vx-route='/account'] {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      transition: transform 250ms, opacity 250ms;
+      &.ng-leave, &.ng-enter.ng-enter-active {
+        transform: scale(1) translate3d(-50%, -50%, 0);
+        opacity: 1;
+      }
+      &.ng-enter, &.ng-leave.ng-leave-active {
+        transform: scale(0.9) translate3d(-55%, -55%, 0);
+        opacity: 0;
+      }
       .title {
         position: absolute;
         bottom: 100%;

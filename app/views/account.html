@@ -4,9 +4,9 @@
   </div>
   <div ng-if="!$user.isLogged()" class="login">
     <div id="loginPage" class="page" ng-style="pageHeight">
-      <div id="loginPanel" class="panel" ng-style="panelTop">
+      <div id="loginPanel" class="panel" ng-style="panelTop" ng-if="!$user.logging">
         <h1 class="title">Welcome, Pilot</h1>
-        <form ng-submit="submitLogin" action="javascript:">
+        <form ng-submit="submitLogin()" action="javascript:">
           <input type="text" name="email" placeholder="Email">
           <input type="password" name="pass" placeholder="Password">
           <div class="pass-input-container">
