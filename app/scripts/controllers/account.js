@@ -18,7 +18,7 @@ angular.module('eveGateApp')
       if (!data.pass) { return $scope.pushError(1, 'You\'ll need a password for this.'); }
       if (data.new) {
         if (data.pass !== data.pass2) { return $scope.pushError(2, 'These don\'t seem to match.'); }
-        if (!data.tos) { return $scope.pushError(3, 'We\'ll need you to accept this.'); }
+        if (!data.tos) { return $scope.pushError(3, 'We need you to accept this.'); }
       }
       $user.logging = true;
       $timeout(function () {
