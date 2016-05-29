@@ -133,6 +133,9 @@ input[type='text'], input[type='password'] {
     outline: none;
     border-color: $bluegreen1;
   }
+  &.error {
+    border-color: $red1;
+  }
 }
 
 // TODO This style still needs cleanup.
