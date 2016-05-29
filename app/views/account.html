@@ -7,11 +7,11 @@
       <div id="loginPanel" class="panel" ng-style="panelTop" ng-if="!$user.logging">
         <h1 class="title">Welcome, Pilot</h1>
         <form ng-submit="submitLogin()" action="javascript:">
-          <input type="text" name="email" placeholder="Email">
-          <input type="password" name="pass" placeholder="Password">
+          <input type="text" name="email" placeholder="Email" vx-eid="0">
+          <input type="password" name="pass" placeholder="Password" vx-eid="1">
           <div class="pass-input-container">
             <div class="pass-input-holder" ng-if="!checkNew"></div>
-            <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew">
+            <input type="password" name="pass2" placeholder="Retype Password" ng-if="checkNew" vx-eid="2">
           </div>
 
           <input id="checkNew" type="checkbox" name="new" ng-model="checkNew">
@@ -19,12 +19,14 @@
 
           <div class="pass-tos-container" ng-show="checkNew">
             <input id="checkTOS" type="checkbox" name="tos" ng-model="checkTOS">
-            <label for="checkTOS">I agree to the Terms of Service</label>
+            <label for="checkTOS" vx-eid="3">I agree to the Terms of Service</label>
           </div>
 
-          <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'" ng-disabled="checkNew &amp;&amp; !checkTOS">
+          <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'"
+            ng-disabled="checkNew &amp;&amp; !checkTOS" vx-eid="4">
         </form>
       </div>
+      <div class="loading fa fa-circle-o-notch fa-spin" ng-if="$user.logging"></div>
     </div>
   </div>
 </div>
