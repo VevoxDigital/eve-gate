@@ -12,35 +12,35 @@
         <h1 class="title">Welcome, Pilot</h1>
         <form ng-submit="submitLogin()" action="javascript:">
           <div class="input-wrapper">
-            <input type="text" name="email" placeholder="Email" vx-eid="0">
+            <input type="text" ng-model="login.email" placeholder="Email" vx-eid="0">
           </div>
 
           <div class="input-wrapper">
-            <input type="password" name="pass" placeholder="Password" vx-eid="1">
+            <input type="password" ng-model="login.pass" placeholder="Password" vx-eid="1">
           </div>
 
           <div class="input-wrapper">
             <div class="pass-input-container">
-              <div class="pass-input-holder" ng-if="!loginBox.checkNew"></div>
-              <input type="password" name="pass2" placeholder="Retype Password" ng-if="loginBox.checkNew" vx-eid="2">
+              <div class="pass-input-holder" ng-if="!login.new"></div>
+              <input type="password" ng-model="login.pass2" placeholder="Retype Password" ng-if="login.new" vx-eid="2">
             </div>
           </div>
 
           <div class="input-wrapper">
-            <input id="checkNew" type="checkbox" name="new" ng-model="loginBox.checkNew">
+            <input id="checkNew" type="checkbox" ng-model="login.new">
             <label for="checkNew">I'm new here</label>
           </div>
 
-          <div class="pass-tos-container" ng-show="loginBox.checkNew">
+          <div class="pass-tos-container" ng-show="login.new">
             <div class="input-wrapper">
-              <input id="checkTOS" type="checkbox" name="tos" ng-model="loginBox.checkTOS">
+              <input id="checkTOS" type="checkbox" ng-model="login.tos">
               <label for="checkTOS" vx-eid="3">I agree to the Terms of Service</label>
             </div>
           </div>
 
           <div class="input-wrapper">
             <input type="submit" ng-value="checkNew ? 'Squad Up' : 'Warp Me In'"
-              ng-disabled="checkNew &amp;&amp; !loginBox.checkTOS" vx-eid="4">
+              ng-disabled="login.new &amp;&amp; !login.tos" vx-eid="4">
           </div>
         </form>
       </div>

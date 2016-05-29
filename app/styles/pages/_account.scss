@@ -37,7 +37,7 @@ div[vx-route='/account'] {
       }
       .pass-input-container {
         position: relative;
-        input[name='pass2'] {
+        input {
           transition: opacity 250ms, left 250ms, top 250ms;
           &.ng-enter, &.ng-leave.ng-leave-active {
             position: absolute;
