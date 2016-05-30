@@ -39,7 +39,7 @@ angular
         redirectTo: '/error/404'
       });
   })
-  .run(function ($rootScope, $compile, $user, $location, $timeout) {
+  .run(function ($rootScope, $compile, $user, $location) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
       path: function () {

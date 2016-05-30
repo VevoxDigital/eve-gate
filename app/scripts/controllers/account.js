@@ -21,12 +21,27 @@ angular.module('eveGateApp')
         if (!data.tos) { return $scope.pushError(3, 'We need you to accept this.'); }
       }
       $user.logging = true;
-      $timeout(function () {
-        $user.logging = false;
-        $timeout(function () {
-          $scope.pushError(0, 'This is a debug error');
+      if (data.new) {
+        $user.create(data.email, data.pass, function (err, eid) {
+          $user.logging = false;
+          if (err) {
+            // TODO Handle non-string errors.
+            $timeout(function () {
+              $scope.pushError(typeof eid === 'number' ? eid : 4, err.toString());
+            }, 500);
+          }
         });
-      }, 1000);
+      } else {
+        $user.login(data.email, data.pass, function (err, eid) {
+          $user.logging = false;
+          if (err) {
+            // TODO Handle non-string errors.
+            $timeout(function () {
+              $scope.pushError(typeof eid === 'number' ? eid : 4, err.toString());
+            }, 500);
+          }
+        });
+      }
     };
     $scope.pushError = function (eid, err) {
       var popup = angular.element('#errorPopup');

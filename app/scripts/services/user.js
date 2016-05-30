@@ -34,7 +34,7 @@ angular.module('eveGateApp')
       }, function (res) {
         switch (res.status) {
           // PUT on `/user` will return 400 on failure with string reason.
-          case 400: return cb(res.data);
+          case 400: return cb(res.data, 0);
           default: return cb(new Error(res.data));
         }
       });
@@ -45,7 +45,8 @@ angular.module('eveGateApp')
       $http({
         method: 'GET',
         url: '/user',
-        params: 'token='+token
+        params: 'token='+token,
+        timeout: 5000
       }).then(function (res) {
         user.data = res.data;
         cb();
@@ -56,7 +57,24 @@ angular.module('eveGateApp')
 
     // Fetch the token from email/pass.
     user.login = function (email, pass, cb) {
-
+      $http({
+        method: 'POST',
+        url: '/user',
+        data: {
+          email: email,
+          pass: pass
+        },
+        timeout: 5000
+      }).then(function (res) {
+        user.token = res.data;
+        user.fetch(res.data, cb);
+      }, function (res) {
+        switch (res.status) {
+          // POST on `/user` will return 401 on failure with string reason.
+          case 401: return cb(res.data, 1);
+          default: return cb(new Error(res.data));
+        }
+      });
     };
 
     return this;
