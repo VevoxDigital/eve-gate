@@ -1,6 +1,6 @@
 {
-  "name": "eve-gate",
-  "description": "Premier third-party tools for Eve Online.",
+  "name": "tech-3",
+  "description": "Premier tools for Eve Online.",
   "main": "index.js",
   "authors": [
     "Vevox Digital",

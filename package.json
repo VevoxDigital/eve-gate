@@ -1,7 +1,7 @@
 {
-  "name": "eve-gate",
+  "name": "tech-3",
   "version": "0.1.0",
-  "description": "Premier third-party tools for Eve Online.",
+  "description": "Premier tools for Eve Online.",
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
