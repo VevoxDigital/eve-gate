@@ -3,7 +3,7 @@
 describe('Controller: ErrorCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('eveGateApp'));
+  beforeEach(module('tech3App'));
 
   var ErrorCtrl,
     scope;
@@ -18,6 +18,6 @@ describe('Controller: ErrorCtrl', function () {
   }));
 
   it('do something', function () {
-    expect(ErrorCtrl).toBe(true);
+    expect(!!ErrorCtrl).toBe(true);
   });
 });

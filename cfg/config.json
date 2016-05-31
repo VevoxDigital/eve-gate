@@ -3,6 +3,6 @@
   "db": {
     "host": "localhost",
     "port": 27017,
-    "db": "eve-gate"
+    "db": "tech-3"
   }
 }

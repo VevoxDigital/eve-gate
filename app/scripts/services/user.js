@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name eveGateApp.user
+ * @name tech3App.user
  * @description
  * # user
- * Service in the eveGateApp.
+ * Service in the tech3App.
  */
-angular.module('eveGateApp')
+angular.module('tech3App')
   .service('$user', function ($http) {
     var user = this;
     user.logging = false;

@@ -1,6 +1,6 @@
 # Tech-3
-[![Build Status](https://travis-ci.org/VevoxDigital/tech-3.svg?branch=dev)](https://travis-ci.org/VevoxDigital/eve-gate)
-[![Code Climate](https://codeclimate.com/github/VevoxDigital/tech-3/badges/gpa.svg)](https://codeclimate.com/github/VevoxDigital/eve-gate)
+[![Build Status](https://travis-ci.org/VevoxDigital/tech-3.svg?branch=dev)](https://travis-ci.org/VevoxDigital/tech-3)
+[![Code Climate](https://codeclimate.com/github/VevoxDigital/tech-3/badges/gpa.svg)](https://codeclimate.com/github/VevoxDigital/tech-3)
 
 
 A collection of premier tools for [Eve Online](http://eveonline.com).

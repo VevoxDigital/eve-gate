@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('eveGateApp'));
+  beforeEach(module('tech3App'));
 
   var MainCtrl,
     scope;

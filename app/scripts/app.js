@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name eveGateApp
+ * @name tech3App
  * @description
- * # eveGateApp
+ * # tech3App
  *
  * Main module for EVE Gate.
  */
 angular
-  .module('eveGateApp', [
+  .module('tech3App', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -131,7 +131,7 @@ angular
               },
               {
                 text: 'Contribute',
-                href: '@https://github.com/VevoxDigital/eve-gate'
+                href: '@https://github.com/VevoxDigital/tech-3'
               },
               {},
               {

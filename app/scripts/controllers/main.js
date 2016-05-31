@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name eveGateApp.controller:MainCtrl
+ * @name tech3App.controller:MainCtrl
  * @description
  * # MainCtrl
  * Controller for the main landing page for EVE Gate.
  */
-angular.module('eveGateApp')
+angular.module('tech3App')
   .controller('MainCtrl', function ($scope) {
     $scope.img = $scope.randomBannerImage();
   });

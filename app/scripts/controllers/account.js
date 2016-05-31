@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name eveGateApp.controller:AccountCtrl
+ * @name tech3App.controller:AccountCtrl
  * @description
  * # AccountCtrl
- * Controller of the eveGateApp
+ * Controller of the tech3App
  */
-angular.module('eveGateApp')
+angular.module('tech3App')
   .controller('AccountCtrl', function ($scope, $user, $timeout) {
     $scope.login = {};
     $scope.$watch('login.email', function () { $scope.pushError(); });

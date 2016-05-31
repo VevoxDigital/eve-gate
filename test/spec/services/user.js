@@ -3,7 +3,7 @@
 describe('Service: $user', function () {
 
   // load the service's module
-  beforeEach(module('eveGateApp'));
+  beforeEach(module('tech3App'));
 
   // instantiate service
   var user;

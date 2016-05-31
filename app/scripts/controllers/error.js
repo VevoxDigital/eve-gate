@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name eveGateApp.controller:ErrorCtrl
+ * @name tech3App.controller:ErrorCtrl
  * @description
  * # ErrorCtrl
- * Controller of the eveGateApp
+ * Controller of the tech3App
  */
-angular.module('eveGateApp')
+angular.module('tech3App')
   .controller('ErrorCtrl', function ($scope, $routeParams) {
     var codes = {
       'E0': [ 'Unknown Error', 'We have no idea what went wrong.' ],
