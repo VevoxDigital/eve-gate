@@ -14,7 +14,7 @@ angular.module('tech3App')
       'E500': [ 'Internal Server Error', 'Something bad happened on our end.' ],
       'E404': [ 'Page Not Found', 'We could not find what you are looking for.' ]
     };
-    var err = codes['E' + $routeParams.code];
+    var err = !!$routeParams && !!$routeParams.code ? codes['E' + $routeParams.code] : codes['E0'];
     $scope.errM = err[0];
     $scope.errD = err[1];
   });

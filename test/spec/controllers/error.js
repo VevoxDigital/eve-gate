@@ -12,12 +12,14 @@ describe('Controller: ErrorCtrl', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     ErrorCtrl = $controller('ErrorCtrl', {
-      $scope: scope
+      $scope: scope,
+      $routeParams: { code: 0 }
       // place here mocked dependencies
     });
   }));
 
-  it('do something', function () {
-    expect(!!ErrorCtrl).toBe(true);
+  it('should add errors to scope', function () {
+    expect(typeof scope.errM).toBe('string');
+    expect(typeof scope.errD).toBe('string');
   });
 });
