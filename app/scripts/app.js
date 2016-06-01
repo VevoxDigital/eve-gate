@@ -11,11 +11,11 @@
 angular
   .module('tech3App', [
     'ngAnimate',
-    'ngCookies',
-    'ngResource',
+//    'ngCookies',
+//    'ngResource',
     'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+//    'ngSanitize',
+//    'ngTouch'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
