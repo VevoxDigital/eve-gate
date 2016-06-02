@@ -22,7 +22,7 @@ angular.module('tech3App')
     user.create = function (email, pass, cb) {
       $http({
         method: 'PUT',
-        url: '/user',
+        url: '/api/user',
         data: {
           email: email,
           pass: pass
@@ -44,7 +44,7 @@ angular.module('tech3App')
     user.fetch = function (token, cb) {
       $http({
         method: 'GET',
-        url: '/user',
+        url: '/api/user',
         params: 'token='+token,
         timeout: 5000
       }).then(function (res) {
@@ -59,7 +59,7 @@ angular.module('tech3App')
     user.login = function (email, pass, cb) {
       $http({
         method: 'POST',
-        url: '/user',
+        url: '/api/user',
         data: {
           email: email,
           pass: pass
