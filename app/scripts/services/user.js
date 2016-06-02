@@ -45,10 +45,11 @@ angular.module('tech3App')
       $http({
         method: 'GET',
         url: '/api/user',
-        params: 'token='+token,
+        params: { 'token': token },
         timeout: 5000
       }).then(function (res) {
         user.data = res.data;
+        user.data.id = user.data._id;
         cb();
       }, function (res) {
         cb(new Error(res.data));
