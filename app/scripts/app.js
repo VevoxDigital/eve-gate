@@ -11,14 +11,12 @@
 angular
   .module('tech3App', [
     'ngAnimate',
-//    'ngCookies',
-//    'ngResource',
     'ngRoute',
-//    'ngSanitize',
-//    'ngTouch'
+    'ngStorage'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $localStorageProvider) {
     $locationProvider.html5Mode(true);
+    $localStorageProvider.setKeyPrefix('T3');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

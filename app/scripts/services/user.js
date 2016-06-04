@@ -8,11 +8,27 @@
  * Service in the tech3App.
  */
 angular.module('tech3App')
-  .service('$user', function ($http) {
+  .service('$user', function ($http, $localStorage, $sessionStorage) {
     var user = this;
     user.logging = false;
 
     user.data = {};
+
+    // Get the current user's token.
+    user.token = function (token, remember) {
+      if (token) {
+        $sessionStorage.userToken = token;
+        if (remember) {
+          $localStorage.userToken = token;
+        }
+      } else {
+        // Always prioritize the localStorage token if it exists.
+        if ($localStorage.userToken) {
+          $sessionStorage.userToken = $localStorage.userToken;
+        }
+        return $sessionStorage.userToken;
+      }
+    };
 
     user.isLogged = function () {
       return !!user.data.id;
@@ -29,7 +45,7 @@ angular.module('tech3App')
         },
         timeout: 5000
       }).then(function (res) {
-        user.token = res.data;
+        user.token(res.data);
         user.fetch(res.data, cb);
       }, function (res) {
         switch (res.status) {
@@ -57,7 +73,7 @@ angular.module('tech3App')
     };
 
     // Fetch the token from email/pass.
-    user.login = function (email, pass, cb) {
+    user.login = function (email, pass, remember, cb) {
       $http({
         method: 'POST',
         url: '/api/user',
@@ -67,7 +83,7 @@ angular.module('tech3App')
         },
         timeout: 5000
       }).then(function (res) {
-        user.token = res.data;
+        user.token(res.data, remember);
         user.fetch(res.data, cb);
       }, function (res) {
         switch (res.status) {

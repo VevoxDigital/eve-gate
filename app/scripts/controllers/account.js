@@ -32,7 +32,7 @@ angular.module('tech3App')
           }
         });
       } else {
-        $user.login(data.email, data.pass, function (err, eid) {
+        $user.login(data.email, data.pass, data.remember, function (err, eid) {
           $user.logging = false;
           if (err) {
             // TODO Handle non-string errors.
