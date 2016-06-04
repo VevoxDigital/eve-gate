@@ -4,5 +4,8 @@
     "host": "localhost",
     "port": 27017,
     "db": "tech-3"
+  },
+  "market": {
+    "cacheTime": 6
   }
 }
