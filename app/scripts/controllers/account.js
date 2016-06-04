@@ -9,6 +9,7 @@
  */
 angular.module('tech3App')
   .controller('AccountCtrl', function ($scope, $user, $timeout) {
+    // Login Stuff
     $scope.login = {};
     $scope.$watch('login.email', function () { $scope.pushError(); });
     $scope.submitLogin = function () {
@@ -55,4 +56,6 @@ angular.module('tech3App')
         $scope.loginError = err;
       }
     };
+
+    // Account stuff
   });

@@ -33,14 +33,12 @@
           ng-mouseenter="toggleNavDD($event, link)" ng-mouseleave="toggleNavDD($event)">
           {{link.text}}
           <span ng-if="link.items" class="fa fa-chevron-down"></span>
-
         </a>
       </div>
       <div class="nav-container float-right">
         <a href="/account">
-          Sign In
-          <span ng-if="$user.isLogged()" class="fa fa-chevron-down"></span>
-          <!-- TODO Dropdown -->
+          <span ng-if="!$user.isLogged()">Sign In</span>
+          <span ng-if="$user.isLogged()">Account</span>
         </a>
       </div>
       <div id="navDD" class="dropdown" style="display:none"></div>
