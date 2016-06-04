@@ -9,17 +9,23 @@
  */
 angular.module('tech3App')
   .service('$user', function ($http, $localStorage, $sessionStorage) {
-    var user = this;
+    var user = this, cacheTime = new Date(), data = {};
+
     user.logging = false;
 
-    user.data = {};
+
 
     // Get the current user's token.
     user.token = function (token, remember) {
       if (token) {
-        $sessionStorage.userToken = token;
-        if (remember) {
-          $localStorage.userToken = token;
+        if (token === '') {
+          delete $sessionStorage.userToken;
+          delete $localStorage.userToken;
+        } else {
+          $sessionStorage.userToken = token;
+          if (remember) {
+            $localStorage.userToken = token;
+          }
         }
       } else {
         // Always prioritize the localStorage token if it exists.
@@ -64,8 +70,8 @@ angular.module('tech3App')
         params: { 'token': token },
         timeout: 5000
       }).then(function (res) {
-        user.data = res.data;
-        user.data.id = user.data._id;
+        data = res.data;
+        data.id = user.data._id;
         cb();
       }, function (res) {
         cb(new Error(res.data));
@@ -93,6 +99,19 @@ angular.module('tech3App')
         }
       });
     };
+
+    user.data = function () {
+      if (user.token() && cacheTime.getTime - new Date().getTime() >= 30000) {
+        user.fetch(user.token(), function (err) {
+          if (err) {
+            user.token('');
+          } else {
+            return user.data;
+          }
+        });
+        cacheTime = new Date();
+      }
+    }
 
     return this;
   });
