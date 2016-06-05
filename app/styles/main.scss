@@ -15,6 +15,18 @@ html, body {
   background-color: $white1;
 }
 
+hr {
+  border: none;
+  border-bottom: 1px $white1 solid;
+  opacity: 0.5;
+  margin: 10px auto;
+  width: 80%;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
 nav {
   width: 100%;
   background-color: $black1;
