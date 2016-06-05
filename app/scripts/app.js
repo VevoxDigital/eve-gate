@@ -81,6 +81,10 @@ angular
                 text: 'Contribute',
                 href: '@https://github.com/VevoxDigital/tech-3'
               },
+              {
+                text: 'Extended Trial',
+                href: '@eveonline.com'
+              },
               {},
               {
                 text: 'Meet the Team',
