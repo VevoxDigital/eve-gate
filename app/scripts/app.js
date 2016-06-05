@@ -51,80 +51,30 @@ angular
       nav: [
         [
           {
-            text: 'Database',
-            href: 'database',
+            text: 'Economics',
+            href: 'econ',
             items: [
               {
-                text: 'Wormhole Classes',
-                href: 'wormhole'
-              },
-              {
-                text: 'Cosmic Signatures',
-                href: 'sigs'
+                text: 'Market Appraisals',
+                href: 'appraisal'
               },
               {},
               {
-                text: 'Item Database',
-                href: 'items'
-              }
-            ]
-          },
-          {
-            text: 'Logistics',
-            href: 'logi',
-            items: [
-              {
-                text: 'Starmaps',
-                href: 'maps'
-              },
-              {
-                text: 'System Lookup',
-                href: 'system'
-              },
-              {},
-              {
-                text: 'Ship/Citadel Fitting',
-                href: 'ships'
-              },
-              {
-                text: 'Starbase Fitting',
-                href: 'pos'
-              }
-            ]
-          },
-          {
-            text: 'Industry',
-            href: 'industry',
-            items: [
-              {
-                text: 'Market Lookup',
-                href: 'market'
-              },
-              {
-                text: 'Price Trends',
-                href: 'trends'
-              },
-              {
-                text: 'Profit Calculator',
-                href: 'profits'
-              },
-              {},
-              {
-                text: 'Mining Statistics',
-                href: 'mining'
-              },
-              {
-                text: 'Reactions Statistics',
+                text: 'Reactions',
                 href: 'reactions'
+              },
+              {
+                text: 'Mining Profits',
+                href: 'mining'
               }
             ]
           },
           {
-            text: 'The Gate',
-            href: 'gate',
+            text: 'About',
+            href: 'about',
             items: [
               {
-                text: 'Support Us',
+                text: 'Support Tech3',
                 href: 'support'
               },
               {
@@ -133,7 +83,7 @@ angular
               },
               {},
               {
-                text: 'The Team',
+                text: 'Meet the Team',
                 href: 'team'
               },
               {
