@@ -37,7 +37,7 @@ angular.module('tech3App')
     };
 
     user.isLogged = function () {
-      return !!user.data().id;
+      return !!user.token() && !!user.data().id;
     };
 
     // Create new user and fetch token.
@@ -105,6 +105,7 @@ angular.module('tech3App')
         user.fetch(user.token(), function (err) {
           if (err) {
             user.token('');
+            return {};
           } else {
             return user.data;
           }

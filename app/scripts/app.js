@@ -23,7 +23,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/account/u/:user?', {
+      .when('/account/:user?', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl',
         controllerAs: 'account'
