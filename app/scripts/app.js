@@ -33,6 +33,11 @@ angular
         controller: 'ErrorCtrl',
         controllerAs: 'error'
       })
+      .when('/item/:item?', {
+        templateUrl: 'views/item.html',
+        controller: 'ItemCtrl',
+        controllerAs: 'item'
+      })
       .otherwise({
         redirectTo: '/error/404'
       });
