@@ -112,7 +112,7 @@ angular.module('tech3App')
         });
         cacheTime = new Date();
       }
-    }
+    };
 
     return this;
   });
