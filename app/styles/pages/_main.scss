@@ -1,82 +1,45 @@
 div[vx-route='/']{
-  header.banner {
+  header {
     width: 100%;
-    height: 200px;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-color: $bluegreen1;
     img {
-      position: absolute;
-      max-height: 50%;
-      margin: 0 auto;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      margin: 10px auto;
+      display: block;
+      width: 100px;
     }
-    h2 {
-      position: absolute;
-      width: 100%;
-      top: 75%;
-      text-align: center;
-      color: $white1;
-      font-weight: normal;
-      font-size: 10pt;
-      text-transform: uppercase;
-    }
-  }
-  .tagline {
-    padding: 50px 0;
-    background-color: $bluegreen1;
-    width: 100%;
     h1 {
-      font-weight: normal;
-      color: $white1;
+      width: 100%;
       text-align: center;
       font-size: 40pt;
+      font-family: 'Arial Black', sans-serif;
       margin: 0;
     }
     h2 {
-      font-weight: normal;
-      font-size: 20pt;
-      color: $white1;
+      width: 100%;
       text-align: center;
+      font-size: 10pt;
+      color: $white2;
+      opacity: 0.4;
+      margin: 0;
     }
   }
-  .showcase {
-    padding: 40px 0;
-    background-color: $white1;
-    width: 100%;
-    color: $white1;
-    .major {
-      width: 65%;
-      padding: 0 40px;
-    }
-    .minor {
-      width: 35%;
-      padding: 0 40px;
-    }
-  }
-  .showcase-blue { background-color: $blue1; }
 }
 
-@media screen and (min-width: 768px) { }
+@media screen and (min-width: 512px) {
+  div[vx-route='/'] {
+    header {
+      img { width: 150px; }
+      h1 { font-size: 50pt; }
+      h2 { font-size: 14pt; }
+    }
+  }
+}
 
 @media screen and (min-width: 1024px) {
   div[vx-route='/'] {
-    header.banner {
-      height: 500px;
-      h1 { font-size: 90pt; }
-      h2 { font-size: 20pt; }
-    }
-    .tagline {
-      h1 { font-size: 70pt; }
-    }
-    .showcase {
-      .major {
-        p { max-width: 75%; }
-      }
-      .major.text-right p { margin-left: 25%; }
+    header {
+      img { width: 200px; }
+      h1 { font-size: 60pt; }
+      h2 { font-size: 16pt; }
     }
   }
 }
