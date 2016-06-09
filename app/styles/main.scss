@@ -11,7 +11,7 @@ html, body {
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  font-family: Quicksand, sans-serif;
+  font-family: Lato, sans-serif;
   background-color: $white1;
 }
 
@@ -27,27 +27,51 @@ hr {
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-top: 8px solid;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  transition: all .25s;
+}
+
 nav {
   width: 100%;
   background-color: $black1;
   color: $white1;
   position: fixed;
   z-index: 100;
+  font-weight: bold;
   .nav-container {
     font-size: 12pt;
     display: none;
+    position: relative;
+    top: -4px;
     a {
       color: $white1;
       text-decoration: none;
       padding: 10px 20px;
-      font-weight: lighter;
       display: inline-block;
       transition: color 250ms, background-color 250ms;
+      vertical-align: middle;
       z-index: 15;
       &:hover {
-        color: $white2;
-        background-color: $black2;
+        color: $bluegreen1;
         .dropdown { opacity: 1; }
+        .caret {
+          border-top-color: $bluegreen1;
+          border-bottom-color: $bluegreen1;
+          transform: scale(1);
+        }
+      }
+      .caret {
+        border-top-color: #4b6075;
+        border-bottom-color: #4b6075;
+        transform: scale(0.75);
       }
       .fa { font-size: 8pt; }
       .dropdown {
@@ -77,7 +101,8 @@ nav {
   .nav-container.float-right {
     float: right;
     display: inline-block;
-    a { padding: 12px; }
+    position: relative;
+    top: 9px;
   }
   .nav-container.nav-mobile-menu {
     display: inline-block;
@@ -122,8 +147,8 @@ nav {
   .brand {
     color: $white1;
     text-decoration: none;
-    font-size: 15pt;
-    padding: 10px;
+    font-size: 17pt;
+    padding: 15px;
     display: inline-block;
   }
 }
