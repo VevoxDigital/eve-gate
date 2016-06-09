@@ -1,1 +1,11 @@
-<p>This is the item view.</p>
+<div vx-route="/item">
+  <!-- No ID: Search for items. -->
+  <div ng-if="!itemID">
+    <input id="itemSearchBar" type="text" ng-model="itemSearch.name" placeholder="Search by Item Name">
+  </div>
+
+  <!-- ID Given: Try to view item details. -->
+  <div ng-if="itemID">
+
+  </div>
+</div>

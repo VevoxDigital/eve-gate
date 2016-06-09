@@ -1,0 +1,17 @@
+div[vx-route='/item'] {
+  padding-top: 60px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  div[vx-route='/item'] {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  div[vx-route='/item'] {
+    width: 65%;
+  }
+}

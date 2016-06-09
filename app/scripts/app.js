@@ -33,7 +33,7 @@ angular
         controller: 'ErrorCtrl',
         controllerAs: 'error'
       })
-      .when('/item/:item?', {
+      .when('/info/item/:item?', {
         templateUrl: 'views/item.html',
         controller: 'ItemCtrl',
         controllerAs: 'item'
