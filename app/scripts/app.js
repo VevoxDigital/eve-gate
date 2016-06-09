@@ -56,49 +56,38 @@ angular
       nav: [
         [
           {
-            text: 'Economics',
-            href: 'econ',
+            text: 'Information',
+            href: 'info',
             items: [
-              {
-                text: 'Market Appraisals',
-                href: 'appraisal'
-              },
-              {},
-              {
-                text: 'Reactions',
-                href: 'reactions'
-              },
-              {
-                text: 'Mining Profits',
-                href: 'mining'
-              }
+              { text: 'Item Database', href: 'item' },
+              { text: 'Signature Database', href: 'signature' },
+              { text: 'Celestials', href: 'celestial' },
+              { },
+              { text: 'NPC Ships', href: 'npc' },
+              { text: 'Damage Cheat-Sheet', href: 'damages' }
+            ]
+          },
+          {
+            text: 'Industry',
+            href: 'indy',
+            items: [
+              { text: 'Market Appraisals', href: 'appraisal' },
+              { },
+              { text: 'Reactions', href: 'reactions' },
+              { text: 'Mining Profits', href: 'mining' }
             ]
           },
           {
             text: 'About',
             href: 'about',
             items: [
-              {
-                text: 'Support Tech3',
-                href: 'support'
-              },
-              {
-                text: 'Contribute',
-                href: '@https://github.com/VevoxDigital/tech-3'
-              },
-              {
-                text: 'Extended Trial',
-                href: '@eveonline.com'
-              },
-              {},
-              {
-                text: 'Meet the Team',
-                href: 'team'
-              },
-              {
-                text: 'Contact Us',
-                href: 'contact'
-              }
+              { text: 'Support Tech3', href: 'support' },
+              { text: 'Contribute', href: '@https://github.com/VevoxDigital/tech-3' },
+              { text: 'Extended Trial', href: '@eveonline.com' },
+              { text: 'Tech 3 API', href: 'api' },
+              { },
+              { text: 'Meet the Team', href: 'team' },
+              { text: 'Contact Us', href: 'contact' }
             ]
           }
         ],
