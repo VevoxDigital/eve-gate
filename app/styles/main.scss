@@ -99,6 +99,7 @@ nav {
             outline: none;
             box-shadow: 0 3px $bluegreen2;
             .caret { border-top-color: $white1; border-bottom-color: $white1; }
+            & ~ .dropdown { display: block; }
           }
           .caret {
             border-top-color: #4b6075;
@@ -112,16 +113,16 @@ nav {
           border-radius: 6px;
           background-color: $black1;
           white-space: nowrap;
-          padding: 3px;
+          padding: 5px;
           display: none;
           a {
-            padding: 6px;
+            padding: 10px;
             box-shadow: none;
-            border-radius: 3px;
-            font-weight: 400;
+            border-radius: 4px;
+            font-weight: normal;
+            font-size: 11pt;
             width: 100%;
             display: inline-block;
-            line-height: 1.5;
             &:hover {
               background-color: $bluegreen1;
               color: $white1;
