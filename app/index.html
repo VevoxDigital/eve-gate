@@ -30,6 +30,13 @@
             <a href="javascript:">
               <span class="text" ng-bind="link.text"></span>
               <span ng-if="link.items" class="caret"></span>
+              <div class="dropdown">
+                <div ng-repeat="item in link.items">
+                  <a ng-if="item.href" ng-bind="item.text"
+                    ng-href="{{ item.href.startsWith('@') ? '/' + link.href + '/' + item.href : item.href }}"></a>
+                  <hr ng-if="!item.href">
+                </div>
+              </div> 
             </a>
           </li>
         </ul>

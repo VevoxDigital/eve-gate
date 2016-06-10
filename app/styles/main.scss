@@ -73,6 +73,7 @@ nav {
       margin: 0;
       li {
         display: inline-block;
+        position: relative;
         a {
           padding: 15px 20px;
           vertical-align: middle;
@@ -82,6 +83,7 @@ nav {
           box-shadow: 0 3px $black2;
           color: inherit;
           text-decoration: none;
+          position: relative;
           &:hover {
             color: $bluegreen1;
             .caret {
@@ -102,6 +104,34 @@ nav {
             border-top-color: #4b6075;
             border-bottom-color: #4b6075;
             transform: scale(0.75);
+          }
+        }
+        .dropdown {
+          position: absolute;
+          top: 110%;
+          border-radius: 6px;
+          background-color: $black1;
+          white-space: nowrap;
+          padding: 3px;
+          display: none;
+          a {
+            padding: 6px;
+            box-shadow: none;
+            border-radius: 3px;
+            font-weight: 400;
+            width: 100%;
+            display: inline-block;
+            line-height: 1.5;
+            &:hover {
+              background-color: $bluegreen1;
+              color: $white1;
+            }
+          }
+          hr {
+            margin: 3px 0;
+            width: 100%;
+            border: none;
+            border-top: 4px $black2 solid;
           }
         }
       }
