@@ -9,5 +9,5 @@
  */
 angular.module('tech3App')
   .controller('MainCtrl', function ($scope) {
-    $scope.img = $scope.randomBannerImage();
+    
   });
