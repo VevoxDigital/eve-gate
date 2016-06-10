@@ -83,7 +83,7 @@ angular
             items: [
               { text: 'Support Tech3', href: 'support' },
               { text: 'Contribute', href: '@https://github.com/VevoxDigital/tech-3' },
-              { text: 'Extended Trial', href: '@eveonline.com' },
+              { text: 'Extended Trial', href: '@http://eveonline.com' },
               { text: 'Tech 3 API', href: 'api' },
               { },
               { text: 'Meet the Team', href: 'team' },
