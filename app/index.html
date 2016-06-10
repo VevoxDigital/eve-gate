@@ -23,6 +23,22 @@
 
     <!-- Navbar -->
     <nav>
+      <div class="navbar">
+        <a href="/" class="brand">Tech 3</a>
+        <ul class="left">
+          <li ng-repeat="link in $meta.nav[0]">
+            <a href="javascript:">
+              {{ link.text }}
+              <span ng-if="link.items" class="caret"></span>
+            </a>
+          </li>
+        </ul>
+        <ul class="right">
+
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <!--
       <div class="nav-container nav-mobile-menu">
         <a href="javascript:" class="fa fa-bars" ng-click="toggleNavMobile()"></a>
         <div id="navMobile" class="mobile-nav"></div>
@@ -41,7 +57,7 @@
           <span ng-if="$user.isLogged()">Account</span>
         </a>
       </div>
-      <div id="navDD" class="dropdown" style="display:none"></div>
+      <div id="navDD" class="dropdown" style="display:none"></div>-->
     </nav>
 
     <div id="view" ng-view vx-route></div>

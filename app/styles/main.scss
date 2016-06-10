@@ -29,6 +29,10 @@ hr {
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+
 .caret {
   display: inline-block;
   width: 0;
@@ -42,6 +46,70 @@ hr {
 }
 
 nav {
+  width: 100%;
+  padding: 10px;
+  .navbar {
+    width: 100%;
+    font-weight: bold;
+    background-color: $black1;
+    color: $white1;
+    border-bottom: 3px $black2 solid;
+    border-radius: 6px;
+    .brand {
+      float: left;
+      font-size: 150%;
+      display: inline-block;
+      padding: 10px 20px;
+      color: inherit;
+      text-decoration: none;
+      transition: color 250ms;
+      &:hover {
+        color: $bluegreen1;
+      }
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        padding: 15px 20px;
+        display: inline-block;
+        vertical-align: middle;
+        transition: all 250ms;
+        cursor: pointer;
+        box-shadow: 0 3px $black2;
+        &:hover {
+          color: $bluegreen1;
+          .caret {
+            border-top-color: $bluegreen1;
+            border-bottom-color: $bluegreen1;
+            transform: scale(1);
+          }
+        }
+        &:active, &.active, &:focus {
+          color: $white1;
+          background-color: $bluegreen1;
+          border-color: $bluegreen2;
+          outline: none;
+          box-shadow: 0 3px $bluegreen2;
+        }
+        a {
+          vertical-align: middle;
+          text-decoration: none;
+          color: inherit;
+          transition: color 250ms;
+          outline: none !important;
+        }
+        .caret {
+          border-top-color: #4b6075;
+          border-bottom-color: #4b6075;
+          transform: scale(0.75);
+        }
+      }
+    }
+  }
+}
+/*nav {
   width: 95%;
   background-color: $black1;
   color: $white1;
@@ -159,7 +227,7 @@ nav {
 .nav-spacer {
   width: 100%;
   height: 57px;
-}
+}*/
 
 input {
   display: block;
