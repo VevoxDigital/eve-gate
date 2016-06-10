@@ -28,7 +28,7 @@
         <ul class="left">
           <li ng-repeat="link in $meta.nav[0]">
             <a href="javascript:">
-              {{ link.text }}
+              <span class="text" ng-bind="link.text"></span>
               <span ng-if="link.items" class="caret"></span>
             </a>
           </li>
