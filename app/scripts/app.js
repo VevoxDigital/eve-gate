@@ -23,11 +23,6 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/account/:user?', {
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl',
-        controllerAs: 'account'
-      })
       .when('/error/:code', {
         templateUrl: 'views/error.html',
         controller: 'ErrorCtrl',
@@ -38,6 +33,21 @@ angular
         controller: 'ItemCtrl',
         controllerAs: 'item'
       })
+      .when('/info/signature/:sig?', { redirectTo: '/error/460' })
+      .when('/info/celestial/:celestial?', { redirectTo: '/error/460' })
+      .when('/info/npcs', { redirectTo: '/error/460' })
+      .when('/info/damages', { redirectTo: '/error/460' })
+      .when('/indy/appraisal/:app?', { redirectTo: '/error/460' })
+      .when('/indy/blueprints/:bp?', { redirectTo: '/error/460' })
+      .when('/indy/reactions', { redirectTo: '/error/460' })
+      .when('/indy/mining', { redirectTo: '/error/460' })
+      .when('/logi/fits/:fit?', { redirectTo: '/error/460' })
+      .when('/logi/fleets/:fleet?', { redirectTo: '/error/460' })
+      .when('/logi/starmap/:system?', { redirectTo: '/error/460' })
+      .when('/logi/wormholes', { redirectTo: '/error/460' })
+      .when('/about/support', { redirectTo: '/error/460' })
+      .when('/about/api', { redirectTo: '/error/460' })
+      .when('/about/contact', { redirectTo: '/error/460' })
       .otherwise({
         redirectTo: '/error/404'
       });
@@ -98,7 +108,6 @@ angular
               { text: 'Extended Trial', href: '@http://eveonline.com' },
               { text: 'Tech 3 API', href: 'api' },
               { },
-              { text: 'Meet the Team', href: 'team' },
               { text: 'Contact Us', href: 'contact' }
             ]
           }
