@@ -80,6 +80,24 @@
     <!-- endbower -->
     <!-- endbuild -->
 
+    <!-- Misc Scripts -->
+    <script>
+      $(function () {
+        $('html').click(function (event) {
+          console.log($(event.target).closest('nav li > a'))
+          var closeDD = function () { $('.active ~ .dropdown').prev().removeClass('active'); };
+          if ($(event.target).closest('nav li > a').length) {
+            $(event.target).closest('nav li > a').addClass('active');
+          } else if (!$(event.target).closest('.active ~ .dropdown').length) {
+            closeDD();
+          } else {
+            $(event.target).mouseup();
+            setTimeout(closeDD);
+          };
+        });
+      });
+    </script>
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
