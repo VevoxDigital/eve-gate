@@ -72,9 +72,21 @@ angular
             href: 'indy',
             items: [
               { text: 'Market Appraisals', href: 'appraisal' },
+              { text: 'Blueprint Buddy', href: 'blueprints' },
               { },
               { text: 'Reactions', href: 'reactions' },
               { text: 'Mining Profits', href: 'mining' }
+            ]
+          },
+          {
+            text: 'Logistics',
+            href: 'logi',
+            items: [
+              { text: 'Ship Fitting', href: 'fits' },
+              { text: 'Fleet Adverts', href: 'fleets' },
+              { },
+              { text: 'New Eden Starmap', href: 'starmap' },
+              { text: 'Wormhole Mapping', href: 'wormholes' }
             ]
           },
           {

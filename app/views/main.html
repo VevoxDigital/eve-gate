@@ -4,4 +4,13 @@
     <h1>Tech 3</h2>
     <h2>Premier tools for EVE Online</h2>
   </header>
+  <div class="features">
+    <a class="feature" ng-repeat="feature in features" ng-href="{{ feature.href }}">
+      <div class="icon-container">
+        <i ng-class="'fa fa-' + feature.icon"></i>
+      </div>
+      <h1 ng-bind="feature.title"></h1>
+      <p ng-bind="feature.desc"></p>
+    </a>
+  </div>
 </div>
