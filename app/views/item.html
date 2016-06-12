@@ -1,7 +1,26 @@
 <div vx-route="/item">
   <!-- No ID: Search for items. -->
   <div ng-if="!itemID">
-    <input id="itemSearchBar" type="text" ng-model="itemSearch.name" placeholder="Search by Item Name">
+    <form action="javascript:" class="search">
+      <input type="text" ng-model="itemSearch.name" placeholder="Search by Item Name">
+
+      <div class="search-options">
+        <input id="searchShowDust" type="checkbox" ng-model="itemSearch.showDust">
+        <label for="searchShowDust">Show DUST Items</label>
+
+        <input id="searchShowBP" type="checkbox" ng-model="itemSearch.showBP">
+        <label for="searchShowBP">Show Blueprints</label>
+      </div>
+    </form>
+    <div class="results">
+      <h2 ng-if="!dataDisplayable()" ng-bind="data"></h2>
+      <div ng-if="dataDisplayable()">
+        <a class="result" ng-repeat="result in data" ng-href="/info/item/{{ result._id }}"
+          ng-if="(itemSearch.showDust || result._id < 300000) &amp;&amp; (itemSearch.showBP == (result.name.substr(-9) === 'Blueprint'))">
+          {{ result.name }}
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- ID Given: Try to view item details. -->

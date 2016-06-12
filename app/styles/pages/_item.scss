@@ -2,6 +2,41 @@ div[vx-route='/item'] {
   padding-top: 60px;
   width: 95%;
   margin: 0 auto;
+  .search {
+    input[type=text] {
+      margin: 10px 0;
+    }
+    .search-options {
+      display: flex;
+      text-align: center;
+      padding-bottom: 10px;
+      input[type=checkbox] + label {
+        display: inline-block;
+        flex: 1 0 20%;
+        white-space: nowrap;
+      }
+    }
+  }
+  .results {
+    width: 100%;
+    h2 {
+      width: 100%;
+      text-align: center;
+      color: $white2;
+      font-weight: normal;
+      margin: 50px 0;
+    }
+    .result {
+      display: block;
+      border-bottom: 1px $white1 solid;
+      text-decoration: none;
+      color: inherit;
+      font-size: 14pt;
+      padding: 5px 15px;
+      &:nth-child(1) { border-top: 1px $white1 solid; }
+      &:hover { color: $blue1; }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {

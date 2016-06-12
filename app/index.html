@@ -84,7 +84,6 @@
     <script>
       $(function () {
         $('html').click(function (event) {
-          console.log($(event.target).closest('nav li > a'))
           var closeDD = function () { $('.active ~ .dropdown').prev().removeClass('active'); };
           if ($(event.target).closest('nav li > a').length) {
             $(event.target).closest('nav li > a').addClass('active');
@@ -105,6 +104,7 @@
         <script src="scripts/controllers/account.js"></script>
         <script src="scripts/controllers/error.js"></script>
         <script src="scripts/controllers/item.js"></script>
+        <script src="scripts/services/itemservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

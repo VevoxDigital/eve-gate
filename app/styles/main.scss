@@ -147,8 +147,7 @@ input[type='text'], input[type='password'] {
   background-color: $white;
   border-radius: 5px;
   padding: 10px;
-  color: $grey2;
-  border: 2px rgba(255,255,255,0) solid;
+  border: 2px $white1 solid;
   width: 100%;
   transition: border-color 250ms;
   font-size: 16pt;
@@ -170,10 +169,9 @@ input[type='checkbox'] {
 input[type='checkbox'] + label {
   position: relative;
   cursor: pointer;
-  padding-bottom: 5px;
-  color: $grey2;
+  padding: 4px;
   transition: color 250ms;
-  font-size: 14pt;
+  font-size: 12pt;
   &:hover { color: $bluegreen1; }
   &:before {
     display: inline-block;
@@ -181,7 +179,7 @@ input[type='checkbox'] + label {
     background-color: $white2;
     position: relative;
     top: 6px;
-    margin-right: 4px;
+    margin-right: 8px;
     content: '';
     width: 23px;
     height: 23px;
@@ -202,7 +200,7 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   outline: none;
   cursor: pointer;
   transition: background-color 250ms;
-  &:hover, &:focus { background-color: $blue2; }
+  &:hover { background-color: $blue2; }
   &[disabled] { background-color: $grey1; cursor: default; }
 }
 input[type='submit'] {
@@ -224,7 +222,7 @@ input[type='submit'] {
 div[ng-view] {
   transition: transform 150ms ease, opacity 150ms ease;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   &.ng-enter-active, &.ng-leave {
     transform: scale(1) translate3d(0, 0, 0);
     opacity: 1;
