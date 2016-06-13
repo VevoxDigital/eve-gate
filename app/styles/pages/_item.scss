@@ -37,6 +37,27 @@ div[vx-route='/item'] {
       &:hover { color: $blue1; }
     }
   }
+  .name { margin: 15px; }
+  .meta-bar {
+    display: flex;
+    border: 0px $white1 solid;
+    border-width: 1px 0;
+    img {
+      background-color: $white1;
+      border-radius: 6px;
+      width: 64px;
+      height: 64px;
+      margin: 12px;
+      flex: 0 0 64px;
+      margin-right: 10px;
+    }
+    .meta {
+      flex: 1 0 30%;
+    }
+  }
+  .desc {
+    padding: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {

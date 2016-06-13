@@ -1,8 +1,8 @@
 <div vx-route="/item">
   <!-- No ID: Search for items. -->
-  <div ng-if="!itemID">
+  <div ng-if="!itemData">
     <form action="javascript:" class="search">
-      <input type="text" ng-model="itemSearch.name" placeholder="Search by Item Name">
+      <input id="itemSearch" type="text" ng-model="itemSearch.name" placeholder="Search by Item Name">
 
       <div class="search-options">
         <input id="searchShowDust" type="checkbox" ng-model="itemSearch.showDust">
@@ -24,7 +24,23 @@
   </div>
 
   <!-- ID Given: Try to view item details. -->
-  <div ng-if="itemID">
+  <div ng-if="itemData">
+    <a href="javascript:" onclick="window.history.back()" class="btn">&laquo; Back</a>
+    <h1 class="name" ng-bind="itemData.name || 'Please wait...'"></h1>
+    <div ng-if="itemData.dogma">
 
+      <div class="meta-bar">
+        <img ng-src="https://image.eveonline.com/Type/{{itemData.id}}_64.png">
+        <div class="meta">
+          <p ng-bind="'Mass: ' + itemData.mass + ' kg'"></p>
+          <p ng-bind="'Volume: ' + itemData.volume + ' m^3'"></p>
+        </div>
+        <div class="meta" ng-if="itemData.capacity > 0">
+          <p ng-bind="'Capacity: ' + itemData.capacity + ' m^3'"></p>
+          <p ng-bind="'Radius: ' + itemData.radius + ''"></p>
+        </div>
+      </div>
+      <div class="desc" ng-bind-html="itemData.desc"> </div>
+    </div>
   </div>
 </div>

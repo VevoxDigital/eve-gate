@@ -12,7 +12,8 @@ angular
   .module('tech3App', [
     'ngAnimate',
     'ngRoute',
-    'ngStorage'
+    'ngStorage',
+    'ngSanitize'
   ])
   .config(function ($routeProvider, $locationProvider, $localStorageProvider) {
     $locationProvider.html5Mode(true);

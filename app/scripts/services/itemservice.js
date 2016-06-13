@@ -21,4 +21,14 @@ angular.module('tech3App')
         cb(res.status + ': ' + res.data);
       });
     };
+    this.fetch = function (item, cb) {
+      $http({
+        method: 'GET',
+        url: 'https://crest-tq.eveonline.com/types/' + item + '/'
+      }).then(function (res) {
+        cb(res.data);
+      }, function (res) {
+        cb(res.status + ': ' + res.data);
+      });
+    };
   });
