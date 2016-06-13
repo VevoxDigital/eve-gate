@@ -224,6 +224,7 @@ input[type='submit'] {
 div[ng-view] {
   transition: transform 150ms ease, opacity 150ms ease;
   height: 100vh;
+  height: calc(100vh - 73px);
   overflow-y: scroll;
   &.ng-enter-active, &.ng-leave {
     transform: scale(1) translate3d(0, 0, 0);
