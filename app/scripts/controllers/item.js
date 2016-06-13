@@ -26,6 +26,16 @@ angular.module('tech3App')
           desc = desc.replace(/<\/url>/ig, '</a>');
 
           $scope.itemData.desc = desc;
+
+          $scope.itemData.attrs = [];
+          var indexPos = 0;
+          $scope.itemData.dogma.attributes.forEach(function (a) {
+            var i = indexPos++;
+            itemService.fetchAttr(a.attribute.id, function (attr) {
+              attr.value = a.value;
+              $scope.itemData.attrs[i] = attr;
+            });
+          });
         }
       });
     } else {
@@ -55,6 +65,7 @@ angular.module('tech3App')
             $scope.data = results;
           }
         } else {
+          $scope.data = 'Loading, please wait...';
           itemService.search(val, function (res) {
             results = res;
             $scope.data = results;

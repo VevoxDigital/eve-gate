@@ -41,6 +41,12 @@
         </div>
       </div>
       <div class="desc" ng-bind-html="itemData.desc"> </div>
+      <div class="dogma">
+        <div class="attr" ng-repeat="attr in itemData.attrs track by attr.id" ng-if="attr">
+          <p ng-bind="$meta.is(attr, 'string') ? attr : attr.displayName"></p>
+          <p ng-bind="attr.value" ng-if="!$meta.is(attr, 'string')"></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

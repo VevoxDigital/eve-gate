@@ -64,6 +64,9 @@ angular
         var until = new Date().getTime() + ms;
         while (new Date().getTime() < until) { /* no-op */ }
       },
+      id: function (val, is) {
+        return typeof val === is;
+      },
       nav: [
         [
           {

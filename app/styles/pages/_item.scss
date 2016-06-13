@@ -59,6 +59,14 @@ div[vx-route='/item'] {
   .desc {
     padding: 20px;
   }
+  .dogma {
+    .attr {
+      display: block;
+      width: 100%;
+      border-bottom: 1px $white1 solid;
+      &:nth-child(1) { border-top: 1px $white1 solid; }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
