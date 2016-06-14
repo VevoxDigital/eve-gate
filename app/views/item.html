@@ -13,7 +13,7 @@
       </div>
     </form>
     <div class="results">
-      <h2 ng-if="!dataDisplayable()" ng-bind="data"></h2>
+      <h2 ng-if="!dataDisplayable()" ng-bind-html="data"></h2>
       <div ng-if="dataDisplayable()">
         <a class="result" ng-repeat="result in data" ng-href="/info/item/{{ result._id }}"
           ng-if="(itemSearch.showDust || result._id < 300000) &amp;&amp; (itemSearch.showBP == (result.name.substr(-9) === 'Blueprint'))">

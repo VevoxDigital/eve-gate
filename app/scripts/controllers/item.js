@@ -65,8 +65,10 @@ angular.module('tech3App')
             $scope.data = results;
           }
         } else {
-          $scope.data = 'Loading, please wait...';
+          $scope.data = '<h2 class="fa fa-circle-notch fa-spin></h2>"';
           itemService.search(val, function (res) {
+            res = res === '-1: null' ? 'Unknown Error when searching. See the Console.' : res;
+            res = typeof res === 'string' ? 'Something went wrong!<br>' + res : res;
             results = res;
             $scope.data = results;
           });

@@ -39,7 +39,7 @@ div[vx-route='/']{
       .icon-container {
         height: 160px;
         .fa {
-          font-size: 150px;
+          font-size: 100px;
           transition: font-size 250ms, padding 250ms;
           padding-top: 5px;
         }
@@ -49,7 +49,7 @@ div[vx-route='/']{
       &:hover {
         color: $blue2;
         .fa {
-          font-size: 160px;
+          font-size: 120px;
           padding-top: 0;
         }
       }
@@ -64,17 +64,35 @@ div[vx-route='/']{
       h1 { font-size: 50pt; }
       h2 { font-size: 14pt; }
     }
-    .features { width: 90%; }
+    .features {
+      width: 90%;
+      .feature {
+        .icon-container {
+          height: 130px;
+          .fa { font-size: 120px; }
+        }
+        &:hover .fa { font-size: 130px; }
+      }
+    }
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1400px) {
   div[vx-route='/'] {
     header {
       img { width: 200px; }
       h1 { font-size: 60pt; }
       h2 { font-size: 16pt; }
     }
-    .fetures { width: 80%; }
+    .features {
+      width: 80%;
+      .feature {
+        .icon-container {
+          height: 160px;
+          .fa { font-size: 150px; }
+        }
+        &:hover .fa { font-size: 160px; }
+      }
+    }
   }
 }
