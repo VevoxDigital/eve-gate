@@ -24,9 +24,14 @@
   </div>
 
   <!-- ID Given: Try to view item details. -->
-  <div ng-if="itemData">
+  <div ng-if="itemData" class="item">
     <a href="javascript:" onclick="window.history.back()" class="btn">&laquo; Back</a>
-    <h1 class="name" ng-bind="itemData.name || 'Please wait...'"></h1>
+    <h1 class="name" ng-bind="itemData.name || 'Fetching data...'"></h1>
+    <h2 ng-bind-html="itemData.err" ng-if="itemData.err"></h2>
+    <h3 ng-if="itemData.err">
+      This may be an error with CCP servers.
+      Please submit a ticket to the correct location where applicable.
+    </h3>
     <div ng-if="itemData.dogma">
 
       <div class="meta-bar">

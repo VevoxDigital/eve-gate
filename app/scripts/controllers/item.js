@@ -15,7 +15,8 @@ angular.module('tech3App')
       $scope.itemData = { id: $routeParams.item };
       itemService.fetch($routeParams.item, function (res) {
         if (typeof res === 'string') {
-          $scope.itemData.name = res;
+          $scope.itemData.name = 'Something isn\'t right here...';
+          $scope.itemData.err = 'CREST-tq ' + res;
         } else {
           $scope.itemData = res;
 

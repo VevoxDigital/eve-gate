@@ -38,33 +38,47 @@ div[vx-route='/item'] {
       &:hover { color: $blue1; }
     }
   }
-  .name { margin: 15px; }
-  .meta-bar {
-    display: flex;
-    border: 0px $white1 solid;
-    border-width: 1px 0;
-    img {
-      background-color: $white1;
-      border-radius: 6px;
-      width: 64px;
-      height: 64px;
-      margin: 12px;
-      flex: 0 0 64px;
-      margin-right: 10px;
+  .item {
+    h2 {
+      font-weight: normal;
+      color: $white2;
+      padding: 0 10px;
+      margin: 0;
     }
-    .meta {
-      flex: 1 0 30%;
+    h3 {
+      font-weight: normal;
+      color: $white2;
+      padding: 0 10px;
+      margin: 0;
     }
-  }
-  .desc {
-    padding: 20px;
-  }
-  .dogma {
-    .attr {
-      display: block;
-      width: 100%;
-      border-bottom: 1px $white1 solid;
-      &:nth-child(1) { border-top: 1px $white1 solid; }
+    .name { margin: 15px; }
+    .meta-bar {
+      display: flex;
+      border: 0px $white1 solid;
+      border-width: 1px 0;
+      img {
+        background-color: $white1;
+        border-radius: 6px;
+        width: 64px;
+        height: 64px;
+        margin: 12px;
+        flex: 0 0 64px;
+        margin-right: 10px;
+      }
+      .meta {
+        flex: 1 0 30%;
+      }
+    }
+    .desc {
+      padding: 20px;
+    }
+    .dogma {
+      .attr {
+        display: block;
+        width: 100%;
+        border-bottom: 1px $white1 solid;
+        &:nth-child(1) { border-top: 1px $white1 solid; }
+      }
     }
   }
 }

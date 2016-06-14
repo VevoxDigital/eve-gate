@@ -29,7 +29,7 @@ angular.module('tech3App')
       }).then(function (res) {
         cb(res.data);
       }, function (res) {
-        cb(res.status + ': ' + res.data);
+        cb(res.status + ': ' + res.data.message || res.data);
       });
     };
     this.fetchAttr = function (attr, cb) {
@@ -39,7 +39,7 @@ angular.module('tech3App')
       }).then(function (res) {
         cb(res.data);
       }, function (res) {
-        cb(res.status + ': ' + res.data);
+        cb(res.status + ': ' + res.data.message || res.data);
       });
     };
   });
