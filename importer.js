@@ -86,7 +86,7 @@ mongoose.connect(dbURL, {}, () => {
         }, () => { console.log(); done(); });
       },
       (done) => {
-        console.log('Updaing type attributes...');
+        console.log('Updating type attributes...');
         var dgmTypeAttributes = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'sde', 'bsd', 'dgmTypeAttributes.yaml')));
 
         var c = 1;
@@ -99,13 +99,14 @@ mongoose.connect(dbURL, {}, () => {
             if (!item) { console.log('\nWARNING! Unknown type id: ' + attr.type); cb(); }
             else {
               item.meta.attributes.push({ id: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
+              item.markModified('meta.attributes');
               item.save((err) => {
                 if (err) throw new Error(err + '\n' + item.name + '#' + item._id + '@' + attr.attributeID);
                 else cb();
               });
             }
           });
-        }, () => { console.log(); cb(); });
+        }, () => { console.log(); done(); });
       }
     ], (func, cb) => { func(cb); }, () => {
       console.log('Done!');
