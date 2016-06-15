@@ -23,7 +23,7 @@ mongoose.connect(dbURL, {}, () => {
   try {
     async.eachSeries([
       (done) => {
-        console.log('Parsing items file...');
+        console.log('Importing types...');
         var itemFile = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'sde', 'fsd', 'typeIDs.yaml'))), items = [];
         _.forEach(itemFile, (data, id) => {
           data.id = parseInt(id);
@@ -34,7 +34,7 @@ mongoose.connect(dbURL, {}, () => {
         async.eachSeries(items, (item, cb) => {
           process.stdout.clearLine();
           process.stdout.cursorTo(0);
-          process.stdout.write(' * Importing item ' + c++ + ' of ' + items.length);
+          process.stdout.write(' * Importing type ' + c++ + ' of ' + items.length);
           var entry = new Item({
             _id: item.id,
             name: item.name.en || 'Unknown',
@@ -56,14 +56,14 @@ mongoose.connect(dbURL, {}, () => {
         }, () => { console.log(); done(); });
       },
       (done) => {
-        console.log('Parsing attributes file...');
-        var dgmAttributeTypesYAML = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'sde', 'bsd', 'dgmAttributeTypes.yaml')));
+        console.log('Importing attributes...');
+        var dgmAttributeTypes = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'sde', 'bsd', 'dgmAttributeTypes.yaml')));
 
         var c = 1;
-        async.eachSeries(dgmAttributeTypesYAML, (attr, cb) => {
+        async.eachSeries(dgmAttributeTypes, (attr, cb) => {
           process.stdout.clearLine();
           process.stdout.cursorTo(0);
-          process.stdout.write(' * Importing attribute ' + c++ + ' of ' + dgmAttributeTypesYAML.length);
+          process.stdout.write(' * Importing attribute ' + c++ + ' of ' + dgmAttributeTypes.length);
           var entry = new DogmaTypeAttr({
             _id: attr.attributeID,
             name: attr.attributeName,
@@ -84,6 +84,28 @@ mongoose.connect(dbURL, {}, () => {
             });
           });
         }, () => { console.log(); done(); });
+      },
+      (done) => {
+        console.log('Updaing type attributes...');
+        var dgmTypeAttributes = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'sde', 'bsd', 'dgmTypeAttributes.yaml')));
+
+        var c = 1;
+        async.eachSeries(dgmTypeAttributes, (attr, cb) => {
+          process.stdout.clearLine();
+          process.stdout.cursorTo(0);
+          process.stdout.write(' * Updating ' + c++ + ' of ' + dgmTypeAttributes.length);
+          Item.findById(attr.typeID, (err, item) => {
+            if (err) throw err;
+            if (!item) { console.log('\nWARNING! Unknown type id: ' + attr.type); cb(); }
+            else {
+              item.meta.attributes.push({ id: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
+              item.save((err) => {
+                if (err) throw new Error(err + '\n' + item.name + '#' + item._id + '@' + attr.attributeID);
+                else cb();
+              });
+            }
+          });
+        }, () => { console.log(); cb(); });
       }
     ], (func, cb) => { func(cb); }, () => {
       console.log('Done!');
