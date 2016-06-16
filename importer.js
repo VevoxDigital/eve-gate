@@ -43,7 +43,8 @@ mongoose.connect(dbURL, {}, () => {
             meta: {
               mass: item.mass,
               volume: item.volume,
-              radius: item.radius
+              radius: item.radius,
+              description: item.description ? item.description.en : undefined
             }
           });
           Item.find({ _id: item.id }).remove((err) => {
