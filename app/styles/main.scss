@@ -119,7 +119,6 @@ nav {
             outline: none;
             box-shadow: 0 3px $bluegreen2;
             .caret { border-top-color: $white1; border-bottom-color: $white1; }
-            & ~ .dropdown { display: block; }
           }
           .caret {
             border-top-color: #4b6075;
@@ -135,6 +134,8 @@ nav {
           white-space: nowrap;
           padding: 5px;
           display: none;
+          opacity: 0;
+          transform: scale(0.9);
           a {
             padding: 10px;
             box-shadow: none;

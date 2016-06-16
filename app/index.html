@@ -86,9 +86,28 @@
     <script>
       $(function () {
         $('html').click(function (event) {
-          var closeDD = function () { $('.active ~ .dropdown').prev().removeClass('active'); };
+          var closeDD = function (cb) {
+            var dd = $('.active ~ .dropdown');
+            dd.prev().removeClass('active');
+            dd.velocity({
+              opacity: 0,
+              scale: 0.9,
+              translateY: '-5%'
+            }, { duration: 150, complete: function () {
+              dd.hide();
+            } });
+          };
           if ($(event.target).closest('nav li > a').length) {
+            if ($('nav li > a.active').length) { closeDD(); }
             $(event.target).closest('nav li > a').addClass('active');
+            $('.active ~ .dropdown').show().velocity({
+              scale: 0.9,
+              translateY: '-5%'
+            }, { duration: 0 }).velocity({
+              opacity: 1,
+              scale: 1,
+              translateY: 0
+            }, { duration: 150 });
           } else if (!$(event.target).closest('.active ~ .dropdown').length) {
             closeDD();
           } else {
