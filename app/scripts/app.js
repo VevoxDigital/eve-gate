@@ -16,7 +16,8 @@ angular
     'ngSanitize'
   ])
   .constant('BACKEND', {
-    url: 'http://192.168.0.102:3000/api/'
+    url: 'http://192.168.0.102:3000/api/',
+    message: 'Tech 3 is still in active development and may change drastically during this time. Expect some bugs as we work through this.'
   })
   .config(function ($routeProvider, $locationProvider, $localStorageProvider) {
     $locationProvider.html5Mode(true);
@@ -56,9 +57,10 @@ angular
         redirectTo: '/error/404'
       });
   })
-  .run(function ($rootScope, $compile, $user, $location) {
+  .run(function ($rootScope, $compile, $user, $location, BACKEND) {
     $rootScope.$user = $user;
     $rootScope.$meta = {
+      backendMsg: BACKEND.message,
       path: function () {
         var path = $location.path();
         return path.indexOf('/', 1) > 0 ? path.substring(0, path.indexOf('/', 1)) : path;
