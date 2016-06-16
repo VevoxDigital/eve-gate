@@ -23,6 +23,12 @@ angular.module('tech3App')
           // Is an error.
           $scope.itemData.err = item === '-1: null' ? 'Unknown error. See console.' : item;
         } else {
+          var desc = item.meta.description;
+          while (desc.includes('\r\n')) { desc = desc.replace('\r\n', '<br>'); }
+          desc = desc.replace(/<url\=showinfo:/ig, '<a href=/info/item/');
+          desc = desc.replace(/<\/url>/ig, '</a>');
+
+          item.meta.description = desc;
           $scope.itemData = item;
         }
       });

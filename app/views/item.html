@@ -36,6 +36,18 @@
         <a href="javascript:" ng-repeat="tab in itemTabs" ng-click="setTabIndex($index)"
           ng-class="{ active: isTabIndex($index) }" ng-bind="itemTabs[$index]"></a>
       </div>
+      <div class="tab tab-desc" ng-if="isTabIndex(0)">
+        <p ng-bind-html="itemData.meta.description"></p>
+      </div>
+      <div class="tab tab-attrs" ng-if="isTabIndex(1)">
+        <div class="attr" ng-repeat="attr in itemData.attrs" title="{{attr.meta.description}}" ng-if="attr.published">
+          <p class="name" ng-bind="attr.meta.displayName || attr.name"></p>
+          <p class="value" ng-bind-html="attr.value"></p>
+        </div>
+      </div>
+      <div class="tab tab-market" ng-if="isTabIndex(2)">
+        <h2>Coming Soon</h2>
+      </div>
     </div>
     <div ng-if="!itemData.name">
       <h1 class="loading-err" ng-if="itemData.err" ng-bind-html="'Error fetching type:<br>' + itemData.err"></h1>
