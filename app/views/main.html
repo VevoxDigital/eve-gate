@@ -7,7 +7,10 @@
   <div class="features">
     <a class="feature" ng-repeat="feature in features" ng-href="{{ feature.href }}">
       <div class="icon-container">
-        <i ng-class="'fa fa-' + feature.icon"></i>
+        <div class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i ng-class="'fa fa-' + feature.icon + ' fa-stack-1x fa-inverse'"></i>
+        </div>
       </div>
       <h1 ng-bind="feature.title"></h1>
       <p ng-bind="feature.desc"></p>
