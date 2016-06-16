@@ -11,6 +11,11 @@ angular.module('tech3App')
   .controller('ItemCtrl', function ($scope, $routeParams, $timeout, itemService) {
     $scope.itemSearch = { showDust: false, showBP: false };
 
+    $scope.itemTabIndex = 0;
+    $scope.setTabIndex = function(i) { $scope.itemTabIndex = i; }
+    $scope.isTabIndex = function (i) { return i === $scope.itemTabIndex; };
+    $scope.itemTabs = ['Description', 'Attributes', 'Market Data'];
+
     if ($routeParams.item && !Number.isNaN(parseInt($routeParams.item))) {
       $scope.itemData = { _id: $routeParams.item };
       itemService.fetch($scope.itemData._id, function (item) {

@@ -69,6 +69,29 @@ div[vx-route='/item'] {
         font-size: 14pt;
         padding: 0 10px;
       }
+      .tabs {
+        width: 100%;
+        border-bottom: 2px $blue1 solid;
+        a {
+          display: inline-block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: $white2;
+          font-weight: bold;
+          transition: color 250ms, background 250ms;
+          &:hover {
+            color: $blue1;
+          }
+          &.active {
+            background-color: $blue1;
+            color: $white;
+            &:hover {
+              color: $white;
+              cursor: default;
+            }
+          }
+        }
+      }
     }
     .loading-err {
       width: 100%;

@@ -32,6 +32,10 @@
         <h1 ng-bind="itemData.name"></h1>
       </div>
       <h2 class="stats">{{ itemData.meta.volume || 0 }}m3 &sdot; {{ itemData.market.price.est || 0 }}ISK Estimated Price</h2>
+      <div class="tabs">
+        <a href="javascript:" ng-repeat="tab in itemTabs" ng-click="setTabIndex($index)"
+          ng-class="{ active: isTabIndex($index) }" ng-bind="itemTabs[$index]"></a>
+      </div>
     </div>
     <div ng-if="!itemData.name">
       <h1 class="loading-err" ng-if="itemData.err" ng-bind-html="'Error fetching type:<br>' + itemData.err"></h1>
