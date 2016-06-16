@@ -15,6 +15,9 @@ angular
     'ngStorage',
     'ngSanitize'
   ])
+  .constant('BACKEND', {
+    url: 'http://192.168.0.102:3000/api/'
+  })
   .config(function ($routeProvider, $locationProvider, $localStorageProvider) {
     $locationProvider.html5Mode(true);
     $localStorageProvider.setKeyPrefix('T3');

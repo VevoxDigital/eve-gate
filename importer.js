@@ -98,7 +98,7 @@ mongoose.connect(dbURL, {}, () => {
             if (err) throw err;
             if (!item) { console.log('\nWARNING! Unknown type id: ' + attr.type); cb(); }
             else {
-              item.meta.attributes.push({ id: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
+              item.meta.attributes.push({ _id: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
               item.markModified('meta.attributes');
               item.save((err) => {
                 if (err) throw new Error(err + '\n' + item.name + '#' + item._id + '@' + attr.attributeID);

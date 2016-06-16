@@ -39,45 +39,54 @@ div[vx-route='/item'] {
     }
   }
   .item {
-    h2 {
-      font-weight: normal;
-      color: $white2;
-      padding: 0 10px;
-      margin: 0;
-    }
-    h3 {
-      font-weight: normal;
-      color: $white2;
-      padding: 0 10px;
-      margin: 0;
-    }
-    .name { margin: 15px; }
-    .meta-bar {
-      display: flex;
-      border: 0px $white1 solid;
-      border-width: 1px 0;
-      img {
-        background-color: $white1;
-        border-radius: 6px;
-        width: 64px;
-        height: 64px;
-        margin: 12px;
-        flex: 0 0 64px;
-        margin-right: 10px;
-      }
-      .meta {
-        flex: 1 0 30%;
-      }
-    }
-    .desc {
-      padding: 20px;
-    }
-    .dogma {
-      .attr {
-        display: block;
+    width: 100%;
+    .itemdata {
+      .header {
         width: 100%;
+        height: 74px;
+        padding: 10px;
+        padding-top: 0;
+        display: flex;
         border-bottom: 1px $white1 solid;
-        &:nth-child(1) { border-top: 1px $white1 solid; }
+        img {
+          flex: 0 0 64px;
+          background-color: $white1;
+          border-radius: 3px;
+        }
+        h1 {
+          flex: 1 0 auto;
+          font-size: 60px;
+          padding: 2px;
+          margin: 0;
+          color: $white2;
+          padding-left: 15px;
+          opacity: 0.7;
+        }
+      }
+      .stats {
+        font-weight: normal;
+        color: $white2;
+        font-size: 14pt;
+        padding: 0 10px;
+      }
+    }
+    .loading-err {
+      width: 100%;
+      display: block;
+      text-align: center;
+      color: $white1;
+      font-size: 50pt;
+    }
+    .loading-icon {
+      width: 100%;
+      text-align: center;
+      padding: 50px;
+      .fa {
+        font-size: 60pt;
+        display: inline-block;
+        text-align: center;
+        margin: 20px auto;
+        color: $white1;
       }
     }
   }

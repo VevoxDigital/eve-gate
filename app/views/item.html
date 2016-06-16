@@ -26,32 +26,16 @@
   <!-- ID Given: Try to view item details. -->
   <div ng-if="itemData" class="item">
     <a href="javascript:" onclick="window.history.back()" class="btn">&laquo; Back</a>
-    <h1 class="name" ng-bind="itemData.name || 'Fetching data...'"></h1>
-    <h2 ng-bind-html="itemData.err" ng-if="itemData.err"></h2>
-    <h3 ng-if="itemData.err">
-      This may be an error with CCP servers.
-      Please submit a ticket to the correct location where applicable.
-    </h3>
-    <div ng-if="itemData.dogma">
-
-      <div class="meta-bar">
-        <img ng-src="https://image.eveonline.com/Type/{{itemData.id}}_64.png">
-        <div class="meta">
-          <p ng-bind="'Mass: ' + itemData.mass + ' kg'"></p>
-          <p ng-bind="'Volume: ' + itemData.volume + ' m^3'"></p>
-        </div>
-        <div class="meta" ng-if="itemData.capacity > 0">
-          <p ng-bind="'Capacity: ' + itemData.capacity + ' m^3'"></p>
-          <p ng-bind="'Radius: ' + itemData.radius + ''"></p>
-        </div>
+    <div ng-if="itemData.name" class="itemdata">
+      <div class="header">
+        <img ng-src="http://image.eveonline.com/Type/{{ itemData._id }}_64.png">
+        <h1 ng-bind="itemData.name"></h1>
       </div>
-      <div class="desc" ng-bind-html="itemData.desc"> </div>
-      <div class="dogma">
-        <div class="attr" ng-repeat="attr in itemData.attrs track by attr.id" ng-if="attr">
-          <p ng-bind="$meta.is(attr, 'string') ? attr : attr.displayName"></p>
-          <p ng-bind="attr.value" ng-if="!$meta.is(attr, 'string')"></p>
-        </div>
-      </div>
+      <h2 class="stats">{{ itemData.meta.volume || 0 }}m3 &sdot; {{ itemData.market.price.est || 0 }}ISK Estimated Price</h2>
+    </div>
+    <div ng-if="!itemData.name">
+      <h1 class="loading-err" ng-if="itemData.err" ng-bind-html="'Error fetching type:<br>' + itemData.err"></h1>
+      <div class="loading-icon" ng-if="!itemData.err"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
     </div>
   </div>
 </div>

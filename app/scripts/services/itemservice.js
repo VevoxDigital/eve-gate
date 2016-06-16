@@ -8,13 +8,11 @@
  * Service in the tech3App.
  */
 angular.module('tech3App')
-  .service('itemService', function ($http) {
+  .service('itemService', function ($http, BACKEND) {
     this.search = function (search, cb) {
       $http({
         method: 'GET',
-        //url: '/api/type',
-        //url: 'http://192.168.0.102:3000/api/type',
-        url: 'http://localhost:3000/api/type',
+        url: BACKEND.url + 'type',
         params: { name: search }
       }).then(function (res) {
         cb(res.data);
@@ -25,21 +23,11 @@ angular.module('tech3App')
     this.fetch = function (item, cb) {
       $http({
         method: 'GET',
-        url: 'https://crest-tq.eveonline.com/types/' + item + '/'
+        url: BACKEND.url + 'type?id=' + item
       }).then(function (res) {
         cb(res.data);
       }, function (res) {
-        cb(res.status + ': ' + res.data.message || res.data);
-      });
-    };
-    this.fetchAttr = function (attr, cb) {
-      $http({
-        method: 'GET',
-        url: 'https://crest-tq.eveonline.com/dogma/attributes/' + attr + '/'
-      }).then(function (res) {
-        cb(res.data);
-      }, function (res) {
-        cb(res.status + ': ' + res.data.message || res.data);
+        cb(res.status + ': ' + res.data);
       });
     };
   });

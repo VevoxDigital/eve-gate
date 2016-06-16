@@ -195,7 +195,6 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
 
 .btn, input[type='submit'] {
   border-radius: 5px;
-  padding: 10px;
   margin: 10px;
   background-color: $blue1;
   color: $white1;
@@ -205,6 +204,7 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   transition: background-color 250ms;
   text-decoration: none;
   padding: 10px 20px;
+  display: inline-block;
   &:hover { background-color: $blue2; }
   &[disabled] { background-color: $grey1; cursor: default; }
 }
