@@ -1,0 +1,20 @@
+div[vx-route='/item'] {
+  padding-top: 60px;
+  width: 95%;
+  margin: 0 auto;
+  .search {
+    input[type=text] {
+      margin: 10px 0;
+    }
+    .search-options {
+      display: flex;
+      text-align: center;
+      padding-bottom: 10px;
+      input[type=checkbox] + label {
+        display: inline-block;
+        flex: 1 0 20%;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -38,6 +38,11 @@ angular
         controller: 'ItemCtrl',
         controllerAs: 'item'
       })
+      .when('/info/search', {
+        templateUrl: 'views/database-search.html',
+        controller: 'DatabaseSearchCtrl',
+        controllerAs: 'databaseSearch'
+      })
       .when('/info/signature/:sig?', { redirectTo: '/error/460' })
       .when('/info/celestial/:celestial?', { redirectTo: '/error/460' })
       .when('/info/npcs', { redirectTo: '/error/460' })
@@ -78,9 +83,7 @@ angular
             text: 'Information',
             href: 'info',
             items: [
-              { text: 'Item Database', href: 'item' },
-              { text: 'Signature Database', href: 'signature' },
-              { text: 'Celestials', href: 'celestial' },
+              { text: 'Database Search', href: 'search' },
               { },
               { text: 'NPC Ships', href: 'npc' },
               { text: 'Damage Cheat-Sheet', href: 'damages' }
