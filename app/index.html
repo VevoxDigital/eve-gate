@@ -26,24 +26,24 @@
     <!-- Navbar -->
     <nav>
       <div class="navbar">
+        <a href="javascript:" class="mobile-menu fa fa-bars"></a>
         <a href="/" class="brand">Tech 3</a>
-        <ul class="left">
+        <ul>
           <li ng-repeat="link in $meta.nav[0]">
             <a href="javascript:">
-              <span class="text" ng-bind="link.text"></span>
+              <span ng-class="'navlink-mobile fa fa-' + link.fa"></span>
+              <span class="navlink-desktop" ng-bind="link.text"></span>
               <span ng-if="link.items" class="caret"></span>
             </a>
             <div class="dropdown">
               <div ng-repeat="item in link.items">
-                <a ng-if="item.href" ng-bind="item.text"
-                  ng-href="{{ !item.href.startsWith('@') ? '/' + link.href + '/' + item.href : item.href.substring(1) }}"></a>
+                <a ng-if="item.href" ng-href="{{ !item.href.startsWith('@') ? '/' + link.href + '/' + item.href : item.href.substring(1) }}">
+                  <span class="text" ng-bind="item.text"></span>
+                </a>
                 <hr ng-if="!item.href">
               </div>
             </div>
           </li>
-        </ul>
-        <ul class="right">
-
         </ul>
         <div class="clear"></div>
       </div>
@@ -91,7 +91,6 @@
             dd.prev().removeClass('active');
             dd.velocity({
               opacity: 0,
-              scale: 0.9,
               translateY: '-5%'
             }, { duration: 150, complete: function () {
               dd.hide();
@@ -101,8 +100,8 @@
             if ($('nav li > a.active').length) { closeDD(); }
             $(event.target).closest('nav li > a').addClass('active');
             $('.active ~ .dropdown').show().velocity({
-              scale: 0.9,
-              translateY: '-5%'
+              translateY: '-5%',
+              translateX: '-50%'
             }, { duration: 0 }).velocity({
               opacity: 1,
               scale: 1,
@@ -114,6 +113,11 @@
             $(event.target).mouseup();
             setTimeout(closeDD);
           };
+        });
+
+        // Mobile navbar toggle.
+        $('nav .mobile-menu').click(function () {
+          $('nav ul').toggleClass('shown');
         });
       });
     </script>

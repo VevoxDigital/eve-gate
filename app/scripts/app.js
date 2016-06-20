@@ -82,6 +82,7 @@ angular
           {
             text: 'Information',
             href: 'info',
+            fa: 'database',
             items: [
               { text: 'Database Search', href: 'search' },
               { },
@@ -92,6 +93,7 @@ angular
           {
             text: 'Industry',
             href: 'indy',
+            fa: 'cogs',
             items: [
               { text: 'Market Appraisals', href: 'appraisal' },
               { text: 'Blueprint Buddy', href: 'blueprints' },
@@ -103,6 +105,7 @@ angular
           {
             text: 'Logistics',
             href: 'logi',
+            fa: 'map',
             items: [
               { text: 'Ship Fitting', href: 'fits' },
               { text: 'Fleet Adverts', href: 'fleets' },
@@ -114,6 +117,7 @@ angular
           {
             text: 'About',
             href: 'about',
+            fa: 'question-circle',
             items: [
               { text: 'Support Tech3', href: 'support' },
               { text: 'Contribute', href: '@https://github.com/VevoxDigital/tech-3' },
