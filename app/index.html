@@ -111,6 +111,7 @@
             closeDD();
           } else {
             $(event.target).mouseup();
+            $('nav ul').removeClass('shown');
             setTimeout(closeDD);
           };
         });
