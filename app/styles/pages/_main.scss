@@ -37,10 +37,10 @@ div[vx-route='/']{
       text-decoration: none;
       color: inherit;
       .fa-stack {
-        font-size: 70px;
+        font-size: 30px;
       }
-      h1 { font-size: 25px; }
-      p { font-size: 15px; }
+      h1 { font-size: 12px; }
+      p { display: none; }
       &:hover {
         color: $blue2;
       }
@@ -58,6 +58,8 @@ div[vx-route='/']{
     .features {
       width: 90%;
       .feature {
+        h1 { font-size: 25px; }
+        p { display: block; }
         .fa-stack { font-size: 90px; }
       }
     }
@@ -74,6 +76,7 @@ div[vx-route='/']{
     .features {
       width: 80%;
       .feature {
+        h1 { font-size: 25px; }
         .fa-stack { font-size: 120px; }
       }
     }
