@@ -234,6 +234,50 @@ input[type='submit'] {
   margin: 10px auto;
 }
 
+.form-dropdown {
+  position: relative;
+  display: inline-block;
+  button {
+    background-color: $bluegreen1;
+    color: $white1;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 250ms;
+    width: 100%;
+    text-align: left;
+    opacity: 1;
+    &:hover { opacity: 0.8; }
+    .caret { float: right; margin-top: 8px; }
+  }
+  .form-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $white1;
+    min-width: 100%;
+    border-radius: 5px;
+    left: 0;
+    top: 100%;
+    overflow-y: auto;
+    max-height: 250px;
+    transform: scale(0.9) translateY(-10em);
+    opacity: 0;
+    transition: transform 250ms, opacity 250ms;
+    a {
+      color: $black1;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+    }
+  }
+  &.shown .form-dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .pagebanner {
   width: 100%;
   padding: 40px;
@@ -265,6 +309,7 @@ div[ng-view] {
 @import 'pages/account';
 @import 'pages/error';
 @import 'pages/item';
+@import 'pages/database';
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

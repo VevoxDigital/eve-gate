@@ -2,7 +2,7 @@
   <form action="javascript:" class="search">
     <input id="dbSearchQuery" type="text" ng-model="search.name" placeholder="Search by Item Name">
     <div id="dbSearchOpts" class="form-dropdown">
-      <button ng-bind="searchOptions[search.opt][0]"></button>
+      <button>{{searchOptions[search.opt][0]}}<span class="caret"></span></button>
       <div class="form-dropdown-content">
         <a href="javascript:" ng-repeat="opt in searchOptions" vx-search-opt="{{$index}}" ng-bind="opt[0]"></a>
       </div>

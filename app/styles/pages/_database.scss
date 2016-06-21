@@ -1,20 +1,15 @@
-div[vx-route='/item'] {
-  padding-top: 60px;
+div[vx-route='/db/search'] {
   width: 95%;
   margin: 0 auto;
   .search {
-    input[type=text] {
-      margin: 10px 0;
-    }
-    .search-options {
-      display: flex;
-      text-align: center;
-      padding-bottom: 10px;
-      input[type=checkbox] + label {
-        display: inline-block;
-        flex: 1 0 20%;
-        white-space: nowrap;
-      }
+    display: flex;
+    input[type=text] { margin: 10px 0; flex: 0 1 auto; }
+    .form-dropdown {
+      flex: 1 0 15%;
+      padding: 15px 5px;
+      padding-bottom: 0;
+      margin: 0;
+      .form-dropdown-content { top: 85%; }
     }
   }
 }
