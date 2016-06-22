@@ -297,11 +297,11 @@ div[ng-view] {
   height: calc(100vh - 73px);
   overflow-y: scroll;
   &.ng-enter-active, &.ng-leave {
-    transform: scale(1) translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
   &.ng-enter, &.ng-leave-active {
-    transform: scale(0.9) translate3d(0, -1em, 0);
+    transform: translate3d(0, -1em, 0);
     opacity: 0;
   }
 }
