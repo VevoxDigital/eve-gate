@@ -12,4 +12,26 @@ div[vx-route='/db/search'] {
       .form-dropdown-content { top: 85%; }
     }
   }
+  .results {
+    width: 100%;
+    padding-bottom: 15px;
+    h2 {
+      width: 100%;
+      text-align: center;
+      color: $white2;
+      font-weight: normal;
+      margin: 50px 0;
+      & i { font-size: 40pt; }
+    }
+    .result {
+      display: block;
+      border-bottom: 1px $white1 solid;
+      text-decoration: none;
+      color: inherit;
+      font-size: 14pt;
+      padding: 5px 15px;
+      &:nth-child(1) { border-top: 1px $white1 solid; }
+      &:hover { color: $blue1; }
+    }
+  }
 }

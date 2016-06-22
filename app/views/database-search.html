@@ -8,4 +8,11 @@
       </div>
     </div>
   </form>
+  <div class="results">
+    <h2 ng-if="!showResults()" ng-bind-html="searchData"></h2>
+    <div ng-if="showResults()">
+      <a class="result" ng-repeat="result in searchData"
+        ng-href="/info/item/{{ result._id }}" ng-bind="result.name"> </a>
+    </div>
+  </div>
 </div>
