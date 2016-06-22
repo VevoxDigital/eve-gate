@@ -269,6 +269,8 @@ input[type='submit'] {
       padding: 10px 15px;
       text-decoration: none;
       display: block;
+      transition: background-color 250ms;
+      &:hover { background-color: rgba(202, 206, 209, 0.5); }
     }
   }
   &.shown .form-dropdown-content {
