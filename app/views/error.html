@@ -1,10 +1,20 @@
 <div vx-route="/error">
   <div class="page">
     <div class="err">
-      <h1>Oh noes! {{ errM }}!</h1>
-      <h2>{{ errD }}</h2>
+      <h1 ng-bind="errM"></h1>
+      <h2 ng-bind="errD"></h2>
       <hr>
-      <h3>If you think this is a bug, please let us know!</h3>
+      <h3>
+        This could be an error with our system internally,
+        a page was moved/deleted, or the url was mistyped.
+        <br><br>
+        Check the url and verify you have access to the requested
+        resource (and are logged in!) and try again.
+      </h3>
+      <div class="buttons">
+        <a class="btn" href="/">Tech 3 Home</a>
+        <a class="btn" href="javascript:" onclick="window.history.back()">Head Back</a>
+      </div>
     </div>
   </div>
 </div>
