@@ -62,6 +62,22 @@ hr {
   }
 }
 
+.badge {
+  vertical-align: top;
+  background-color: $bluegreen1;
+  border-radius: 7px;
+  font-size: 8px;
+  height: 12px;
+  display: inline-block;
+  text-align: center;
+  font-style: none;
+  font-weight: bold;
+  margin: 0 3px;
+  padding: 0 4px;
+  &.badge-orange { background-color: $orange1; }
+  &.badge-blue { background-color: $blue1; }
+}
+
 nav {
   width: 100%;
   .navbar {

@@ -43,21 +43,6 @@ angular
         controller: 'DatabaseSearchCtrl',
         controllerAs: 'databaseSearch'
       })
-      .when('/info/signature/:sig?', { redirectTo: '/error/460' })
-      .when('/info/celestial/:celestial?', { redirectTo: '/error/460' })
-      .when('/info/npcs', { redirectTo: '/error/460' })
-      .when('/info/damages', { redirectTo: '/error/460' })
-      .when('/indy/appraisal/:app?', { redirectTo: '/error/460' })
-      .when('/indy/blueprints/:bp?', { redirectTo: '/error/460' })
-      .when('/indy/reactions', { redirectTo: '/error/460' })
-      .when('/indy/mining', { redirectTo: '/error/460' })
-      .when('/logi/fits/:fit?', { redirectTo: '/error/460' })
-      .when('/logi/fleets/:fleet?', { redirectTo: '/error/460' })
-      .when('/logi/starmap/:system?', { redirectTo: '/error/460' })
-      .when('/logi/wormholes', { redirectTo: '/error/460' })
-      .when('/about/support', { redirectTo: '/error/460' })
-      .when('/about/api', { redirectTo: '/error/460' })
-      .when('/about/contact', { redirectTo: '/error/460' })
       .otherwise({
         redirectTo: '/error/404'
       });
@@ -85,9 +70,6 @@ angular
             fa: 'database',
             items: [
               { text: 'Database Search', href: 'search' },
-              { },
-              { text: 'NPC Ships', href: 'npc' },
-              { text: 'Damage Cheat-Sheet', href: 'damages' }
             ]
           },
           {
@@ -95,8 +77,7 @@ angular
             href: 'indy',
             fa: 'cogs',
             items: [
-              { text: 'Market Appraisals', href: 'appraisal' },
-              { text: 'Blueprint Buddy', href: 'blueprints' },
+              { text: 'Market Appraisals', href: 'appraisal', beta: true },
               { },
               { text: 'Reactions', href: 'reactions' },
               { text: 'Mining Profits', href: 'mining' }
@@ -107,11 +88,10 @@ angular
             href: 'logi',
             fa: 'map',
             items: [
-              { text: 'Ship Fitting', href: 'fits' },
-              { text: 'Fleet Adverts', href: 'fleets' },
+              { text: 'Ship Fitting', href: 'fits', beta: true },
               { },
               { text: 'New Eden Starmap', href: 'starmap' },
-              { text: 'Wormhole Mapping', href: 'wormholes' }
+              { text: 'Wormhole Mapping', href: 'wormholes', beta: true }
             ]
           },
           {
