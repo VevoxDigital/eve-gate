@@ -25,6 +25,16 @@ exports = module.exports = (appdata) => {
     req.$database = require('./middleware/models')();
     next();
   });
+  app.use(function (req, res, next) {
+    if (!req.originalUrl.endsWith('/'))
+      res.status(400).json({ message: 'API routes must end with a trailing slash.' });
+    else next();
+  });
+  app.use(function (req, res, next) {
+    req.lastParam = req.originalUrl.match(/[^\/]*\/$/)[0];
+    req.lastParam = req.lastParam.substring(0, req.lastParam.length - 1);
+    next();
+  });
   deferred.resolve(app);
 
   return deferred.promise;
