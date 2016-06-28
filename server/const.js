@@ -99,4 +99,4 @@ global.region = function (region) {
 // Market timings.
 global.MARKET_TIME = 6;
 global.MARKET_TIME_S = MARKET_TIME * 60 * 60;
-global.MARKET_TIME_MS = MARKET_TIME_S 1000;
+global.MARKET_TIME_MS = MARKET_TIME_S * 1000;
