@@ -14,7 +14,7 @@ exports = module.exports = (db, done) => {
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     process.stdout.write(' * Importing attribute ' + c++ + ' of ' + dgmAttributeTypes.length);
-    var entry = new db.DogmaTypeAttr({
+    var entry = new db.DogmaAttrTypes({
       _id: attr.attributeID,
       name: attr.attributeName,
       category: attr.categoryID,
@@ -23,10 +23,11 @@ exports = module.exports = (db, done) => {
         displayName: attr.displayName,
         stackable: attr.stackable,
         highIsGood: attr.highIsGood,
-        description: attr.description
+        description: attr.description,
+        unit: attr.unitID
       }
     });
-    db.DogmaTypeAttr.find({ _id: attr.attributeID }).remove((err) => {
+    db.DogmaAttrTypes.find({ _id: attr.attributeID }).remove((err) => {
       if (err) throw err;
       entry.save((err) => {
         if (err) throw new Error(err + '\n' + entry.name + '#' + entry._id);

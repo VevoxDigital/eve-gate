@@ -3,6 +3,6 @@
 exports = module.exports = {
   User:           require('./user'),
   Type:           require('./type'),
-  DogmaTypeAttr:  require('./dogmaTypeAttr'),
+  DogmaAttrTypes: require('./dogmaAttrTypes'),
   Unit:           require('./unit')
 };

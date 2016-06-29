@@ -19,7 +19,7 @@ mongoose.connect(dbURL, {}, () => {
   console.log('Database connection successful. Starting importers...');
 
   // Load database models.
-  var db = { $schema: require(path.join(__dirname, 'lib', 'schema')) };
+  var db = { $schema: require(path.join(__dirname, 'server', 'lib', 'schema')) };
   _.forEach(db.$schema, (schema, name) => { db[name] = mongoose.model(name, schema); });
 
   // Imports and dependencies.

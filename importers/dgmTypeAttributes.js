@@ -18,7 +18,7 @@ exports = module.exports = (db, done) => {
       if (err) throw err;
       if (!type) { console.log('\nWARNING! Unknown type id: ' + attr.type); cb(); }
       else {
-        type.meta.attributes.push({ _id: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
+        type.meta.attributes.push({ attribute: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
         type.markModified('meta.attributes');
         type.save((err) => {
           if (err) throw new Error(err + '\n' + type.name + '#' + type._id + '@' + attr.attributeID);

@@ -22,27 +22,14 @@ router.get('/*', (req, res, next) => {
       });
   } else {
     // An item id was sent.
-    req.$database.Type.findById(parseInt(req.lastParam), (err, type) => {
-      if (err) return next(err);
-      else if (!type) res.status(404).json({ message: 'No item with given type ID' });
-      else {
-        var type = type.toObject();
-        type.attrs = [];
-        async.eachSeries(type.meta.attributes, (attr, cb) => {
-          req.$database.DogmaTypeAttr.findById(attr._id, (err, a) => {
-            if (err) return next(err);
-            else if (a) {
-              a = a.toObject();
-              a.value = attr.value;
-              type.attrs.push(a);
-              cb();
-            } else cb();
-          });
-        }, () => {
-          res.send(type);
-        });
-      }
-    });
+    req.$database.Type.findById(parseInt(req.lastParam))
+      .populate('meta.attributes.attribute')
+      .populate('meta.attributes.attribute.meta.unit')
+      .exec((err, type) => {
+        if (err) return next(err);
+        else if (!type) res.status(404).json({ message: 'No item with given type ID' });
+        else res.json(type.toObject());
+      });
   }
 });
 

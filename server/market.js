@@ -92,6 +92,51 @@ exports = module.exports = function (redis) {
     return deferred.promise;
   };
 
+  market.getStation = function (stationID, item) {
+    var deferred = q.defer();
+
+    // TODO Lookup station IDs in real DB entry.
+    var stationIDTable = {
+      60003760: 10000002, // Jita
+      60008494: 10000043, // Amarr
+      60011866: 10000032, // Dodi
+      60005686: 10000042, // Hek
+      60004594: 10000030  // Rens
+    }
+    market.get(stationIDTable[stationID], item)
+      .catch(deferred.reject)
+      .then((orders) => {
+        var filter = (order) => { return order.stationID === stationID; };
+        orders.buy = orders.buy.filter(filter);
+        orders.sell = orders.sell.filter(filter);
+        deferred.resolve(orders);
+      });
+
+    return deferred.promise;
+  };
+
+  market.getStationBest = function (stationID, item, count) {
+    var deferred = q.defer();
+
+    market.getStation(stationID, item)
+      .catch(deferred.reject)
+      .then((data) => {
+        data.buy.sort((a, b) => { return b.price - a.price });
+        data.sell.sort((a, b) => { return a.price - b.price });
+        if (count) {
+          data.buy = data.buy.slice(0, count);
+          data.sell = data.sell.slice(0, count);
+          if (count === 1) {
+            data.buy = data.buy[0];
+            data.sell = data.sell[0];
+          }
+        }
+        deferred.resolve(data);
+      });
+
+    return deferred.promise;
+  };
+
   market.getEstimate = function (item) {
     var deferred = q.defer();
 

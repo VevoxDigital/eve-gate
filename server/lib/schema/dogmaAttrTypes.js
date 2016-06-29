@@ -11,7 +11,8 @@ const AttrSchema = new mongoose.Schema({
     displayName: { type: String, default: '' },
     stackable: { type: Boolean, default: false },
     highIsGood: { type: Boolean, default: true },
-    description: { type: String, default: '' }
+    description: { type: String, default: '' },
+    unit: { type: Number, ref: 'Unit' }
   }
 });
 
