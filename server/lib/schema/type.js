@@ -8,7 +8,7 @@ const AttrSchema = new mongoose.Schema({
   // TODO Units?
 });
 
-const ItemSchema = new mongoose.Schema({
+const TypeSchema = new mongoose.Schema({
   _id: { type: Number, min: 0, unique: true, required: true },
   name: { type: String, required: true },
   meta: {
@@ -22,4 +22,4 @@ const ItemSchema = new mongoose.Schema({
   group: { type: Number, min: 0, required: true }
 });
 
-exports = module.exports = ItemSchema;
+exports = module.exports = TypeSchema;
