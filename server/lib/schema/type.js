@@ -8,7 +8,7 @@ const MAX_MARKET_LENGTH = 4 * 7 * 2; // Two weeks of data.
 const AttributeSchema = new mongoose.Schema({
   attribute: { type: Number, ref: 'DogmaAttrTypes' },
   value: Number
-});
+}, { _id: false });
 
 // Object for market graph data.
 var marketArrayValidator = (val) => { return val.length <= MAX_MARKET_LENGTH; };
