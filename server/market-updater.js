@@ -57,7 +57,8 @@ exports = module.exports = (redis) => {
             MARKET.put(region.id, pages)
               .catch((err) => {
                 LOG.error(' *  ! Failed to insert market data: ' + err);
-              }).fin(done);
+                done(err);
+              }).then(done);
           });
         });
       }
