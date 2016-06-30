@@ -10,7 +10,7 @@
 angular.module('tech3App')
   .controller('DatabaseSearchCtrl', function ($scope, backendService) {
     $scope.searchOptions = [
-      ['Items', 'type', '/info/type'],
+      ['Items', 'type', '/type'],
       ['Celestials', 'celestial', '/info/celestial'],
       ['Signatures', 'sig', '/info/sig'],
       ['Systems', 'system', '/logi/starmap']
@@ -46,7 +46,7 @@ angular.module('tech3App')
           }
         } else {
           $scope.searchData = '<i class="fa fa-circle-o-notch fa-spin"></i>';
-          backendService.get($scope.searchOptions[$scope.search.opt][1], { query: query }, function (res) {
+          backendService.get($scope.searchOptions[$scope.search.opt][1] + '/' + query + '/', {  }, function (res) {
             switch (res.status) {
               case 200:
                 results = res.data;
@@ -55,7 +55,7 @@ angular.module('tech3App')
                 results = 'An unknown error has occurred.<br>See your browser\'s console for additional information.';
                 break;
               default:
-                results = 'Error ' + res.status + ' during search: ' + JSON.stringify(res.data);
+                results = 'Error ' + res.status + ' during search: ' + res.data.message;
                 break;
             }
             $scope.searchData = results;

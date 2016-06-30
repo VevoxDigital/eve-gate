@@ -8,7 +8,7 @@
  * Controller of the tech3App
  */
 angular.module('tech3App')
-  .controller('ItemCtrl', function ($scope, $routeParams, $timeout, itemService) {
+  .controller('ItemCtrl', function ($scope, $routeParams, $timeout, backendService) {
     $scope.itemSearch = { showDust: false, showBP: false };
 
     $scope.itemTabIndex = 0;
@@ -16,60 +16,37 @@ angular.module('tech3App')
     $scope.isTabIndex = function (i) { return i === $scope.itemTabIndex; };
     $scope.itemTabs = ['Description', 'Attributes', 'Market Data'];
 
-    if ($routeParams.item && !Number.isNaN(parseInt($routeParams.item))) {
+    if (!Number.isNaN(parseInt($routeParams.item))) {
       $scope.itemData = { _id: $routeParams.item };
-      itemService.fetch($scope.itemData._id, function (item) {
-        if (typeof item === 'string') {
+      backendService.get('type/' + $scope.itemData._id + '/', { }, function (res) {
+        if (res.data.message) {
           // Is an error.
-          $scope.itemData.err = item === '-1: null' ? 'Unknown error. See console.' : item;
+          $scope.itemData.err = res.status + ': ' + res.data.message;
         } else {
-          var desc = item.meta.description;
+          // Update description.
+          var desc = res.data.meta.description;
           while (desc.includes('\r\n')) { desc = desc.replace('\r\n', '<br>'); }
-          desc = desc.replace(/<url\=showinfo:/ig, '<a href=/info/item/');
-          desc = desc.replace(/<\/url>/ig, '</a>');
+          res.data.meta.description = desc;
 
-          item.meta.description = desc;
-          $scope.itemData = item;
+          // Update specialized attribute units.
+          // TODO Quite a few units.
+          res.data.meta.attributes.forEach((a) => {
+            var unit = a.attribute.meta.unit;
+            a.value_str = unit ? a.value + ' ' + unit.displayName : a.value;
+            if (unit) {
+              if (unit.displayName === 'typeID')
+                a.value_str = '<a href="/info/item/' + a.value + '">typeref</a>'; // TODO Type name?
+              else if (unit.displayName === '1=small 2=medium 3=l')
+                a.value_str = a.value === 1 ? 'Small' : (a.value === 2 ? 'Medium' : 'Large');
+              else if (unit.displayName === 'Level')
+                a.value_str = 'Level ' + a.value;
+            }
+          });
+
+          $scope.itemData = res.data;
         }
       });
     } else {
-      $timeout(function () {
-        angular.element('#itemSearch').focus();
-      }, 250);
-
-      var results;
-      $scope.data = 'Enter at least 4 characters to start searching.';
-
-      $scope.dataDisplayable = function () {
-        return typeof $scope.data === typeof [];
-      };
-
-      $scope.$watch('itemSearch.name', function (val) {
-        if (val && val.length >= 4) {
-          if (results) {
-            if (typeof results === typeof []) {
-              $scope.data = [];
-              results.forEach(function (res) {
-                if (res.name.toLowerCase().includes(val.toLowerCase())) {
-                  $scope.data.push(res);
-                }
-              });
-            } else {
-              $scope.data = results;
-            }
-          } else {
-            $scope.data = '<h2 class="fa fa-circle-notch fa-spin></h2>"';
-            itemService.search(val, function (res) {
-              res = res === '-1: null' ? 'Unknown Error when searching. See the Console.' : res;
-              res = typeof res === 'string' ? 'Something went wrong!<br>' + res : res;
-              results = res;
-              $scope.data = results;
-            });
-          }
-        } else {
-          $scope.data = 'Enter at least 4 characters to start searching.';
-          results = null;
-        }
-      });
+      console.log('TODO');
     }
   });
