@@ -24,11 +24,13 @@ router.get('/*', (req, res, next) => {
     // An item id was sent.
     req.$database.Type.findById(parseInt(req.lastParam))
       .populate('meta.attributes.attribute')
-      .populate('meta.attributes.attribute.meta.unit')
       .exec((err, type) => {
         if (err) return next(err);
         else if (!type) res.status(404).json({ message: 'No item with given type ID' });
-        else res.json(type.toObject());
+        else req.$database.Type.populate(type, { path: 'meta.attributes.attribute.meta.unit', model: 'Unit' }, (err, type) => {
+          if (err) return next(err);
+          else res.json(type.toObject());
+        });
       });
   }
 });
