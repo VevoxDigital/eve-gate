@@ -12,7 +12,7 @@ angular.module('tech3App')
     $scope.itemSearch = { showDust: false, showBP: false };
 
     $scope.itemTabIndex = 0;
-    $scope.setTabIndex = function(i) { $scope.itemTabIndex = i; }
+    $scope.setTabIndex = function (i) { $scope.itemTabIndex = i; };
     $scope.isTabIndex = function (i) { return i === $scope.itemTabIndex; };
     $scope.itemTabs = ['Description', 'Attributes', 'Market Data'];
 
@@ -35,11 +35,11 @@ angular.module('tech3App')
             a.value_str = unit ? a.value + ' ' + unit.displayName : a.value;
             if (unit) {
               if (unit.displayName === 'typeID')
-                a.value_str = '<a href="/info/item/' + a.value + '">typeref</a>'; // TODO Type name?
+                { a.value_str = '<a href="/info/item/' + a.value + '">typeref</a>'; } // TODO Type name?
               else if (unit.displayName === '1=small 2=medium 3=l')
-                a.value_str = a.value === 1 ? 'Small' : (a.value === 2 ? 'Medium' : 'Large');
+                { a.value_str = a.value === 1 ? 'Small' : (a.value === 2 ? 'Medium' : 'Large'); }
               else if (unit.displayName === 'Level')
-                a.value_str = 'Level ' + a.value;
+                { a.value_str = 'Level ' + a.value; }
             }
           });
 

@@ -29,11 +29,11 @@ angular.module('tech3App')
 
     // Search functionals.
     var MIN_CHARS = 4, results, lastOpt = $scope.search.opt;
-    $scope.showResults = function () { return typeof $scope.searchData === typeof { } };
+    $scope.showResults = function () { return typeof $scope.searchData === typeof { }; };
 
     var searchDataUpdate = function (query) {
       if (query && query.length >= 4) {
-        if (results && lastOpt == $scope.search.opt) {
+        if (results && lastOpt === $scope.search.opt) {
           if (typeof results === typeof []) {
             $scope.searchData = [];
             results.forEach(function (res) {
