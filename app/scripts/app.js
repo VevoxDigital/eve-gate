@@ -77,9 +77,9 @@ angular
             href: 'indy',
             fa: 'cogs',
             items: [
-              { text: 'Market Appraisals', href: 'appraisal', beta: true },
+              { text: 'Market Appraisals', href: 'appraisal' },
               { },
-              { text: 'Reactions', href: 'reactions' },
+              { text: 'Reaction Info', href: 'reactions' },
               { text: 'Mining Profits', href: 'mining' }
             ]
           },
@@ -88,10 +88,7 @@ angular
             href: 'logi',
             fa: 'map',
             items: [
-              { text: 'Ship Fitting', href: 'fits', beta: true },
-              { },
               { text: 'New Eden Starmap', href: 'starmap' },
-              { text: 'Wormhole Mapping', href: 'wormholes', beta: true }
             ]
           },
           {
@@ -101,7 +98,6 @@ angular
             items: [
               { text: 'Support Tech3', href: 'support' },
               { text: 'Contribute', href: '@https://github.com/VevoxDigital/tech-3' },
-              { text: 'Extended Trial', href: '@http://eveonline.com' },
               { text: 'Tech 3 API', href: 'api' },
               { },
               { text: 'Contact Us', href: 'contact' }
