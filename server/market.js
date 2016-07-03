@@ -17,6 +17,8 @@ function assertOrderType(order) {
 // The Forge, Sinq Laison, Metropolis, Domain
 const estimateRegions = [ 2, 26, 36, 37 ];
 
+const regionCache = { };
+
 exports = module.exports = function (redis) {
   var market = this;
 
@@ -52,14 +54,30 @@ exports = module.exports = function (redis) {
 
   market.get = function (region, item) {
     var deferred = q.defer();
-    if (item) {
+    if (!isNaN(item)) {
       // Get a specific item.
-      redis.get(regionPrefix + region, (err, data) => {
+      redis.get(regionPrefix + region, (err, reply) => {
         if (err) return deferred.reject(err);
         var filter = (i) => { return i.type === item };
-        data = JSON.parse(data);
-        data.buy = data.buy.filter(filter);
-        data.sell = data.sell.filter(filter);
+        var data;
+        if (regionCache['r'+region] && new Date().getTime() - regionCache['r'+region].timestamp < 600 * 1000) {
+          var cacheData = regionCache['r'+region].data;
+          data = {
+            buy: cacheData.buy.slice(),
+            sell: cacheData.sell.slice()
+          };
+        } else {
+          data = JSON.parse(reply);
+          regionCache['r'+region] = {
+            data: {
+              buy: data.buy.slice(),
+              sell: data.sell.slice()
+            },
+            timestamp: new Date().getTime()
+          };
+        }
+        data.buy = data.buy ? data.buy.filter(filter) : { };
+        data.sell = data.sell ? data.sell.filter(filter) : { };
         deferred.resolve(data);
       });
     } else {
@@ -74,7 +92,7 @@ exports = module.exports = function (redis) {
 
   market.getBest = function (region, item, count) {
     var deferred = q.defer();
-    market.get(region, items)
+    market.get(region, item)
       .catch(deferred.reject)
       .then((data) => {
         data.buy.sort((a, b) => { return b.price - a.price });
@@ -106,7 +124,7 @@ exports = module.exports = function (redis) {
     market.get(stationIDTable[stationID], item)
       .catch(deferred.reject)
       .then((orders) => {
-        var filter = (order) => { return order.stationID === stationID; };
+        var filter = (order) => { return order.station === stationID; };
         orders.buy = orders.buy.filter(filter);
         orders.sell = orders.sell.filter(filter);
         deferred.resolve(orders);
@@ -123,13 +141,12 @@ exports = module.exports = function (redis) {
       .then((data) => {
         data.buy.sort((a, b) => { return b.price - a.price });
         data.sell.sort((a, b) => { return a.price - b.price });
-        if (count) {
+        if (count && count > 1) {
           data.buy = data.buy.slice(0, count);
           data.sell = data.sell.slice(0, count);
-          if (count === 1) {
-            data.buy = data.buy[0];
-            data.sell = data.sell[0];
-          }
+        } else {
+          data.buy = data.buy[0];
+          data.sell = data.sell[0];
         }
         deferred.resolve(data);
       });
