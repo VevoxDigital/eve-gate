@@ -43,6 +43,11 @@ angular
         controller: 'DatabaseSearchCtrl',
         controllerAs: 'databaseSearch'
       })
+      .when('/market', {
+        templateUrl: 'views/market.html',
+        controller: 'MarketCtrl',
+        controllerAs: 'market'
+      })
       .otherwise({
         redirectTo: '/error/404'
       });
