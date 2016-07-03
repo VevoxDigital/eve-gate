@@ -99,7 +99,7 @@ exports = module.exports = (redis) => {
             });
         }, (err) => {
           if (err) deferred.reject(err);
-          else deferred.resolve(skipped);
+          else { console.log(); deferred.resolve(skipped); }
         });
       });
       /*db.Type.find()
