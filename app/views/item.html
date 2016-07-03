@@ -31,7 +31,10 @@
         <img ng-src="http://image.eveonline.com/Type/{{ itemData._id }}_64.png">
         <h1 ng-bind="itemData.name"></h1>
       </div>
-      <h2 class="stats">{{ itemData.meta.volume || 0 }}m3 &sdot; {{ itemData.market.price.est || 0 }}ISK Estimated Price</h2>
+      <h2 class="stats">
+        {{ itemData.meta.volume || 0 }}m3 &nbsp; &sdot; &nbsp;
+        {{ itemData.market.est.buy[0].value || 0 }}<span class="isk">ISK</span> Buy /
+        {{ itemData.market.est.sell[0].value || 0 }}<span class="isk">ISK</span> Sell</h2>
       <div class="tabs">
         <a href="javascript:" ng-repeat="tab in itemTabs" ng-click="setTabIndex($index)"
           ng-class="{ active: isTabIndex($index) }" ng-bind="itemTabs[$index]"></a>

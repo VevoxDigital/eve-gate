@@ -28,6 +28,7 @@ hr {
   width: 80%;
 }
 
+// Technical text styles
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 .text-center { text-align: center; }
@@ -35,6 +36,13 @@ hr {
 .left { float: left; }
 .right { float: right; }
 .clear { clear: both; }
+
+// Misc text styles
+.isk {
+  font-size: 50%;
+  vertical-align: super;
+  padding-left: 2px;
+}
 
 .caret {
   display: inline-block;
