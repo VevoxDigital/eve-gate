@@ -79,20 +79,18 @@ TypeSchema.methods.updateMarket = function (market, order) {
 TypeSchema.methods.updateEstGraphData = function (orderType) {
   var est = 0, count = 0;
   var updateEst = (type, station) => {
-    if (type.market[station][orderType][0]) {
-      est += type.market[station][orderType][0];
+    if (type.market[station][orderType][0].value) {
+      est += type.market[station][orderType][0].value;
       count++;
     }
   }
   updateEst(this, 'jita');
   updateEst(this, 'amarr');
-  updateEst(this, 'dodixie');
-  updateEst(this, 'rens');
-  updateEst(this, 'hek');
+  //updateEst(this, 'dodixie');
+  //updateEst(this, 'rens');
+  //updateEst(this, 'hek');
 
-  // Why does this work? It's not even correct?
-  // Correct way doesn't work. Black magic again.
-  this.market.est[orderType].unshift(Math.floor(est/count));
+  this.market.est[orderType].unshift({ value: Math.floor(est/count) || 0 });
   this.markModified('market.est');
 };
 
