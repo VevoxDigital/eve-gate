@@ -82,7 +82,10 @@ exports = module.exports = (redis) => {
 
               q.all([
                 MARKET.getStationBest(60003760, typeID),
-                MARKET.getStationBest(60008494, typeID)
+                MARKET.getStationBest(60008494, typeID),
+                MARKET.getStationBest(60011866, typeID),
+                MARKET.getStationBest(60005686, typeID),
+                MARKET.getStationBest(60004594, typeID)
               ])
               .catch(cb)
               .then((results) => {
