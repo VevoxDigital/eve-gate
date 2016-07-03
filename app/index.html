@@ -37,7 +37,7 @@
             </a>
             <div class="dropdown">
               <div ng-repeat="item in link.items">
-                <a ng-if="item.href" ng-href="{{ !item.href.startsWith('@') ? '/' + link.href + '/' + item.href : item.href.substring(1) }}">
+                <a ng-if="item.href" ng-href="{{ !item.href.startsWith('@') ? '/' + item.href : item.href.substring(1) }}">
                   <span class="text" ng-bind="item.text"></span>
                   <span class="badge badge-orange" ng-if="item.beta">BETA</span>
                 </a>

@@ -38,7 +38,7 @@ angular
         controller: 'ItemCtrl',
         controllerAs: 'item'
       })
-      .when('/info/search', {
+      .when('/search', {
         templateUrl: 'views/database-search.html',
         controller: 'DatabaseSearchCtrl',
         controllerAs: 'databaseSearch'
@@ -66,7 +66,6 @@ angular
         [
           {
             text: 'Information',
-            href: 'info',
             fa: 'database',
             items: [
               { text: 'Database Search', href: 'search' },
@@ -74,33 +73,30 @@ angular
           },
           {
             text: 'Industry',
-            href: 'indy',
             fa: 'cogs',
             items: [
-              { text: 'Market Appraisals', href: 'appraisal' },
+              { text: 'Market Appraisals', href: 'market' },
               { },
-              { text: 'Reaction Info', href: 'reactions' },
-              { text: 'Mining Profits', href: 'mining' }
+              { text: 'Reaction Info', href: 'industry/reactions' },
+              { text: 'Mining Profits', href: 'industry/mining' }
             ]
           },
           {
             text: 'Logistics',
-            href: 'logi',
             fa: 'map',
             items: [
-              { text: 'New Eden Starmap', href: 'starmap' },
+              { text: 'New Eden Starmap', href: 'map' },
             ]
           },
           {
             text: 'About',
-            href: 'about',
             fa: 'question-circle',
             items: [
               { text: 'Support Tech3', href: 'support' },
               { text: 'Contribute', href: '@https://github.com/VevoxDigital/tech-3' },
-              { text: 'Tech 3 API', href: 'api' },
+              { text: 'Tech 3 API', href: 'about/api' },
               { },
-              { text: 'Contact Us', href: 'contact' }
+              { text: 'Contact Us', href: 'about' }
             ]
           }
         ],
