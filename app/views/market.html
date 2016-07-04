@@ -1,1 +1,46 @@
-<p>This is the market view.</p>
+<div vx-route="/market">
+  <h1 class="title">Market Appraisals</h1>
+  <div class="market-container">
+    <div class="market-section market-section-search">
+      <h2>Item Search Query</h2><hr>
+      <table class="query">
+        <thead ng-if="searchQuery.length > 0">
+          <tr>
+            <td>Type Name</td>
+            <td>Quantity</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="queryItem in searchQuery">
+            <td ng-bind="queryItem.name"></td>
+            <td ng-bind="queryItem.num"></td>
+            <td><a href="javascript:" ng-click="delQuery($index)" class="fa fa-close"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      <form class="query-adder" ng-submit="addQuery(queryAddition)">
+        <input type="text" name="name" placeholder="Item Name" ng-model="query.name">
+        <input type="number" name="quantity" placeholder="Amount" ng-model="query.quantity">
+        <input type="submit" value="Add">
+      </form>
+      <div class="buttons">
+        <a class="btn" href="javascript:">Mass Item Reader</a>
+        <a class="btn btn-bluegreen" href="javascript:">Create Appraisal &raquo;</a>
+      </div>
+      <!--<p>
+        You can search by copying contents of a container or an inventory with <code>Ctrl+C</code> and
+        <code>Ctrl+V</code> or enter full item names followed by quantity, new line separated.
+      </p>
+      <textarea class="market-search" placeholder="Give it a go, search something!" rows="10"></textarea>-->
+    </div>
+    <div class="market-section market-section-results">
+      <h2>Your Appraisal</h2><hr>
+
+      <p>
+        Your appraisal will appear here once you've submitted at least one search query.
+        Enter or paste a search query to get started.
+      </p>
+    </div>
+  </div>
+</div>

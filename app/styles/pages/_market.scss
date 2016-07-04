@@ -1,0 +1,62 @@
+div[vx-route='/market'] {
+  padding-top: 10px;
+  width: 95%;
+  margin: 0 auto;
+  .title { font-weight: 800; margin: 10px; }
+  .market-container {
+    display: flex;
+    width: 100%;
+    .market-section {
+      flex: 0 0 50%;
+      h2 { text-align: center; }
+      &.market-section-search {
+        .query {
+          width: 100%;
+          border: none !important;
+          outline: none !important;
+          thead {
+            font-weight: bold;
+            font-size: 13pt;
+          }
+          tbody {
+            tr:nth-child(odd) td:not(:nth-child(3)) { background-color: #fafafa; }
+            td { margin: 0; border: none; }
+            td:nth-child(1) { text-transform: capitalize; }
+            td:nth-child(3) {
+              width: 1%; white-space: nowrap;
+              a {
+                text-decoration: none;
+                color: $white2;
+                transition: color 250ms;
+                &:hover { color: $grey1; }
+              }
+            }
+          }
+        }
+        .query-adder {
+          display: flex;
+          input {
+            display: block;
+            width: auto;
+            margin: 5px;
+            padding: 5px;
+            font-size: 12pt;
+          }
+          input[name='name'] { flex: 1 1 auto; }
+          input[name='quantity'] { flex: 0 0 20%; }
+          input[type='submit'] { flex: 0 0 10%; }
+        }
+        .buttons { text-align: right; }
+      }
+      &.market-section-results {
+        p {
+          width: 80%;
+          margin: 10px auto;
+          display: block;
+          color: $white2;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

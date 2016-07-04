@@ -192,7 +192,7 @@ nav {
 input {
   display: block;
 }
-input[type='text'], input[type='password'] {
+input[type='text'], input[type='password'], input[type='number'] {
   background-color: $white;
   border-radius: 5px;
   padding: 10px;
@@ -247,12 +247,13 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background-color 250ms;
+  transition: opacity 250ms;
   text-decoration: none;
   padding: 10px 20px;
   display: inline-block;
-  &:hover { background-color: $blue2; }
+  &:hover { opacity: 0.8; }
   &[disabled] { background-color: $grey1; cursor: default; }
+  &.btn-bluegreen { background-color: $bluegreen1; }
 }
 input[type='submit'] {
   width: 80%;
