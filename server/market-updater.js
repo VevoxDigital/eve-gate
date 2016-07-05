@@ -75,7 +75,7 @@ exports = module.exports = (redis) => {
           db.Type.findById(typeID)
             .select('market')
             .exec((err, type) => {
-              if (!type) return cb();
+              if (!type || !type.needsGraphUpdate()) return cb();
               process.stdout.clearLine();
               process.stdout.cursorTo(0);
               process.stdout.write(` * Importing type ${typeID} of ${maxTypeID}`);
@@ -102,43 +102,6 @@ exports = module.exports = (redis) => {
           else { console.log(); deferred.resolve(skipped); }
         });
       });
-      /*db.Type.find()
-        .select('id market')
-        .exec((err, types) => {
-          if (err) return deferred.reject(err);
-          var c = 0;
-          async.eachSeries(types, (typeID, cb) => {
-            var typeID = typeID._id;
-            process.stdout.clearLine();
-            process.stdout.cursorTo(0);
-            process.stdout.write(' * Importing type ' + c++ + ' of ' + types.length);
-
-            // TODO Pull station data from database.
-
-            var market = { }, promiseBest = (stationName, order, nextID) => {
-              market[stationName] = { buy: order.buy.price;
-              return nextID ? MARKET.getStationBest(nextID, typeID) : q.promise((resolve) => { resolve(); });
-            };
-
-            MARKET.getStationBest(60003760, typeID)
-              .catch(cb)
-              .then((jita) => {
-                return promiseBest('jita', jita, 60008494);
-              })
-              .then((amarr) => {
-                return promiseBest('amarr', amarr);
-              })
-              .then(() => {
-                console.log(market);
-                redis.set(`${prefix}_${typeID}`, JSON.stringify(market), (err, reply) => {
-                  cb(err);
-                });
-              });
-          }, (err) => {
-            if (err) deferred.reject(err);
-            else { console.log(); deferred.resolve(skipped); }
-          });
-        });*/
     }
   });
   return deferred.promise;

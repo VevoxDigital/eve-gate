@@ -12,7 +12,8 @@ const AttributeSchema = new mongoose.Schema({
 }, { _id: false });
 
 const MarketGraphEntrySchema = new mongoose.Schema({
-  value: { type: Number, default: 0 },
+  buy: { type: Number, default: 0 },
+  sell: { type: Number, default: 0 },
   time: { type: Date, default: new Date() }
 }, { _id: false });
 
@@ -36,12 +37,12 @@ const TypeSchema = new mongoose.Schema({
     attributes: { type: [AttributeSchema], default: [] }
   },
   market: {
-    est: { buy: MarketGraphData, sell: MarketGraphData },
-    jita: { buy: MarketGraphData, sell: MarketGraphData },
-    amarr: { buy: MarketGraphData, sell: MarketGraphData },
-    dodixie: { buy: MarketGraphData, sell: MarketGraphData },
-    rens: { buy: MarketGraphData, sell: MarketGraphData },
-    hek: { buy: MarketGraphData, sell: MarketGraphData }
+    est: MarketGraphData,
+    jita: MarketGraphData,
+    amarr: MarketGraphData,
+    dodixie: MarketGraphData,
+    rens: MarketGraphData,
+    hek: MarketGraphData
   },
   published: { type: Boolean, required: true },
   group: { type: Number, min: 0, required: true }
@@ -63,40 +64,35 @@ TypeSchema.statics.getMaxID = function () {
   return deferred.promise;
 };
 
-TypeSchema.methods.updateGraphData = function (market, orderType, value) {
-  this.market[market][orderType].unshift({ value: value });
-  if (this.market[market][orderType].length > MAX_MARKET_LENGTH)
-    this.market[market][orderType] =
-      this.market[market][orderType].slice(MAX_MARKET_LENGTH - this.market[market][orderType].length);
-  this.markModified('market.' + market);
+TypeSchema.methods.needsGraphUpdate = function () {
+  return !this.market.est.length || new Date().getTime() - this.market.est[0].time.getTime() >= MARKET_TIME_MS - (60 * 60 * 1000);
 };
 
 TypeSchema.methods.updateMarket = function (market, order) {
-  this.updateGraphData(market, 'buy', order && order.buy ? order.buy.price : 0);
-  this.updateGraphData(market, 'sell', order && order.sell ? order.sell.price : 0);
-};
-
-TypeSchema.methods.updateEstGraphData = function (orderType) {
-  var est = 0, count = 0;
-  var updateEst = (type, station) => {
-    if (type.market[station][orderType][0] && type.market[station][orderType][0].value) {
-      est += type.market[station][orderType][0].value;
-      count++;
-    }
-  }
-  updateEst(this, 'jita');
-  updateEst(this, 'amarr');
-  //updateEst(this, 'dodixie');
-  //updateEst(this, 'rens');
-  //updateEst(this, 'hek');
-
-  this.market.est[orderType].unshift({ value: Math.floor(est/count) || 0 });
-  this.markModified('market.est');
+  this.market[market].unshift({
+    buy: order && order.buy ? order.buy.price : 0,
+    sell: order && order.sell ? order.sell.price : 0
+  });
+  if (this.market[market].length > MAX_MARKET_LENGTH)
+    this.market[market].splice(-1, this.market[market].length - MAX_MARKET_LENGTH);
+  this.markModified('market.' + market);
 };
 
 TypeSchema.methods.updateEstimate = function () {
-  this.updateEstGraphData('buy');
-  this.updateEstGraphData('sell');
+  var est = { buy: 0, sell: 0 }, count = { buy: 0, sell: 0 };
+  var u = (type, station) => {
+    var best = type.market[station][0];
+    if (best && best.buy) { est.buy += best.buy; count.buy++; }
+    if (best && best.sell) { est.sell += best.sell; count.sell++; }
+  };
+  u(this, 'jita');
+  u(this, 'amarr');
+
+  this.market.est.unshift({
+    buy: Math.floor(est.buy/count.buy) || 0,
+    sell: Math.floor(est.sell/count.sell) || 0
+  });
+  this.markModified('market.est');
 };
 
 exports = module.exports = TypeSchema;
