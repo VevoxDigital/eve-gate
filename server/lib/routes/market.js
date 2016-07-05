@@ -33,7 +33,6 @@ router.post('/appraisal', (req, res, next) => {
           MARKET.getStationBest(stationIDTable[req.body.station], type._id)
             .catch(cb)
             .then((best) => {
-              console.log(best);
               try {
                 response.push({
                   name: query.name,
