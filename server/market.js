@@ -67,17 +67,17 @@ exports = module.exports = function (redis) {
             sell: cacheData.sell.slice()
           };
         } else {
-          data = JSON.parse(reply);
+          data = JSON.parse(reply) || { };
           regionCache['r'+region] = {
             data: {
-              buy: data.buy.slice(),
-              sell: data.sell.slice()
+              buy: data.buy ? data.buy.slice() : [],
+              sell: data.sell ? data.sell.slice() : []
             },
             timestamp: new Date().getTime()
           };
         }
-        data.buy = data.buy ? data.buy.filter(filter) : { };
-        data.sell = data.sell ? data.sell.filter(filter) : { };
+        data.buy = data.buy ? data.buy.filter(filter) : [];
+        data.sell = data.sell ? data.sell.filter(filter) : [];
         deferred.resolve(data);
       });
     } else {
@@ -97,13 +97,12 @@ exports = module.exports = function (redis) {
       .then((data) => {
         data.buy.sort((a, b) => { return b.price - a.price });
         data.sell.sort((a, b) => { return a.price - b.price });
-        if (count) {
+        if (count && count > 1) {
           data.buy = data.buy.slice(0, count);
           data.sell = data.sell.slice(0, count);
-          if (count === 1) {
-            data.buy = data.buy[0];
-            data.sell = data.sell[0];
-          }
+        } else {
+          data.buy = data.buy[0];
+          data.sell = data.sell[0];
         }
         deferred.resolve(data);
       });
@@ -164,10 +163,8 @@ exports = module.exports = function (redis) {
       market.getBest(r, item)
         .catch(deferred.reject)
         .then((best) => {
-          sum.buy += best.buy;
-          sum.sell += best.sell;
-          count.buy++;
-          count.sell++;
+          if (best.buy) { sum.buy += best.buy.price; count.buy++; }
+          if (best.sell) { sum.sell += best.sell.price; count.sell++; }
           cb();
         });
     }, () => {

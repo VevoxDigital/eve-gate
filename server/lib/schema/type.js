@@ -86,9 +86,9 @@ TypeSchema.methods.updateEstGraphData = function (orderType) {
   }
   updateEst(this, 'jita');
   updateEst(this, 'amarr');
-  updateEst(this, 'dodixie');
-  updateEst(this, 'rens');
-  updateEst(this, 'hek');
+  //updateEst(this, 'dodixie');
+  //updateEst(this, 'rens');
+  //updateEst(this, 'hek');
 
   this.market.est[orderType].unshift({ value: Math.floor(est/count) || 0 });
   this.markModified('market.est');
