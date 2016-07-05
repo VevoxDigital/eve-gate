@@ -69,15 +69,18 @@ exports = module.exports = function (redis) {
         } else {
           data = JSON.parse(reply) || { };
           var cacheData = { data: { }, timestamp: new Date().getTime() };
-          var func = (order) => {
-            var orderType = order.buy ? 'buy' : 'sell';
-            cacheData.data[order.type] = cacheData.data[order.type] || { };
-            var cacheType = cacheData.data[order.type];
-            cacheType[orderType] = cacheType[orderType] || [];
-            cacheType[orderType].push(order);
+          var func = (orderType) => {
+            return (order) => {
+              cacheData.data[order.type] = cacheData.data[order.type] || { buy: [], sell: [] };
+              cacheData.data[order.type][orderType].push(order);
+            }
           };
-          data.buy.forEach(func);
-          data.sell.forEach(func);
+          data.buy.forEach(func('buy'));
+          data.sell.forEach(func('sell'));
+          data = cacheData.data[item] ? {
+            sell: cacheData.data[item].sell.slice(),
+            buy: cacheData.data[item].buy.slice()
+          } : { buy: [], sell: [] };
           regionCache['r'+region] = cacheData;
         }
         deferred.resolve(data);

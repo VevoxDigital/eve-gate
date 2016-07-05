@@ -20,7 +20,7 @@ exports = module.exports = (redis) => {
       if (err) return done(err);
       regionTimestamp = regionTimestamp || 0;
       // Don't use global market variable, trying to fetch time minus one.
-      if (timestamp - regionTimestamp <= (MARKET_TIME - 1) * 60 * 60 * 1000) {
+      if (!config.get('force-market') && timestamp - regionTimestamp <= (MARKET_TIME - 1) * 60 * 60 * 1000) {
         skipped++;
         done();
       } else {
@@ -29,7 +29,7 @@ exports = module.exports = (redis) => {
         var regionUrl = `${url}/${region.id}/orders/all/`;
         var fetchPage = (pageNum) => {
           var deferredHTTP = q.defer(), pageUrl = !!pageNum ? regionUrl + `?page=${pageNum}` : regionUrl;
-          https.get(regionUrl, (res) => {
+          https.get(pageUrl, (res) => {
             var body = '';
             res.on('data', (d) => { body += d });
             res.on('end', () => {
@@ -46,7 +46,7 @@ exports = module.exports = (redis) => {
         // Get the first page so we have the total page count.
         fetchPage().catch(done).then((json) => {
           var pages = [json], pageNums = [];
-          for (var n = 1; n < json.pageCount; n++) pageNums.push(n);
+          for (var n = 2; n <= json.pageCount; n++) pageNums.push(n);
           // Now start getting the other pages.
           async.each(pageNums, (page, cb) => {
             fetchPage(page).catch(done).then((body) => {
