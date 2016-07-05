@@ -62,22 +62,24 @@ exports = module.exports = function (redis) {
         var data;
         if (regionCache['r'+region] && new Date().getTime() - regionCache['r'+region].timestamp < 600 * 1000) {
           var cacheData = regionCache['r'+region].data;
-          data = {
-            buy: cacheData.buy.slice(),
-            sell: cacheData.sell.slice()
-          };
+          data = cacheData[item] ? {
+            buy:  cacheData[item].buy ? cacheData[item].buy.slice() : [],
+            sell: cacheData[item].sell ? cacheData[item].sell.slice() : []
+          } : { buy: [], sell: [] };
         } else {
           data = JSON.parse(reply) || { };
-          regionCache['r'+region] = {
-            data: {
-              buy: data.buy ? data.buy.slice() : [],
-              sell: data.sell ? data.sell.slice() : []
-            },
-            timestamp: new Date().getTime()
+          var cacheData = { data: { }, timestamp: new Date().getTime() };
+          var func = (order) => {
+            var orderType = order.buy ? 'buy' : 'sell';
+            cacheData.data[order.type] = cacheData.data[order.type] || { };
+            var cacheType = cacheData.data[order.type];
+            cacheType[orderType] = cacheType[orderType] || [];
+            cacheType[orderType].push(order);
           };
+          data.buy.forEach(func);
+          data.sell.forEach(func);
+          regionCache['r'+region] = cacheData;
         }
-        data.buy = data.buy ? data.buy.filter(filter) : [];
-        data.sell = data.sell ? data.sell.filter(filter) : [];
         deferred.resolve(data);
       });
     } else {
