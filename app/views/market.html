@@ -25,8 +25,9 @@
         <input type="submit" value="Add">
       </form>
       <div class="buttons">
+        <a class="btn btn-red" href="javascript:" ng-click="searchQuery = []">Clear</a>
         <a class="btn" href="javascript:">Mass Item Reader</a>
-        <a class="btn btn-bluegreen" href="javascript:">Create Appraisal &raquo;</a>
+        <a class="btn btn-bluegreen" href="javascript:" ng-click="createAppraisal()">Create Appraisal &raquo;</a>
       </div>
       <!--<p>
         You can search by copying contents of a container or an inventory with <code>Ctrl+C</code> and
@@ -37,10 +38,51 @@
     <div class="market-section market-section-results">
       <h2>Your Appraisal</h2><hr>
 
-      <p>
+      <table ng-if="appraisal.length" class="appraisal">
+        <thead>
+          <tr>
+            <td>Item</td>
+            <td>Volume</td>
+            <td>Price</td>
+            <td>ISK/m<sup>3</sup></td>
+            <td>Total Value</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in appraisal">
+            <td ng-bind="item.name + ' x' + item.quantity"></td>
+            <td>{{item.volume}}m<sup>3</sup></td>
+            <td ng-if="item.price.buy">
+              {{item.price.buy.unit_str}}<span class="isk">ISK</span> Buy,<br>
+              {{item.price.sell.unit_str}}<span class="isk">ISK</span> Sell
+            </td>
+            <td ng-if="item.price.buy">
+              {{item.price.buy.m3_str}}<span class="isk">ISK</span> Buy,<br>
+              {{item.price.sell.m3_str}}<span class="isk">ISK</span> Sell
+            </td>
+            <td ng-if="item.price.buy">
+              {{item.price.buy.total_str}}<span class="isk">ISK</span> Buy,<br>
+              {{item.price.sell.total_str}}<span class="isk">ISK</span> Sell
+            </td>
+            <td ng-if="!item.price.buy">
+              {{item.price.unit_str}}<span class="isk">ISK</span>
+            </td>
+            <td ng-if="!item.price.buy">
+              {{item.price.m3_str}}<span class="isk">ISK</span>
+            </td>
+            <td ng-if="!item.price.buy">
+              {{item.price.total_str}}<span class="isk">ISK</span>
+            </td>
+          </tr>
+          <!-- TODO Totals! -->
+        </tbody>
+      </table>
+
+      <p ng-if="!appraisal.length &amp;&amp; !appraisalError">
         Your appraisal will appear here once you've submitted at least one search query.
         Enter or paste a search query to get started.
       </p>
+      <p ng-if="appraisalError" ng-bind="appraisalError"></p>
     </div>
   </div>
 </div>
