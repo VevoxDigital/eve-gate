@@ -35,7 +35,7 @@ router.post('/appraisal', (req, res, next) => {
             .then((best) => {
               try {
                 response.push({
-                  name: query.name,
+                  name: type.name,
                   volume: type.meta.volume,
                   quantity: query.num,
                   price: { buy: best.buy ? best.buy.price : 0, sell: best.sell ? best.sell.price : 0 },
@@ -44,19 +44,13 @@ router.post('/appraisal', (req, res, next) => {
               } catch (err) { console.log(err); }
             });
         } else {
-          MARKET.getEstimate(type._id)
-            .catch(cb)
-            .then((est) => {
-              try {
-                response.push({
-                  name: query.name,
-                  volume: type.meta.volume,
-                  quantity: query.num,
-                  price: { buy: est.buy ? est.buy.price : 0, sell: est.sell ? est.sell.price : 0 },
-                });
-                cb();
-              } catch (err) { console.log(err); }
-            });
+          response.push({
+            name: type.name,
+            volume: type.meta.volume,
+            quantity: query.num,
+            price: type.market.est
+          });
+          cb();
         }
       });
   }, (err) => {

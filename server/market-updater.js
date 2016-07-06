@@ -67,17 +67,32 @@ exports = module.exports = (redis) => {
   }, (err) => {
     if (err) deferred.reject(err);
     else {
-      LOG.info('Market data up-to-date, injecting per-item data');
-      db.Type.getMaxID().catch(deferred.reject).then((maxTypeID) => {
-        var typeIDs = [];
-        for (var typeID = 0; typeID <= maxTypeID; typeID++) { typeIDs.push(typeID); }
-        async.eachSeries(typeIDs, (typeID, cb) => {
+      LOG.info(`Regional data up-to-date (${skipped} skipped), updating type data...`);
+
+      var fetchMarket = () => {
+        var deferredHTTP = q.defer();
+        https.get(`${url}/prices/`, (res) => {
+          var body = '';
+          res.on('data', (d) => { body += d; });
+          res.on('end', () => {
+            try {
+              deferredHTTP.resolve(JSON.parse(body));
+            } catch (e) { deferredHTTP.reject(e); }
+          });
+        });
+        return deferredHTTP.promise;
+      };
+
+      fetchMarket().catch(deferred.reject).then((marketPrices) => {
+        var c = 0;
+        async.eachSeries(marketPrices.items, (item, cb) => {
+          var typeID = item.type.id;
           db.Type.findById(typeID)
             .select('market')
             .exec((err, type) => {
               process.stdout.clearLine();
               process.stdout.cursorTo(0);
-              process.stdout.write(` * Importing type ${typeID} of ${maxTypeID}`);
+              process.stdout.write(` * Importing type ${typeID} (#${c++}) of ${marketPrices.items.length}`);
               if (!type || !type.needsGraphUpdate()) return cb();
 
               q.all([
@@ -92,7 +107,7 @@ exports = module.exports = (redis) => {
                 try {
                   type.updateMarket('jita', results[0]);
                   type.updateMarket('amarr', results[1]);
-                  type.updateEstimate();
+                  type.market.est = { adjustedPrice: item.adjustedPrice, averagePrice: item.averagePrice }
                   type.save(cb);
                 } catch (err) { console.log(err); }
               });

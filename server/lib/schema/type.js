@@ -37,7 +37,7 @@ const TypeSchema = new mongoose.Schema({
     attributes: { type: [AttributeSchema], default: [] }
   },
   market: {
-    est: MarketGraphData,
+    est: { adjustedPrice: { type: Number, default: 0 }, averagePrice: { type: Number, default: 0 } },
     jita: MarketGraphData,
     amarr: MarketGraphData,
     dodixie: MarketGraphData,
@@ -65,7 +65,7 @@ TypeSchema.statics.getMaxID = function () {
 };
 
 TypeSchema.methods.needsGraphUpdate = function () {
-  return !this.market.est.length || new Date().getTime() - this.market.est[0].time.getTime() >= MARKET_TIME_MS - (60 * 60 * 1000);
+  return !this.market.jita.length || new Date().getTime() - this.market.jita[0].time.getTime() >= MARKET_TIME_MS - (60 * 60 * 1000);
 };
 
 TypeSchema.methods.updateMarket = function (market, order) {
@@ -76,23 +76,6 @@ TypeSchema.methods.updateMarket = function (market, order) {
   if (this.market[market].length > MAX_MARKET_LENGTH)
     this.market[market].splice(-1, this.market[market].length - MAX_MARKET_LENGTH);
   this.markModified('market.' + market);
-};
-
-TypeSchema.methods.updateEstimate = function () {
-  var est = { buy: 0, sell: 0 }, count = { buy: 0, sell: 0 };
-  var u = (type, station) => {
-    var best = type.market[station][0];
-    if (best && best.buy) { est.buy += best.buy; count.buy++; }
-    if (best && best.sell) { est.sell += best.sell; count.sell++; }
-  };
-  u(this, 'jita');
-  u(this, 'amarr');
-
-  this.market.est.unshift({
-    buy: Math.floor(est.buy/count.buy) || 0,
-    sell: Math.floor(est.sell/count.sell) || 0
-  });
-  this.markModified('market.est');
 };
 
 exports = module.exports = TypeSchema;
