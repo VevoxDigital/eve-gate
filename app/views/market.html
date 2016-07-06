@@ -74,7 +74,19 @@
               {{item.price.total_str}}<span class="isk">ISK</span>
             </td>
           </tr>
-          <!-- TODO Totals! -->
+          <tr>
+            <td class="text-right">Totals</td>
+            <td>{{appraisalTotal.volume}}m<sup>3</sup></td>
+            <td></td>
+            <td></td>
+            <td ng-if="item.price.buy">
+              {{appraisalTotal.price.buy}}<span class="isk">ISK</span> Buy,<br>
+              {{appraisalTotal.price.sell}}<span class="isk">ISK</span> Sell
+            </td>
+            <td ng-if="!item.price.buy">
+              {{appraisalTotal.price}}<span class="isk">ISK</span>
+            </td>
+          </tr>
         </tbody>
       </table>
 

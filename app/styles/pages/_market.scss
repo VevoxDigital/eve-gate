@@ -6,8 +6,10 @@ div[vx-route='/market'] {
   .market-container {
     display: flex;
     width: 100%;
+    .market-section:first-child { flex: 0 0 45%; }
     .market-section {
-      flex: 0 0 50%;
+      flex: 0 0 55%;
+      padding: 0 10px;
       h2 { text-align: center; }
       &.market-section-search {
         .query {
@@ -56,7 +58,11 @@ div[vx-route='/market'] {
             font-size: 14pt;
           }
           tbody {
-            tr td { padding: 5px; }
+            tr td { padding: 5px; color: $grey1; }
+            tr:last-child {
+              border-top: 1px $white1 solid;
+              td { color: $white2; }
+            }
           }
         }
         p {
