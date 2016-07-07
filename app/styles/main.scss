@@ -253,7 +253,11 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   display: inline-block;
   &:hover { opacity: 0.8; }
   &[disabled] { background-color: $grey1; cursor: default; }
-  &.btn-bluegreen { background-color: $bluegreen1; }
+  &.btn-primary { background-color: $bluegreen1; }
+  &.btn-warning { background-color: $yellow1; }
+  &.btn-danger { background-color: $red1; }
+  &.btn-success { background-color: $green1; }
+  &.btn-inverse { background-color: $black1; }
 }
 input[type='submit'] {
   width: 80%;
