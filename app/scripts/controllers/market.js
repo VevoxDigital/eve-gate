@@ -23,6 +23,24 @@ angular.module('tech3App')
     $scope.delQuery = function (index) {
       $scope.searchQuery.splice(index, 1);
     };
+
+    $scope.pasteParserShown = false;
+    $scope.parseItems = function () {
+      var items = { }, data = angular.element('#pasteParserContent').val();
+      data = data.split('\n');
+      data.forEach(function (line) {
+        line = line.split('\t');
+        line[1] = Number(line[1]);
+        if (!line[1]) { return; }
+        items[line[0]] = items[line[0]] || 0;
+        items[line[0]] += line[1];
+      });
+      angular.forEach(items, function (num, name) {
+        $scope.searchQuery.push({ name: name, num: num });
+      });
+      $scope.query.pasteParserShown = false;
+    };
+
     $scope.createAppraisal = function () {
       backendService.request({
         url: 'market/appraisal/',
@@ -34,67 +52,81 @@ angular.module('tech3App')
       }, function (res) {
         if (res.status === 200) {
           var commas = function (x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (x.match(/^[0-9,]*$/)) { x = x + '.00'; }
+            if (x.match(/^[0-9,]*\.[0-9]$/)) { x = x + '0'; }
+            return x;
           };
           $scope.appraisal = [];
           $scope.appraisalTotal = { volume: 0 };
           res.data.forEach(function (item) {
-            if (!$scope.appraisalTotal.price) {
-              $scope.appraisalTotal.price = item.price.buy ? { buy: 0, sell: 0 } : 0;
-            }
-
-            var price = item.price.buy ? {
-              buy: Math.floor(item.price.buy * 100) / 100,
-              sell: Math.floor(item.price.sell * 100) / 100
-            } : Math.floor(item.price.averagePrice * 100) / 100;
-            var ppv = item.price.buy ? {
-              buy: Math.floor((price.buy/item.volume) * 100) / 100,
-              sell: Math.floor((price.sell/item.volume) * 100) / 100
-            } : Math.floor((price/item.volume) * 100) / 100;
-
-            $scope.appraisalTotal.volume += item.volume * item.quantity;
-            $scope.appraisalTotal.price = item.price.buy ? {
-              buy: $scope.appraisalTotal.price.buy + (price.buy * item.quantity),
-              sell: $scope.appraisalTotal.price.sell + (price.sell * item.quantity)
-            } : $scope.appraisalTotal.price + (price * item.quantity);
-
-            $scope.appraisal.push({
-              name: item.name,
-              err: item.err,
-              volume: commas(item.volume),
-              quantity: item.quantity,
-              price: item.price.buy ? {
-                buy: {
-                  unit: price.buy,
-                  unit_str: commas(price.buy),
-                  m3: ppv.buy,
-                  m3_str: commas(ppv.buy),
-                  total: price.buy * item.quantity,
-                  total_str: commas(price.buy * item.quantity)
-                },
-                sell: {
-                  unit: price.sell,
-                  unit_str: commas(price.sell),
-                  m3: ppv.sell,
-                  m3_str: commas(ppv.sell),
-                  total: price.sell * item.quantity,
-                  total_str: commas(price.sell * item.quantity)
-                }
-              } : {
-                unit: price,
-                unit_str: commas(price),
-                m3: ppv,
-                m3_str: commas(ppv),
-                total: price * item.quantity,
-                total_str: commas(price * item.quantity)
+            if (item.err || !item.volume) {
+              $scope.appraisal.push({
+                name: item.name,
+                quantity: item.quantity,
+                err: item.err || 'Invalid or unknown type name'
+              });
+            } else {
+              if (!$scope.appraisalTotal.price) {
+                $scope.appraisalTotal.price = item.price.buy ? { buy: 0, sell: 0 } : 0;
               }
-            });
+
+              var price = item.price.buy ? {
+                buy: Math.floor(item.price.buy * 100) / 100,
+                sell: Math.floor(item.price.sell * 100) / 100
+              } : Math.round(item.price.averagePrice * 100) / 100;
+              var ppv = item.price.buy ? {
+                buy: Math.floor((price.buy/item.volume) * 100) / 100,
+                sell: Math.floor((price.sell/item.volume) * 100) / 100
+              } : Math.round((price/item.volume) * 100) / 100;
+              var total = item.price.buy ? {
+                buy: Math.floor(price.buy * item.quantity * 100) / 100,
+                sell: Math.floor(price.sell * item.quantity * 100) / 100
+              } : Math.round(price * item.quantity * 100) / 100;
+
+              $scope.appraisalTotal.volume += item.volume * item.quantity;
+              $scope.appraisalTotal.price = item.price.buy ? {
+                buy: $scope.appraisalTotal.price.buy + (total.buy),
+                sell: $scope.appraisalTotal.price.sell + (total.sell)
+              } : $scope.appraisalTotal.price + (total);
+
+              $scope.appraisal.push({
+                name: item.name,
+                volume: commas(item.volume),
+                quantity: item.quantity,
+                price: item.price.buy ? {
+                  buy: {
+                    unit: price.buy,
+                    unit_str: commas(price.buy),
+                    m3: ppv.buy,
+                    m3_str: commas(ppv.buy),
+                    total: total.buy,
+                    total_str: commas(total.buy)
+                  },
+                  sell: {
+                    unit: price.sell,
+                    unit_str: commas(price.sell),
+                    m3: ppv.sell,
+                    m3_str: commas(ppv.sell),
+                    total: total.sell,
+                    total_str: commas(total.sell)
+                  }
+                } : {
+                  unit: price,
+                  unit_str: commas(price),
+                  m3: ppv,
+                  m3_str: commas(ppv),
+                  total: total,
+                  total_str: commas(total)
+                }
+              });
+            }
           });
           $scope.appraisalTotal.volume = commas($scope.appraisalTotal.volume);
           $scope.appraisalTotal.price = $scope.appraisalTotal.price.buy ? {
-            buy: commas($scope.appraisalTotal.price.buy),
-            sell: commas($scope.appraisalTotal.price.sell)
-          } : commas($scope.appraisalTotal.price);
+            buy: commas(Math.floor($scope.appraisalTotal.price.buy * 100) / 100),
+            sell: commas(Math.floor($scope.appraisalTotal.price.sell * 100) / 100)
+          } : commas(Math.round($scope.appraisalTotal.price * 100) / 100);
         } else {
           $scope.appraisalError = res.data ? res.status + ' Unknown error' : res.data.message;
         }

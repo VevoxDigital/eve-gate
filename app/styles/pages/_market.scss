@@ -1,5 +1,6 @@
 div[vx-route='/market'] {
   padding-top: 10px;
+  margin-bottom: 50px;
   width: 95%;
   margin: 0 auto;
   .title { font-weight: 800; margin: 10px; }
@@ -10,6 +11,7 @@ div[vx-route='/market'] {
     .market-section {
       flex: 0 0 55%;
       padding: 0 10px;
+      position: relative;
       h2 { text-align: center; }
       &.market-section-search {
         .query {
@@ -49,6 +51,40 @@ div[vx-route='/market'] {
           input[type='submit'] { flex: 0 0 10%; }
         }
         .buttons { text-align: right; }
+        .paste-parser {
+          background-color: rgba(0,0,0,0.3);
+          width: 100vw;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 100;
+          transition: opacity 250ms;
+          .paste-parser-content {
+            position: absolute;
+            width: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $white;
+            border-radius: 8px;
+            padding: 20px;
+            h2 { margin: 0; }
+            p { text-align: center; color: $white2; margin: 0; }
+            textarea {
+              width: 100%;
+              border-radius: 5px;
+              margin-top: 5px;
+              outline: none;
+              border: 2px $white1 solid;
+              padding: 10px;
+              transition: border-color 250ms;
+              &:focus { border-color: $bluegreen1; }
+            }
+          }
+          &.ng-enter, &.ng-leave.ng-leave-active { opacity: 0; }
+          &.ng-leave, &.ng-enter.ng-enter-active { opacity: 1; }
+        }
       }
       &.market-section-results {
         .appraisal {
@@ -59,6 +95,7 @@ div[vx-route='/market'] {
           }
           tbody {
             tr td { padding: 5px; color: $grey1; }
+            .appraisal-err { color: $red1; font-style: italic; }
             tr:last-child {
               border-top: 1px $white1 solid;
               td { color: $white2; }

@@ -3,6 +3,16 @@
   <div class="market-container">
     <div class="market-section market-section-search">
       <h2>Item Search Query</h2><hr>
+      <div class="buttons">
+        <a class="btn btn-warning" href="javascript:" ng-click="searchQuery = []">Clear</a>
+        <a class="btn" href="javascript:" ng-click="query.pasteParserShown = true">Mass Item Reader</a>
+        <a class="btn btn-primary" href="javascript:" ng-click="createAppraisal()">Create Appraisal &raquo;</a>
+      </div>
+      <form class="query-adder" ng-submit="addQuery(queryAddition)">
+        <input type="text" name="name" placeholder="Item Name" ng-model="query.name">
+        <input type="number" name="quantity" placeholder="Amount" ng-model="query.quantity">
+        <input type="submit" value="Add">
+      </form>
       <table class="query">
         <thead ng-if="searchQuery.length > 0">
           <tr>
@@ -19,21 +29,17 @@
           </tr>
         </tbody>
       </table>
-      <form class="query-adder" ng-submit="addQuery(queryAddition)">
-        <input type="text" name="name" placeholder="Item Name" ng-model="query.name">
-        <input type="number" name="quantity" placeholder="Amount" ng-model="query.quantity">
-        <input type="submit" value="Add">
-      </form>
-      <div class="buttons">
-        <a class="btn btn-warning" href="javascript:" ng-click="searchQuery = []">Clear</a>
-        <a class="btn" href="javascript:">Mass Item Reader</a>
-        <a class="btn btn-primary" href="javascript:" ng-click="createAppraisal()">Create Appraisal &raquo;</a>
+      <div class="paste-parser" ng-if="query.pasteParserShown">
+        <div class="paste-parser-content">
+          <h2>Mass Item Reader</h2>
+          <p>Paste data from hangars, containers, D-Scan results, and more.</p>
+          <textarea id="pasteParserContent" class="market-search" placeholder="Copy with Ctrl+C and paste here." rows="10"></textarea>
+          <div class="text-center">
+            <a href="javascript:" class="btn btn-warning" ng-click="query.pasteParserShown = false">Cancel</a>
+            <a href="javascript:" class="btn btn-success" ng-click="parseItems()">Submit Paste</a>
+          </div>
+        </div>
       </div>
-      <!--<p>
-        You can search by copying contents of a container or an inventory with <code>Ctrl+C</code> and
-        <code>Ctrl+V</code> or enter full item names followed by quantity, new line separated.
-      </p>
-      <textarea class="market-search" placeholder="Give it a go, search something!" rows="10"></textarea>-->
     </div>
     <div class="market-section market-section-results">
       <h2>Your Appraisal</h2><hr>
@@ -51,34 +57,33 @@
         <tbody>
           <tr ng-repeat="item in appraisal">
             <td ng-bind="item.name + ' x' + item.quantity"></td>
-            <td>{{item.volume}}m<sup>3</sup></td>
-            <td ng-if="item.price.buy">
+            <td ng-if="item.err" class="appraisal-err" ng-bind="item.err" colspan="6"></td>
+            <td ng-if="!item.err">{{item.volume}}m<sup>3</sup></td>
+            <td ng-if="item.price.buy &amp;&amp; !item.err">
               {{item.price.buy.unit_str}}<span class="isk">ISK</span> Buy,<br>
               {{item.price.sell.unit_str}}<span class="isk">ISK</span> Sell
             </td>
-            <td ng-if="item.price.buy">
+            <td ng-if="item.price.buy &amp;&amp; !item.err">
               {{item.price.buy.m3_str}}<span class="isk">ISK</span> Buy,<br>
               {{item.price.sell.m3_str}}<span class="isk">ISK</span> Sell
             </td>
-            <td ng-if="item.price.buy">
+            <td ng-if="item.price.buy &amp;&amp; !item.err">
               {{item.price.buy.total_str}}<span class="isk">ISK</span> Buy,<br>
               {{item.price.sell.total_str}}<span class="isk">ISK</span> Sell
             </td>
-            <td ng-if="!item.price.buy">
+            <td ng-if="!item.price.buy &amp;&amp; !item.err">
               {{item.price.unit_str}}<span class="isk">ISK</span>
             </td>
-            <td ng-if="!item.price.buy">
+            <td ng-if="!item.price.buy &amp;&amp; !item.err">
               {{item.price.m3_str}}<span class="isk">ISK</span>
             </td>
-            <td ng-if="!item.price.buy">
+            <td ng-if="!item.price.buy &amp;&amp; !item.err">
               {{item.price.total_str}}<span class="isk">ISK</span>
             </td>
           </tr>
           <tr>
             <td class="text-right">Totals</td>
-            <td>{{appraisalTotal.volume}}m<sup>3</sup></td>
-            <td></td>
-            <td></td>
+            <td colspan="3">{{appraisalTotal.volume}}m<sup>3</sup></td>
             <td ng-if="item.price.buy">
               {{appraisalTotal.price.buy}}<span class="isk">ISK</span> Buy,<br>
               {{appraisalTotal.price.sell}}<span class="isk">ISK</span> Sell
