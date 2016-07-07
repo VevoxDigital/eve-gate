@@ -16,7 +16,7 @@ angular.module('tech3App')
     $scope.isTabIndex = function (i) { return i === $scope.itemTabIndex; };
     $scope.itemTabs = ['Description', 'Attributes', 'Market Data'];
 
-    if (!Number.isNaN(parseInt($routeParams.item))) {
+    if (!isNaN(Number($routeParams.item))) {
       $scope.itemData = { _id: $routeParams.item };
       backendService.get('type/' + $scope.itemData._id + '/', { }, function (res) {
         if (res.data.message) {
