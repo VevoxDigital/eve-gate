@@ -38,7 +38,7 @@ angular.module('tech3App')
           };
           $scope.appraisal = [];
           $scope.appraisalTotal = { volume: 0 };
-          res.data.forEach((item) => {
+          res.data.forEach(function (item) {
             if (!$scope.appraisalTotal.price) {
               $scope.appraisalTotal.price = item.price.buy ? { buy: 0, sell: 0 } : 0;
             }

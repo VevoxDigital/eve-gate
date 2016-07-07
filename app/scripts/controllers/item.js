@@ -30,7 +30,7 @@ angular.module('tech3App')
 
           // Update specialized attribute units.
           // TODO Quite a few units.
-          res.data.meta.attributes.forEach((a) => {
+          res.data.meta.attributes.forEach(function (a) {
             var unit = a.attribute.meta.unit;
             a.value_str = unit ? a.value + ' ' + unit.displayName : a.value;
             if (unit) {
