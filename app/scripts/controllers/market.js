@@ -13,6 +13,7 @@ angular.module('tech3App')
     $scope.appraisal = []; $scope.appraisalError = null;
     $scope.appraisalTotal = { volume: 0, price: 0 };
     $scope.query = { }; $scope.station = '';
+    $scope.requestPending = false;
     $scope.addQuery = function () {
       if (!$scope.query.name) { return $scope.createAppraisal(); }
       if (!$scope.query.quantity) { $scope.query.quantity = 1; }
@@ -42,6 +43,8 @@ angular.module('tech3App')
     };
 
     $scope.createAppraisal = function () {
+      if ($scope.requestPending = true) { return; }
+      $scope.requestPending = true;
       backendService.request({
         url: 'market/appraisal/',
         data: {
@@ -50,6 +53,7 @@ angular.module('tech3App')
         },
         method: 'POST'
       }, function (res) {
+        $scope.requestPending = false;
         if (res.status === 200) {
           var commas = function (x) {
             x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

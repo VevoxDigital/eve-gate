@@ -257,13 +257,13 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   text-decoration: none;
   padding: 10px 20px;
   display: inline-block;
-  &:hover { opacity: 0.8; }
-  &[disabled] { background-color: $grey1; cursor: default; }
+  &:hover:not([disabled]) { opacity: 0.8; }
   &.btn-primary { background-color: $bluegreen1; }
   &.btn-warning { background-color: $yellow1; }
   &.btn-danger { background-color: $red1; }
   &.btn-success { background-color: $green1; }
   &.btn-inverse { background-color: $black1; }
+  &[disabled] { background-color: $grey1; cursor: default; }
 }
 input[type='submit'] {
   width: 80%;
