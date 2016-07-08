@@ -12,6 +12,28 @@ var stationIDTable = {
   rens: 60004594  // Rens
 }
 
+// User attempts to create a permalink.
+router.put('/permalink', (req, res, next) => {
+  if (typeof req.body.query !== typeof [] || isNaN(req.body.query.length))
+    return res.status(400).json({ message: 'Expected array of query terms' });
+  var pl = new req.$database.AppraisalPL({
+    items: req.body.query
+  });
+  pl.save((err) => {
+    if (err) return res.status(500).json(err);
+    else return res.send(pl._id);
+  });
+});
+
+// User attempts to fetch a permalink
+router.get('/permalink/*', (req, res, next) => {
+  req.$database.AppraisalPL.findById(req.lastParam, (err, pl) => {
+    if (err) return res.status(500).json(err);
+    if (!pl) return res.status(404).json({ message: 'Unknown permalink ID' });
+    res.json(pl.toObject());
+  });
+});
+
 router.post('/appraisal', (req, res, next) => {
   if (typeof req.body.query !== typeof [] || isNaN(req.body.query.length))
     return res.status(400).json({ message: 'Expected array of query terms' });
