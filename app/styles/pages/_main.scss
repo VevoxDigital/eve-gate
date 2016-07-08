@@ -1,84 +1,33 @@
 div[vx-route='/']{
-  header {
-    width: 100%;
+  .logo {
     img {
       margin: 10px auto;
       display: block;
-      width: 100px;
-    }
-    h1 {
-      width: 100%;
-      text-align: center;
-      font-size: 40pt;
-      font-weight: 800;
-      margin: 0;
+      width: 50%;
+      min-width: 100px;
+      max-width: 400px;
     }
     h2 {
       width: 100%;
       text-align: center;
       font-size: 10pt;
       color: $black1;
-      opacity: 0.4;
+      opacity: 0.8;
       margin: 0;
-    }
-  }
-  .features {
-    width: 100%;
-    margin: 50px auto;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    .feature {
-      display: block;
-      flex: 1 0 10%;
-      text-align: center;
-      transition: color 250ms;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      .fa-stack {
-        font-size: 30px;
-      }
-      h1 { font-size: 12px; }
-      p { display: none; }
-      &:hover {
-        color: $blue2;
-      }
     }
   }
 }
 
 @media screen and (min-width: 512px) {
   div[vx-route='/'] {
-    header {
-      img { width: 150px; }
-      h1 { font-size: 50pt; }
-      h2 { font-size: 14pt; }
-    }
-    .features {
-      width: 90%;
-      .feature {
-        h1 { font-size: 25px; }
-        p { display: block; }
-        .fa-stack { font-size: 90px; }
-      }
-    }
+    .logo h2 { font-size: 14pt; }
+
   }
 }
 
 @media screen and (min-width: 1400px) {
   div[vx-route='/'] {
-    header {
-      img { width: 200px; }
-      h1 { font-size: 60pt; }
-      h2 { font-size: 16pt; }
-    }
-    .features {
-      width: 80%;
-      .feature {
-        h1 { font-size: 25px; }
-        .fa-stack { font-size: 120px; }
-      }
-    }
+    .logo h2 { font-size: 16pt; }
+
   }
 }
