@@ -8,7 +8,7 @@
  * Controller of the tech3App
  */
 angular.module('tech3App')
-  .controller('MarketCtrl', function ($scope, backendService) {
+  .controller('MarketCtrl', function ($scope, $routeParams, $timeout, $location, backendService) {
     $scope.searchQuery = [];
     $scope.appraisal = []; $scope.appraisalError = null;
     $scope.appraisalTotal = { volume: 0, price: 0 };
@@ -23,6 +23,41 @@ angular.module('tech3App')
     };
     $scope.delQuery = function (index) {
       $scope.searchQuery.splice(index, 1);
+    };
+
+    $scope.permalink = $routeParams.permalink;
+    if ($routeParams.permalink) {
+      $scope.requestPending = true;
+      backendService.get('market/permalink/' + $routeParams.permalink + '/', { }, function (res) {
+        $scope.requestPending = false;
+        if (res.status === 200) {
+          res.data.items.forEach(function (item) { $scope.searchQuery.push({ name: item.name, num: item.quantity }); });
+          $scope.createAppraisal();
+        } else {
+          $scope.appraisalError = res.data.message || JSON.stringify(res.data);
+        }
+      });
+    }
+    $scope.createPermalink = function () {
+      if ($scope.requestPending) { return; }
+      $scope.requestPending = true;
+      var query = [];
+      $scope.appraisal.forEach(function (item) {
+        query.push({ name: item.name, quantity: item.quantity });
+      });
+      backendService.request({
+        url: 'market/permalink/',
+        data: { query: query },
+        method: 'PUT'
+      }, function (res) {
+        $scope.requestPending = false;
+        if (res.status === 200) {
+          $location.path($location.path() + '/' + res.data);
+          $scope.permalink = res.data;
+        } else {
+          $scope.appraisalError = res.data.message || JSON.stringify(res.data);
+        }
+      });
     };
 
     $scope.pasteParserShown = false;
@@ -43,7 +78,7 @@ angular.module('tech3App')
     };
 
     $scope.createAppraisal = function () {
-      if ($scope.requestPending = true) { return; }
+      if ($scope.requestPending) { return; }
       $scope.requestPending = true;
       backendService.request({
         url: 'market/appraisal/',

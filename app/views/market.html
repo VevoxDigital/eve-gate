@@ -92,6 +92,16 @@
               {{appraisalTotal.price}}<span class="isk">ISK</span>
             </td>
           </tr>
+          <tr ng-if="appraisal.length &amp;&amp; permalink &amp;&amp; !requestPending">
+            <td colspan="6" class="text-center">
+              Permalink created. Copy the link from your URL bar.
+            </td>
+          </tr>
+          <tr ng-if="appraisal.length &amp;&amp; !permalink &amp;&amp; !requestPending">
+            <td colspan="6" class="text-center">
+              <a href="javascript:" ng-click="createPermalink()">Create Permalink</a>
+            </td>
+          </tr>
         </tbody>
       </table>
 

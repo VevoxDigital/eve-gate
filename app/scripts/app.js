@@ -43,7 +43,7 @@ angular
         controller: 'DatabaseSearchCtrl',
         controllerAs: 'databaseSearch'
       })
-      .when('/market', {
+      .when('/market/:permalink?', {
         templateUrl: 'views/market.html',
         controller: 'MarketCtrl',
         controllerAs: 'market'
