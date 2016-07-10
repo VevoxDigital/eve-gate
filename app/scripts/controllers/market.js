@@ -8,11 +8,13 @@
  * Controller of the tech3App
  */
 angular.module('tech3App')
-  .controller('MarketCtrl', function ($scope, $routeParams, $timeout, $location, backendService) {
+  .controller('MarketCtrl', function ($scope, $routeParams, $timeout, $location, regions, backendService) {
+    $scope.$regions = regions;
+
     $scope.searchQuery = [];
     $scope.appraisal = []; $scope.appraisalError = null;
     $scope.appraisalTotal = { volume: 0, price: 0 };
-    $scope.query = { }; $scope.station = '';
+    $scope.query = { };
     $scope.requestPending = false;
     $scope.addQuery = function () {
       if (!$scope.query.name) { return $scope.createAppraisal(); }
@@ -83,7 +85,7 @@ angular.module('tech3App')
       backendService.request({
         url: 'market/appraisal/',
         data: {
-          station: $scope.station,
+          station: stations[$scope.station][1],
           query: $scope.searchQuery
         },
         method: 'POST'

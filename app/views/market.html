@@ -4,10 +4,22 @@
     <div class="market-section market-section-search">
       <h2>Item Search Query</h2><hr>
       <div class="buttons">
-        <a class="btn btn-warning" href="javascript:" ng-click="searchQuery = []">Clear</a>
-        <a class="btn" href="javascript:" ng-click="query.pasteParserShown = true">Mass Item Reader</a>
+
+        <div class="form-dropdown" id="regionSelect">
+          <button class="btn btn-default" vx-value=""><span class="text"></span><span class="caret"></span></button>
+          <div class="form-dropdown-content">
+            <a href="javascript:" vx-value="">Universe</a>
+            <a href="javascript:" ng-repeat="region in $regions" vx-value="{{region.id}}" ng-bind="region.name"></a>
+          </div>
+        </div>
+
         <a class="btn btn-primary" href="javascript:" ng-click="createAppraisal()" ng-disabled="requestPending">Create Appraisal &raquo;</a>
       </div>
+      <div class="text-center">
+        <a href="javascript:" ng-click="searchQuery = []">Clear</a> &bull;
+        <a href="javascript:" ng-click="query.pasteParserShown = true">Mass Item Reader</a>
+      </div>
+
       <form class="query-adder" ng-submit="addQuery(queryAddition)">
         <input type="text" name="name" placeholder="Item Name" ng-model="query.name">
         <input type="number" name="quantity" placeholder="Amount" ng-model="query.quantity">

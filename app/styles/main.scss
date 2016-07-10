@@ -258,6 +258,7 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   padding: 10px 20px;
   display: inline-block;
   &:hover:not([disabled]) { opacity: 0.8; }
+  &.btn-default { background-color: $blue1; }
   &.btn-primary { background-color: $bluegreen1; }
   &.btn-warning { background-color: $yellow1; }
   &.btn-danger { background-color: $red1; }
@@ -273,6 +274,7 @@ input[type='submit'] {
 .form-dropdown {
   position: relative;
   display: inline-block;
+  margin: 10px;
   button {
     background-color: $bluegreen1;
     color: $white1;
@@ -284,6 +286,8 @@ input[type='submit'] {
     width: 100%;
     text-align: left;
     opacity: 1;
+    margin: 0;
+    margin-bottom: 10px;
     &:hover { opacity: 0.8; }
     .caret { float: right; margin-top: 8px; }
   }
@@ -296,15 +300,18 @@ input[type='submit'] {
     left: 0;
     top: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 250px;
     transform: scale(0.9) translateY(-10em);
     opacity: 0;
     transition: transform 250ms, opacity 250ms;
+    z-index: 20;
     a {
       color: $black1;
-      padding: 10px 15px;
+      padding: 10px 20px;
       text-decoration: none;
       display: block;
+      white-space: nowrap;
       transition: background-color 250ms;
       &:hover { background-color: rgba(202, 206, 209, 0.5); }
     }
