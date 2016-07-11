@@ -27,6 +27,8 @@ mongoose.connect(dbURL, {}, () => {
     typeIDs: [],
     dgmAttributeTypes: [],
     dgmTypeAttributes: ['typeIDs', 'dgmAttributeTypes'],
+    invTypeReactions: ['typeIDs'],
+    invTypeMaterials: ['typeIDs'],
     eveUnits: []
   };
   var importer = (im, done) => {
@@ -46,7 +48,8 @@ mongoose.connect(dbURL, {}, () => {
     if (config.get(im) || config.get('all')) importer(im, cb);
     else { notFlagged++; return cb(); }
   }, () => {
-    console.log('Of', _.size(imports), 'importers,', _.size(imports)-notFlagged, 'were called.');
-    //process.exit(0); // Apparently this is a horrible thing to do. Sorry threads.
+    var not = _.size(imports)-notFlagged;
+    console.log('Of', _.size(imports), 'importers,', not, not === 1 ? 'was' : 'were', 'called.');
+    process.exit(0);
   });
 });
