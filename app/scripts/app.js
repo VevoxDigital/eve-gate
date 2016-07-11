@@ -124,17 +124,6 @@ angular
     $rootScope.$user = $user;
     $rootScope.$meta = {
       backendMsg: BACKEND.message,
-      path: function () {
-        var path = $location.path();
-        return path.indexOf('/', 1) > 0 ? path.substring(0, path.indexOf('/', 1)) : path;
-      },
-      pause: function (ms) {
-        var until = new Date().getTime() + ms;
-        while (new Date().getTime() < until) { /* no-op */ }
-      },
-      id: function (val, is) {
-        return typeof val === is;
-      },
       nav: [
         [
           {
