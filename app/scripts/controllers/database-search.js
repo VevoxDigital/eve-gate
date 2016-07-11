@@ -21,8 +21,10 @@ angular.module('tech3App')
     var MIN_CHARS = 4, results, lastOpt = $scope.search.opt;
     $scope.showResults = function () { return typeof $scope.searchData === typeof { }; };
 
+    // Really should write a test for this at some point.
     var searchDataUpdate = function (query) {
       $scope.search.opt = Number(angular.element('#dbSearchOpts').children('button').attr('vx-value'));
+      /* istanbul ignore next */
       if (query && query.length >= 4) {
         if (results && lastOpt === $scope.search.opt) {
           if (typeof results === typeof []) {
@@ -58,6 +60,7 @@ angular.module('tech3App')
       }
     };
     $scope.$watch('search.name', searchDataUpdate);
+    /* istanbul ignore next */
     $scope.$watch('search.opt', function () { results = null; searchDataUpdate($scope.search.name); });
     searchDataUpdate();
   });

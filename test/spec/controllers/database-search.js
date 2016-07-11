@@ -6,18 +6,27 @@ describe('Controller: DatabaseSearchCtrl', function () {
   beforeEach(module('tech3App'));
 
   var DatabaseSearchCtrl,
-    scope;
+    $scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
+    $scope = $rootScope.$new();
     DatabaseSearchCtrl = $controller('DatabaseSearchCtrl', {
-      $scope: scope
-      // place here mocked dependencies
+      $scope: $scope,
+      backendService: { }
     });
   }));
 
-  it('should do something', function () {
-    expect(!!DatabaseSearchCtrl).toBe(true);
+  describe('showResults function', function () {
+    it('should be exposed to scope', function () {
+      expect(!!$scope.showResults).toBe(true);
+    });
+
+    it('should show results if data is an object', function () {
+      expect($scope.showResults()).toBe(false);
+      $scope.searchData = { };
+      expect($scope.showResults()).toBe(true);
+    });
   });
+
 });
