@@ -9,6 +9,9 @@ engines:
       - javascript
   eslint:
     enabled: true
+    checks:
+      complexity:
+        enabled: false
   csslint:
     enabled: true
   fixme:
