@@ -88,6 +88,7 @@ hr {
   font-weight: bold;
   margin: 0 3px;
   padding: 0 4px;
+  color: $white;
   &.badge-orange { background-color: $orange1; }
   &.badge-blue { background-color: $blue1; }
 }
@@ -264,6 +265,7 @@ input[type='checkbox']:focus + label { color: $bluegreen1; }
   &.btn-danger { background-color: $red1; }
   &.btn-success { background-color: $green1; }
   &.btn-inverse { background-color: $black1; }
+  &.btn-sm { margin: 5px; padding: 7px 15px; font-size: 10pt; }
   &[disabled] { background-color: $grey1; cursor: default; }
 }
 input[type='submit'] {

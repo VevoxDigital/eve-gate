@@ -16,8 +16,10 @@
         <a class="btn btn-primary" href="javascript:" ng-click="createAppraisal()" ng-disabled="requestPending">Create Appraisal &raquo;</a>
       </div>
       <div class="text-center">
-        <a href="javascript:" ng-click="searchQuery = []">Clear</a> &bull;
-        <a href="javascript:" ng-click="query.pasteParserShown = true">Mass Item Reader</a>
+        <a href="javascript:" ng-click="searchQuery = []" class="btn btn-warning btn-sm">Clear</a>
+        <a href="javascript:" ng-click="query.pasteParserShown = true" class="btn btn-default btn-sm">Mass Item Reader</a>
+        <a href="javascript:" ng-click="createPermalink()" class="btn btn-success btn-sm"
+          ng-disabled="!appraisal.length || requestPending || permalink">{{permalink ? 'Permalink Created' : 'Create Permalink'}}</a>
       </div>
 
       <form class="query-adder" ng-submit="addQuery(queryAddition)">
@@ -43,7 +45,7 @@
       </table>
       <div class="paste-parser" ng-if="query.pasteParserShown">
         <div class="paste-parser-content">
-          <h2>Mass Item Reader</h2>
+          <h2>Mass Item Reader<span class="badge badge-orange">BETA</span></h2>
           <p>Paste data from hangars, containers, D-Scan results, and more.</p>
           <textarea id="pasteParserContent" class="market-search" placeholder="Copy with Ctrl+C and paste here." rows="10"></textarea>
           <div class="text-center">
@@ -76,8 +78,8 @@
               {{item.price.sell.unit_str}}<span class="isk">ISK</span> Sell
             </td>
             <td ng-if="item.price.buy &amp;&amp; !item.err">
-              {{item.price.buy.m3_str}}<span class="isk">ISK</span> Buy,<br>
-              {{item.price.sell.m3_str}}<span class="isk">ISK</span> Sell
+              {{item.price.buy.m3_str}}<span class="isk">ISK</span>/m<sup>3</sup> Buy,<br>
+              {{item.price.sell.m3_str}}<span class="isk">ISK</span>/m<sup>3</sup> Sell
             </td>
             <td ng-if="item.price.buy &amp;&amp; !item.err">
               {{item.price.buy.total_str}}<span class="isk">ISK</span> Buy,<br>
@@ -87,7 +89,7 @@
               {{item.price.unit_str}}<span class="isk">ISK</span>
             </td>
             <td ng-if="!item.price.buy &amp;&amp; !item.err">
-              {{item.price.m3_str}}<span class="isk">ISK</span>
+              {{item.price.m3_str}}<span class="isk">ISK</span>/m<sup>3</sup>
             </td>
             <td ng-if="!item.price.buy &amp;&amp; !item.err">
               {{item.price.total_str}}<span class="isk">ISK</span>
@@ -95,23 +97,27 @@
           </tr>
           <tr>
             <td class="text-right">Totals</td>
-            <td colspan="3">{{appraisalTotal.volume}}m<sup>3</sup></td>
-            <td ng-if="item.price.buy">
+            <td colspan="2">{{appraisalTotal.volume}}m<sup>3</sup></td>
+
+            <<td ng-if="appraisalTotal.price.buy">
+              {{appraisalTotal.ppv.buy}}<span class="isk">ISK</span>/m<sup>3</sup> Buy,<br>
+              {{appraisalTotal.ppv.sell}}<span class="isk">ISK</span>/m<sup>3</sup> Sell
+            </td>
+            <td ng-if="!appraisalTotal.price.buy">
+              {{appraisalTotal.ppv}}<span class="isk">ISK</span>/m<sup>3</sup>
+            </td>
+
+            <td ng-if="appraisalTotal.price.buy">
               {{appraisalTotal.price.buy}}<span class="isk">ISK</span> Buy,<br>
               {{appraisalTotal.price.sell}}<span class="isk">ISK</span> Sell
             </td>
-            <td ng-if="!item.price.buy">
+            <td ng-if="!appraisalTotal.price.buy">
               {{appraisalTotal.price}}<span class="isk">ISK</span>
             </td>
           </tr>
           <tr ng-if="appraisal.length &amp;&amp; permalink &amp;&amp; !requestPending">
             <td colspan="6" class="text-center">
               Permalink created. Copy the link from your URL bar.
-            </td>
-          </tr>
-          <tr ng-if="appraisal.length &amp;&amp; !permalink &amp;&amp; !requestPending">
-            <td colspan="6" class="text-center">
-              <a href="javascript:" ng-click="createPermalink()">Create Permalink</a>
             </td>
           </tr>
         </tbody>

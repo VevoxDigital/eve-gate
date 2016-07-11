@@ -89,12 +89,17 @@ div[vx-route='/market'] {
       &.market-section-results {
         .appraisal {
           width: 100%;
+          border: none !important;
+          outline: none !important;
           thead {
             font-weight: bold;
             font-size: 14pt;
+            tr { width: 100% }
           }
           tbody {
+            tr { width: 100% }
             tr td { padding: 5px; color: $grey1; }
+            tr td:not(:nth-child(1)) { white-space: nowrap; }
             .appraisal-err { color: $red1; font-style: italic; }
             tr:last-child {
               border-top: 1px $white1 solid;

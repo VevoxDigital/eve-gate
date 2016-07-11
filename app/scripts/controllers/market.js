@@ -28,6 +28,7 @@ angular.module('tech3App')
     };
 
     $scope.permalink = $routeParams.permalink;
+    $scope.permalinkLink = undefined;
     if ($routeParams.permalink) {
       $scope.requestPending = true;
       backendService.get('market/permalink/' + $routeParams.permalink + '/', { }, function (res) {
@@ -41,7 +42,7 @@ angular.module('tech3App')
       });
     }
     $scope.createPermalink = function () {
-      if ($scope.requestPending) { return; }
+      if ($scope.requestPending || !$scope.appraisal.length || $scope.permalink) { return; }
       $scope.requestPending = true;
       var query = [];
       $scope.appraisal.forEach(function (item) {
@@ -85,7 +86,7 @@ angular.module('tech3App')
       backendService.request({
         url: 'market/appraisal/',
         data: {
-          station: stations[$scope.station][1],
+          region: angular.element('#regionSelect').children('button').attr('vx-value'),
           query: $scope.searchQuery
         },
         method: 'POST'
@@ -163,6 +164,10 @@ angular.module('tech3App')
               });
             }
           });
+          $scope.appraisalTotal.ppv = $scope.appraisalTotal.price.buy ? {
+            buy: commas(Math.round($scope.appraisalTotal.price.buy / $scope.appraisalTotal.volume * 100) / 100),
+            sell: commas(Math.round($scope.appraisalTotal.price.sell / $scope.appraisalTotal.volume * 100) / 100)
+          } : commas(Math.round($scope.appraisalTotal.price / $scope.appraisalTotal.volume * 100) / 100);
           $scope.appraisalTotal.volume = commas($scope.appraisalTotal.volume);
           $scope.appraisalTotal.price = $scope.appraisalTotal.price.buy ? {
             buy: commas(Math.floor($scope.appraisalTotal.price.buy * 100) / 100),
