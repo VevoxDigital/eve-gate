@@ -11,7 +11,7 @@ exports = module.exports = (db, done) => {
   // Load the file from `/sde/fsd/typeIDs.yaml` and push to master array.
   var typesFile = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '..', 'sde', 'fsd', 'typeIDs.yaml'))), types = [];
   _.forEach(typesFile, (data, id) => {
-    data.id = parseInt(id);
+    data.id = Number(id);
     types.push(data);
   });
 

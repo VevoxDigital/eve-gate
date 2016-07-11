@@ -29,7 +29,7 @@ exports = module.exports = function (redis) {
       if (!page.items) {
         deferred.reject(page);
         return cb('err');
-      };
+      }
       var c = 1;
       page.items.forEach((item) => {
         region[item.buy ? 'buy' : 'sell'].push({

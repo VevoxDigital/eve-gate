@@ -44,9 +44,9 @@ mongoose.connect(dbURL, {}, () => {
   var notFlagged = 0;
   async.eachSeries(Object.keys(imports), (im, cb) => {
     if (config.get(im) || config.get('all')) importer(im, cb);
-    else { notFlagged++; cb(); }
+    else { notFlagged++; return cb(); }
   }, () => {
     console.log('Of', _.size(imports), 'importers,', _.size(imports)-notFlagged, 'were called.');
-    process.exit(0);
+    //process.exit(0); // Apparently this is a horrible thing to do. Sorry threads.
   });
 });

@@ -37,8 +37,6 @@ router.get('/permalink/*', (req, res, next) => {
 router.post('/appraisal', (req, res, next) => {
   if (typeof req.body.query !== typeof [] || isNaN(req.body.query.length))
     return res.status(400).json({ message: 'Expected array of query terms' });
-  /*if (req.body.station && !Object.keys(stationIDTable).includes(req.body.station))
-    return res.status(400).json({ message: 'Invalid station request. (Station ID requests coming soon)' });*/
   var response = [];
   async.eachSeries(req.body.query, (query, cb) => {
     if (!query.name) return cb();
@@ -50,7 +48,7 @@ router.post('/appraisal', (req, res, next) => {
         if (err) return cb(err);
         else if (!type) {
           response.push({ name: query.name, err: 'Unknown Type Name' });
-          cb();
+          return cb();
         } else if (Number(req.body.region)) {
           MARKET.getBest(Number(req.body.region), type._id)
             .catch(cb)
@@ -60,10 +58,10 @@ router.post('/appraisal', (req, res, next) => {
                   name: type.name,
                   volume: type.meta.volume,
                   quantity: query.num,
-                  price: { buy: best.buy ? best.buy.price : 0, sell: best.sell ? best.sell.price : 0 },
+                  price: { buy: best.buy ? best.buy.price : 0, sell: best.sell ? best.sell.price : 0 }
                 });
-                cb();
-              } catch (err) { console.log(err); }
+                return cb();
+              } catch (e) { console.log(e); }
             });
         } else {
           response.push({
@@ -72,11 +70,11 @@ router.post('/appraisal', (req, res, next) => {
             quantity: query.num,
             price: type.market.est
           });
-          cb();
+          return cb();
         }
       });
   }, (err) => {
-    if (err) { console.log(err); res.status(500).json(err); }
+    if (err) { console.log(e); res.status(500).json(e); }
     else res.json(response);
   });
 });

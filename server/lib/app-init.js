@@ -28,7 +28,7 @@ exports = module.exports = (appdata) => {
   app.use(function (req, res, next) {
     if (!req.originalUrl.endsWith('/'))
       res.status(400).json({ message: 'API routes must end with a trailing slash.' });
-    else next();
+    else return next();
   });
   app.use(function (req, res, next) {
     req.lastParam = req.originalUrl.match(/[^\/]*\/$/)[0];

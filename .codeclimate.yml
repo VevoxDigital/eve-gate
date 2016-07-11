@@ -12,6 +12,12 @@ engines:
     checks:
       complexity:
         enabled: false
+      global-require:
+        enabled: false
+    exclude_fingerprints:
+    - 9f22d97722c30e2ba3b8e84fa2a8cf99 # `parseError` bug.
+    - 6434b68b0ffb28e1b1e4fd5bd55a7264 # `parseError` check being strange.
+    - a0439ee07602950128fdf69bb99fd970 # Karma config file is not really "code".
   csslint:
     enabled: true
   fixme:

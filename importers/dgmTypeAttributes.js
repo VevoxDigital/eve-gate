@@ -16,13 +16,13 @@ exports = module.exports = (db, done) => {
     process.stdout.write(' * Updating ' + c++ + ' of ' + dgmTypeAttributes.length);
     db.Type.findById(attr.typeID, (err, type) => {
       if (err) throw err;
-      if (!type) { console.log('\nWARNING! Unknown type id: ' + attr.type); cb(); }
+      if (!type) { console.log('\nWARNING! Unknown type id: ' + attr.type); return cb(); }
       else {
         type.meta.attributes.push({ attribute: attr.attributeID, value: typeof attr.valueInt === 'number' ? attr.valueInt : attr.valueFloat });
         type.markModified('meta.attributes');
         type.save((err) => {
           if (err) throw new Error(err + '\n' + type.name + '#' + type._id + '@' + attr.attributeID);
-          else cb();
+          else return cb();
         });
       }
     });

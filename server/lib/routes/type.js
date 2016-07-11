@@ -22,7 +22,7 @@ router.get('/*', (req, res, next) => {
       });
   } else {
     // An item id was sent.
-    req.$database.Type.findById(parseInt(req.lastParam))
+    req.$database.Type.findById(Number(req.lastParam))
       .populate('meta.attributes.attribute')
       .exec((err, type) => {
         if (err) return next(err);

@@ -28,7 +28,7 @@ exports = module.exports = (redis) => {
         LOG.info(' * Downloading market data...');
         var regionUrl = `${url}/${region.id}/orders/all/`;
         var fetchPage = (pageNum) => {
-          var deferredHTTP = q.defer(), pageUrl = !!pageNum ? regionUrl + `?page=${pageNum}` : regionUrl;
+          var deferredHTTP = q.defer(), pageUrl = pageNum ? regionUrl + `?page=${pageNum}` : regionUrl;
           https.get(pageUrl, (res) => {
             var body = '';
             res.on('data', (d) => { body += d });
@@ -90,6 +90,7 @@ exports = module.exports = (redis) => {
           db.Type.findById(typeID)
             .select('market')
             .exec((err, type) => {
+              if (err) return deferred.reject(err);
               process.stdout.clearLine();
               process.stdout.cursorTo(0);
               process.stdout.write(` * Importing type ${typeID} (#${c++}) of ${marketPrices.items.length}`);
@@ -97,7 +98,7 @@ exports = module.exports = (redis) => {
 
               q.all([
                 MARKET.getStationBest(60003760, typeID),
-                MARKET.getStationBest(60008494, typeID),
+                MARKET.getStationBest(60008494, typeID)
                 //MARKET.getStationBest(60011866, typeID),
                 //MARKET.getStationBest(60005686, typeID),
                 //MARKET.getStationBest(60004594, typeID)
@@ -109,7 +110,7 @@ exports = module.exports = (redis) => {
                   type.updateMarket('amarr', results[1]);
                   type.market.est = { adjustedPrice: item.adjustedPrice, averagePrice: item.averagePrice }
                   type.save(cb);
-                } catch (err) { console.log(err); }
+                } catch (e) { console.log(e); }
               });
             });
         }, (err) => {
