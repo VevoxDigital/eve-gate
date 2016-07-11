@@ -47,10 +47,10 @@
         <div class="paste-parser-content">
           <h2>Mass Item Reader<span class="badge badge-orange">BETA</span></h2>
           <p>Paste data from hangars, containers, D-Scan results, and more.</p>
-          <textarea id="pasteParserContent" class="market-search" placeholder="Copy with Ctrl+C and paste here." rows="10"></textarea>
+          <textarea class="market-search" placeholder="Copy with Ctrl+C and paste here." rows="10" ng-model="query.pasteParser"></textarea>
           <div class="text-center">
             <a href="javascript:" class="btn btn-warning" ng-click="query.pasteParserShown = false">Cancel</a>
-            <a href="javascript:" class="btn btn-success" ng-click="parseItems()">Submit Paste</a>
+            <a href="javascript:" class="btn btn-success" ng-click="parseItems(query.pasteParser)">Submit Paste</a>
           </div>
         </div>
       </div>
