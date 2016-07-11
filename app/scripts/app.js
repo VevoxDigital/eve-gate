@@ -141,7 +141,7 @@ angular
             text: 'Information',
             fa: 'database',
             items: [
-              { text: 'Database Search', href: 'search' },
+              { text: 'Database Search', href: 'search' }
             ]
           },
           {
@@ -158,7 +158,7 @@ angular
             text: 'Logistics',
             fa: 'map',
             items: [
-              { text: 'New Eden Starmap', href: 'map' },
+              { text: 'New Eden Starmap', href: 'map' }
             ]
           },
           {
@@ -188,14 +188,14 @@ angular
         var target = angular.element(e.target);
         if (target.is('a')) {
           dd.off('click');
-          updateDropdown(dd, target.index())
+          updateDropdown(dd, target.index());
         }
         dd.toggleClass('shown');
       });
     };
     $rootScope.$on('$routeChangeSuccess', function () {
       $timeout(function () {
-        angular.element('.form-dropdown').each(function (index) {
+        angular.element('.form-dropdown').each(function () {
           angular.element(this).off('click');
           updateDropdown(angular.element(this));
         });
