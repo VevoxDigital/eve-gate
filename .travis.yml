@@ -10,10 +10,12 @@ services:
 - mongodb
 before_install:
 - gem install compass
-- npm install -g grunt-cli bower
+- npm install -g grunt-cli bower istanbul codeclimate-test-reporter
 install:
 - npm install
 - bower install
+after_script:
+- codeclimate-test-reporter < 'coverage/PhantomJS 2.1.1 (Linux 0.0.0)/lcov.info'
 branches:
   only:
   - master
@@ -22,8 +24,7 @@ env:
   - CXX=g++-4.8
 addons:
   code_climate:
-    repo_token:
-      secure: 8AcKpO2S/bSuuAkL+p+9TjMbN4NLUpP14i15krBOpn6XXGdqe+dk+omE5m11HzNcHoriCojYdGw3f1pae95Dy2veswki+36B2rcXA/Y0JH8zZ9H1DjBpPzA5M/6Sgm++e9cr3yWigd/fMwZQ/9xrj6kw3edclNVGuSocNH1CB6hovUZq/vcj2gMVafIZYQu/6Z78YzAEoMzFIOt5vOy1aKWQEeaRsp/LskLwSEUm33nnD4HtP3hjInflAlsIimEIHEwWL7hox2p7M5sK/LhsUeuRhYtl5eSGBm89vi0QccpsbBcIAq6QHrc3YYouwORskzaiesiz3pyJCQP84joIm1Pd1Oc5QOuDpGoO9cfTwUP043WfXOi/BkRq1DBIeMq3MMkrTeq+FbOn2kAMEQasjBMBwLIUtuaZBWbiYqc9jlW2w87Lic17dIO9VXMYA3H13omHOGxd4FWTgVnTqalnVL5j/rRnyKUZGi/kFxImI1yHTlKQ1NZIDy9QTZI/V0eyG7eT3ftjaO5GlOLJ07bOI/+zXhSVTOccQta0UDHOYrxfAQLO/V2wD34f1hn6yvDTuJOTkMBn/u3QOJUxxH6KW0OBmFtJW8RxgNzS60oi7JC9M8Lvt6ZwiDAro+Fal2TZSG9prVqJ3oINcTiu4M63eM3ndYusGBvWQ8c0KppRC6I=
+    repo_token: 4307ce2a974dae6dc62c4f3f73478690c2f1613ad18369b52c344b060638a47b
   apt:
     sources:
     - ubuntu-toolchain-r-test

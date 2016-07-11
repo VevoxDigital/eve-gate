@@ -13,6 +13,20 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: '../',
 
+    // coverage reporters
+    reporters: ['progress', 'coverage'],
+
+    // configure reporter
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
+
+    // source files to generate coverage for
+    preprocessors: {
+      'app/scripts/**/*.js': ['coverage']
+    },
+
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
@@ -63,7 +77,8 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
-      "karma-jasmine"
+      "karma-jasmine",
+      "karma-coverage"
     ],
 
     // Continuous Integration mode
