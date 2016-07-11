@@ -51,8 +51,8 @@ router.post('/appraisal', (req, res, next) => {
         else if (!type) {
           response.push({ name: query.name, err: 'Unknown Type Name' });
           cb();
-        } else if (req.body.station) {
-          MARKET.getStationBest(stationIDTable[req.body.station], type._id)
+        } else if (Number(req.body.region)) {
+          MARKET.getBest(Number(req.body.region), type._id)
             .catch(cb)
             .then((best) => {
               try {
