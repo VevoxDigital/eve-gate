@@ -120,8 +120,7 @@ angular
         redirectTo: '/error/404'
       });
   })
-  .run(function ($rootScope, $compile, $user, $location, $timeout, BACKEND) {
-    $rootScope.$user = $user;
+  .run(function ($rootScope, $timeout, BACKEND) {
     $rootScope.$meta = {
       backendMsg: BACKEND.message,
       commas: function (x) {
@@ -174,6 +173,8 @@ angular
       ]
     };
 
+    // No tests for this stuff, since it modifies the DOM.
+    /* istanbul ignore next */
     var updateDropdown = function (dd, index) {
       index = index || 0;
       var ddc = dd.children('.form-dropdown-content');
@@ -188,6 +189,7 @@ angular
         dd.toggleClass('shown');
       });
     };
+    /* istanbul ignore next */
     $rootScope.$on('$routeChangeSuccess', function () {
       $timeout(function () {
         angular.element('.form-dropdown').each(function () {

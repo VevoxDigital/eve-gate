@@ -114,7 +114,7 @@ describe('Controller: MarketCtrl', function () {
       expect($scope.permalink).toBe(1);
     });
 
-    it('should add searchQuery and appraisal entries from permalink', function () {
+    it('should add searchQuery and appraisal entries from permalink', function (done) {
       $scope.permalinkUpdate('321dcba');
 
       // Verify permalink is inserted into scope.
@@ -123,7 +123,8 @@ describe('Controller: MarketCtrl', function () {
       setTimeout(function () {
         // Verify permalink data was pushed to searchQuery and an appraisal was created.
         expect($scope.searchQuery.length).toBe(2);
-        expect($scope.appraisal.length).toBe(2);
+        expect($scope.appraisal.length).toBe(3);
+        done();
       });
     });
   });
