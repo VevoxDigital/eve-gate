@@ -1,13 +1,16 @@
 <div vx-route="/db/search">
+
   <form action="javascript:" class="search">
     <input id="dbSearchQuery" type="text" ng-model="search.name" placeholder="Search by Item Name">
-    <div id="dbSearchOpts" class="form-dropdown">
-      <button>{{searchOptions[search.opt][0]}}<span class="caret"></span></button>
+
+    <div class="form-dropdown" id="dbSearchOpts">
+      <button class="btn btn-default" vx-value=""><span class="text"></span><span class="caret"></span></button>
       <div class="form-dropdown-content">
-        <a href="javascript:" ng-repeat="opt in searchOptions" vx-search-opt="{{$index}}" ng-bind="opt[0]"></a>
+        <a href="javascript:" ng-repeat="opt in searchOptions" vx-value="{{$index}}" ng-bind="opt[0]"></a>
       </div>
     </div>
   </form>
+
   <div class="results">
     <h2 ng-if="!showResults()" ng-bind-html="searchData"></h2>
     <div ng-if="showResults()">
@@ -15,4 +18,5 @@
         ng-href="/info/item/{{ result._id }}" ng-bind="result.name"> </a>
     </div>
   </div>
+  
 </div>

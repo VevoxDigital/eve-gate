@@ -17,21 +17,12 @@ angular.module('tech3App')
     ];
     $scope.search = { opt: 0 };
 
-    var searchOptsE = angular.element('#dbSearchOpts');
-    var searchOptsButtonE = searchOptsE.children('button'),
-        searchOptsDDOpt = searchOptsE.children('.form-dropdown-content');
-    searchOptsButtonE.click(function () { searchOptsE.toggleClass('shown'); });
-    searchOptsDDOpt.click(function (event) {
-      searchOptsE.removeClass('shown');
-      $scope.search.opt = parseInt(angular.element(event.target).attr('vx-search-opt'));
-      $scope.$apply();
-    });
-
     // Search functionals.
     var MIN_CHARS = 4, results, lastOpt = $scope.search.opt;
     $scope.showResults = function () { return typeof $scope.searchData === typeof { }; };
 
     var searchDataUpdate = function (query) {
+      $scope.search.opt = Number(angular.element('#dbSearchOpts').children('button').attr('vx-value'));
       if (query && query.length >= 4) {
         if (results && lastOpt === $scope.search.opt) {
           if (typeof results === typeof []) {
