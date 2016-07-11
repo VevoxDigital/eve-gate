@@ -15,7 +15,7 @@ install:
 - npm install
 - bower install
 after_script:
-- codeclimate-test-reporter < 'coverage/PhantomJS 2.1.1 (Linux 0.0.0)/lcov.info'
+- 'codeclimate-test-reporter < "coverage/PhantomJS 2.1.1 (Linux 0.0.0)/lcov.info"'
 branches:
   only:
   - master
