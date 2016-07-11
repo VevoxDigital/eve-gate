@@ -3,7 +3,13 @@
 describe('Service: backendService', function () {
 
   // load the service's module
-  beforeEach(module('tech3App'));
+  beforeEach(module('tech3App', function ($provide) {
+    $provide.value('$http', function () {
+      return { then: function (cb) {
+        return cb('ok');
+      } }
+    });
+  }));
 
   // instantiate service
   var backendService;
@@ -16,9 +22,30 @@ describe('Service: backendService', function () {
     expect(/^https?:\/\/.*$/i.test(backendService.url)).toBe(true);
   });
 
-  it('should attach request functions to service', function () {
-    expect(typeof backendService.request).toBe('function');
-    expect(typeof backendService.get).toBe('function');
+  describe('request function', function () {
+    it('should be attached to service', function () {
+      expect(!!backendService.request).toBe(true);
+    });
+
+    it('should call the http service', function (done) {
+      backendService.request({ }, function (res) {
+        expect(res).toBe('ok');
+        done();
+      });
+    });
+  });
+
+  describe('get function', function () {
+    it('should be attached to service', function () {
+      expect(!!backendService.get).toBe(true);
+    });
+
+    it('should call the http service', function (done) {
+      backendService.get('', { }, function (res) {
+        expect(res).toBe('ok');
+        done();
+      });
+    });
   });
 
 });

@@ -6,7 +6,7 @@ describe('App init run', function () {
 
   var $rootScope;
   beforeEach(inject(function (_$rootScope_) {
-    return $rootScope = _$rootScope_;
+    $rootScope = _$rootScope_;
   }));
 
   describe('meta commas function', function () {
@@ -15,7 +15,7 @@ describe('App init run', function () {
     });
 
     it('should add commas to a number', function () {
-      expect($rootScope.$meta.commas(1000)).toBe('1,000.00')
+      expect($rootScope.$meta.commas(1000)).toBe('1,000.00');
     });
 
     it('should add necessary decimal places', function () {
