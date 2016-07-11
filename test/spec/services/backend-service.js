@@ -7,7 +7,7 @@ describe('Service: backendService', function () {
     $provide.value('$http', function () {
       return { then: function (cb) {
         return cb('ok');
-      } }
+      } };
     });
   }));
 
