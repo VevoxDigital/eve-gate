@@ -94,6 +94,7 @@ angular.module('tech3App')
     $scope.createAppraisal = function () {
       if ($scope.requestPending) { return; }
       $scope.requestPending = true;
+      $scope.appraisalError = 'Just a moment...';
       backendService.request({
         url: 'market/appraisal/',
         data: {
@@ -103,6 +104,7 @@ angular.module('tech3App')
         method: 'POST'
       }, function (res) {
         $scope.requestPending = false;
+        delete $scope.appraisalError;
         /* istanbul ignore else */
         if (res.status === 200) {
           $scope.appraisal = [];
@@ -189,7 +191,7 @@ angular.module('tech3App')
             sell: $scope.$meta.commas(Math.floor($scope.appraisalTotal.price.sell * 100) / 100)
           } : $scope.$meta.commas(Math.round($scope.appraisalTotal.price * 100) / 100);
         } else {
-          $scope.appraisalError = res.data ? res.status + ' Unknown error' : res.data.message;
+          $scope.appraisalError = res.data ? res.data.message : res.status + ' Unknown error';
         }
       });
     };
