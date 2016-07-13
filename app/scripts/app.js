@@ -123,6 +123,7 @@ angular
   .run(function ($rootScope, $timeout, BACKEND) {
     $rootScope.$meta = {
       backendMsg: BACKEND.message,
+      title: 'Premier Tools for EVE Online',
       commas: function (x) {
         x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         if (x.match(/^[0-9,]*$/)) { x = x + '.00'; }

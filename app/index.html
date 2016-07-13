@@ -2,9 +2,12 @@
 <html ng-app="tech3App">
   <head>
     <meta charset="utf-8">
-    <title ng-bind="'Tech 3' + ($meta.title() ? ' • '+$meta.title() : '')">EVE Gate</title>
+    <title ng-bind="'Tech 3' + ($meta.title ? ' • '+$meta.title : '')">Loading...</title>
+    <meta name="application-name" content="Tech 3">
     <meta name="description" content="Premier third-party tools for EVE Online">
+    <meta name="author" content="Vevox Digital">
     <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -90,6 +93,7 @@
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <!-- Misc Scripts -->
     <script>
