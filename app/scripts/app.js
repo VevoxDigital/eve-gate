@@ -123,7 +123,6 @@ angular
   .run(function ($rootScope, $timeout, BACKEND) {
     $rootScope.$meta = {
       backendMsg: BACKEND.message,
-      title: 'Premier Tools for EVE Online',
       commas: function (x) {
         x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         if (x.match(/^[0-9,]*$/)) { x = x + '.00'; }
@@ -192,6 +191,7 @@ angular
     };
     /* istanbul ignore next */
     $rootScope.$on('$routeChangeSuccess', function () {
+      delete $rootScope.$meta.title;
       $timeout(function () {
         angular.element('.form-dropdown').each(function () {
           angular.element(this).off('click');

@@ -9,6 +9,7 @@
  */
 angular.module('tech3App')
   .controller('MarketCtrl', function ($scope, $routeParams, $timeout, $location, regions, backendService) {
+    $scope.$meta.title = 'Market Appraisals';
     $scope.$regions = regions;
 
     // Init scope vars
