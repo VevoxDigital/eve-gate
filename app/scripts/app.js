@@ -101,7 +101,7 @@ angular
         controller: 'ErrorCtrl',
         controllerAs: 'error'
       })
-      .when('/info/item/:item?', {
+      .when('/item/:item?', {
         templateUrl: 'views/item.html',
         controller: 'ItemCtrl',
         controllerAs: 'item'

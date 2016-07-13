@@ -114,6 +114,7 @@ angular.module('tech3App')
             if (item.err || !item.volume) {
               /* istanbul ignore next */
               $scope.appraisal.push({
+                _id: item._id,
                 name: item.name,
                 quantity: item.quantity,
                 err: item.err || 'Invalid or unknown type name'
@@ -149,6 +150,7 @@ angular.module('tech3App')
 
               /* istanbul ignore next */
               $scope.appraisal.push({
+                _id: item._id,
                 name: item.name,
                 volume: $scope.$meta.commas(item.volume),
                 quantity: item.quantity,

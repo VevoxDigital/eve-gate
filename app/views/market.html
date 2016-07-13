@@ -57,7 +57,6 @@
     </div>
     <div class="market-section market-section-results">
       <h2>Your Appraisal</h2><hr>
-
       <table ng-if="appraisal.length" class="appraisal">
         <thead>
           <tr>
@@ -70,7 +69,13 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in appraisal">
-            <td ng-bind="item.name + ' x' + item.quantity"></td>
+            <td>
+              <a ng-href="/item/{{item._id}}">
+                <img ng-src="http://image.eveonline.com/Type/{{item._id}}_32.png">
+                {{item.name}}
+              </a>
+              <span ng-if="item.quantity">x{{item.quantity}}</span>
+            </td>
             <td ng-if="item.err" class="appraisal-err" ng-bind="item.err" colspan="6"></td>
             <td ng-if="!item.err">{{item.volume}}m<sup>3</sup></td>
             <td ng-if="item.price.buy &amp;&amp; !item.err">
@@ -99,7 +104,7 @@
             <td class="text-right">Totals</td>
             <td colspan="2">{{appraisalTotal.volume}}m<sup>3</sup></td>
 
-            <<td ng-if="appraisalTotal.price.buy">
+            <td ng-if="appraisalTotal.price.buy">
               {{appraisalTotal.ppv.buy}}<span class="isk">ISK</span>/m<sup>3</sup> Buy,<br>
               {{appraisalTotal.ppv.sell}}<span class="isk">ISK</span>/m<sup>3</sup> Sell
             </td>

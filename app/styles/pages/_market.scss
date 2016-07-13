@@ -99,6 +99,18 @@ div[vx-route='/market'] {
           tbody {
             tr { width: 100% }
             tr td { padding: 5px; color: $grey1; }
+            tr td:nth-child(1) {
+              img {
+                display: inline-block;
+                vertical-align: middle;
+              }
+              a {
+                text-decoration: none;
+                color: $blue1;
+                transition: color 250ms;
+                &:hover { color: $blue2; }
+              }
+            }
             tr td:not(:nth-child(1)) { white-space: nowrap; }
             .appraisal-err { color: $red1; font-style: italic; }
             tr:last-child {
