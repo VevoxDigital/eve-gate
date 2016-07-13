@@ -55,6 +55,7 @@ router.post('/appraisal', (req, res, next) => {
             .then((best) => {
               try {
                 response.push({
+                  _id: type._id,
                   name: type.name,
                   volume: type.meta.volume,
                   quantity: query.num,
@@ -65,6 +66,7 @@ router.post('/appraisal', (req, res, next) => {
             });
         } else {
           response.push({
+            _id: type._id,
             name: type.name,
             volume: type.meta.volume,
             quantity: query.num,
