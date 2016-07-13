@@ -32,9 +32,8 @@
         <h1 ng-bind="itemData.name"></h1>
       </div>
       <h2 class="stats">
-        {{ itemData.meta.volume || 0 }}m3 &nbsp; &sdot; &nbsp;
-        {{ itemData.market.est.buy[0].value || 0 }}<span class="isk">ISK</span> Buy /
-        {{ itemData.market.est.sell[0].value || 0 }}<span class="isk">ISK</span> Sell</h2>
+        {{ itemData.meta.volume_str || 0 }}m3 &nbsp; &sdot; &nbsp;
+        {{ itemData.market.est.averagePrice_str || 0 }}<span class="isk">ISK</span>
       <div class="tabs">
         <a href="javascript:" ng-repeat="tab in itemTabs" ng-click="setTabIndex($index)"
           ng-class="{ active: isTabIndex($index) }" ng-bind="itemTabs[$index]"></a>
@@ -50,7 +49,11 @@
         </div>
       </div>
       <div class="tab tab-market" ng-if="isTabIndex(2)">
-        <h2>Coming Soon</h2>
+        <h2 class="text-center" style="font-weight: normal;">
+          {{ itemData.market.est.averagePrice_str || 0 }}<span class="isk">ISK</span> Average &sdot;
+          {{ itemData.market.est.adjustedPrice_str || 0 }}<span class="isk">ISK</span> Adjusted
+        </h2>
+        <h3 class="text-center">Market History Coming Soon</h3>
       </div>
     </div>
     <div ng-if="!itemData.name">
