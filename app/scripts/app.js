@@ -16,7 +16,6 @@ angular
     'ngSanitize'
   ])
   .constant('BACKEND', {
-    url: 'http://192.168.0.102:3000/api/',
     message: 'Tech 3 is still in active development and may change drastically during this time. Expect some bugs as we work through this.'
   })
   .constant('regions', [

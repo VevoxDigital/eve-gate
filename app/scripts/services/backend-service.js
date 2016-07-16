@@ -8,7 +8,7 @@
  * Service designed for accessing the backend api of the app.
  */
 angular.module('tech3App')
-  .service('backendService', function (BACKEND, $http) {
+  .service('backendService', function (BACKEND, $http, $location) {
     /**
       * @name tech3App.backendService.url
       * @constant
@@ -16,7 +16,7 @@ angular.module('tech3App')
       * # Backend Service URL
       * Backend URL defined in the module.
       */
-    this.url = BACKEND.url;
+    this.url = $location.protocol() + '://' + $location.host() + '/api/';
 
     /**
       * @name tech3App.backendService.request()
