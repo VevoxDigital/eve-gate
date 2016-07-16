@@ -124,7 +124,7 @@ angular
     $rootScope.$meta = {
       backendMsg: BACKEND.message,
       commas: function (x) {
-        x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        x = x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '0';
         if (x.match(/^[0-9,]*$/)) { x = x + '.00'; }
         if (x.match(/^[0-9,]*\.[0-9]$/)) { x = x + '0'; }
         return x;

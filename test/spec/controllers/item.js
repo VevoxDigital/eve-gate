@@ -15,7 +15,10 @@ describe('Controller: ItemCtrl', function () {
       $scope: $scope,
       $routeParams: { item: '17765' },
       backendService: { get: function (url, opts, cb) {
-        return cb({ data: { meta: { description: 'nondescript\r\n', attributes: [] } } });
+        return cb({ data: {
+          meta: { description: 'nondescript\r\n', attributes: [], volume: 1 },
+          market: { est: { averagePrice: 100000, adjustedPrice: 90000 } }
+        } });
       }}
     });
   }));
