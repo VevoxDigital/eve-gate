@@ -16,7 +16,7 @@ While we are happy to take community contributions to Tech-3, there are a few gu
 - Be aware that all code you submit to Tech-3 belongs to Tech-3 (and is therefore under Tech-3's open-source license) after the request is merged.
 
 ## Local Installation
-Tech 3 can be installed in a local environment if you really don't want to pay for it (although please consider supporting us with donations), assuming you have the machinery to host it yourself. Note that not portions of Tech-3 (such as the market graphs) may work as intended if installed locally. You can also clone the dev branch to test new features coming soon to Tech-3.
+Tech 3 can be installed in a local environment if you really don't want to pay for it (although please consider supporting us with donations), assuming you have the machinery to host it yourself. Note that not all portions of Tech-3 (such as the market graphs) will work as intended if installed locally. You can also clone the dev branch to test new features coming soon to Tech-3.
 
 To install, you will need **NodeJS v4.0** (the `nodejs` package will *not* work) or later, Ruby Development Kit v2.0 or later (The `ruby-dev` package is fine), MongoDB, and Redis. Once you have all of these, proceed with the setup process:
 
