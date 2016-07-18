@@ -39,7 +39,7 @@ Download the lastest SDE from the [Developer Resources Page](https://developers.
     node importer.js --all
     node index.js
 
-Note that NodeJS may raise a `EADDRINUSE` if `apache2` or `nginx` is running and/or may raise a `EACCESS` if it has insufficient permissions to bind to port `80`. You can use the `--port=0000` option to change the port on server start, but `/app/scripts/services/backend-service.js` will need to be updated accordingly.
+Note that NodeJS may raise a `EADDRINUSE` if `apache2` or `nginx` is running and/or (simply stop the service) may raise a `EACCESS` if it has insufficient permissions to bind to port `80` (try running with `sudo`). You can use the `--port=0000` option to change the port on server start, but `/app/scripts/services/backend-service.js` will need to be updated accordingly.
 
 ## Legal
 All code, content, and other media created or otherwise owned by Tech-3 is licensed under the GNU General Public License v3.0, found [here](https://github.com/VevoxDigital/tech-3/blob/master/LICENSE).
