@@ -133,63 +133,64 @@ nav {
       width: 100%;
       text-align: center;
       box-shadow: 0 3px $black2;
+      display: block;
       &.shown { transform: none; }
-      li {
+    }
+    ul li, div[nav-link].right {
+      display: inline-block;
+      position: relative;
+      a {
+        color: $white1;
+        text-decoration: none;
+        padding: 15px 20px;
+        vertical-align: middle;
         display: inline-block;
-        position: relative;
-        a {
+        .navlink-desktop { display: none; }
+        .caret {
+          border-top-color: #4b6075;
+          border-bottom-color: #4b6075;
+          transform: scale(0.75);
+        }
+        &.active {
           color: $white1;
-          text-decoration: none;
-          padding: 15px 20px;
-          vertical-align: middle;
+          background-color: $bluegreen1;
+          border-color: $bluegreen2;
+          outline: none;
+          box-shadow: 0 3px $bluegreen2;
+          .caret { border-top-color: $white1; border-bottom-color: $white1; }
+        }
+      }
+      .dropdown {
+        position: absolute;
+        top: 110%;
+        border-radius: 6px;
+        background-color: $black1;
+        white-space: nowrap;
+        padding: 5px;
+        display: none;
+        opacity: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 110%;
+        a {
+          text-align: center;
+          box-shadow: none;
+          border-radius: 4px;
+          font-weight: normal;
+          font-size: 11pt;
+          width: 100%;
           display: inline-block;
-          .navlink-desktop { display: none; }
-          .caret {
-            border-top-color: #4b6075;
-            border-bottom-color: #4b6075;
-            transform: scale(0.75);
-          }
-          &:active, &.active, &:focus {
-            color: $white1;
+          padding: 10px;
+          &:hover {
             background-color: $bluegreen1;
-            border-color: $bluegreen2;
-            outline: none;
-            box-shadow: 0 3px $bluegreen2;
-            .caret { border-top-color: $white1; border-bottom-color: $white1; }
+            color: $white1;
           }
         }
-        .dropdown {
-          position: absolute;
-          top: 110%;
-          border-radius: 6px;
-          background-color: $black1;
-          white-space: nowrap;
-          padding: 5px;
-          display: none;
-          opacity: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          min-width: 110%;
-          a {
-            text-align: center;
-            box-shadow: none;
-            border-radius: 4px;
-            font-weight: normal;
-            font-size: 11pt;
-            width: 100%;
-            display: inline-block;
-            padding: 10px;
-            &:hover {
-              background-color: $bluegreen1;
-              color: $white1;
-            }
-          }
-          hr {
-            margin: 3px 0;
-            width: 100%;
-            border: none;
-            border-top: 4px $black2 solid;
-          }
+        hr {
+          margin: 3px 0;
+          width: 100%;
+          border: none;
+          border-top: 4px $black2 solid;
         }
       }
     }
@@ -366,6 +367,8 @@ div[ng-view] {
       border-radius: 6px;
       .brand {
         padding-left: 20px;
+        position: relative;
+        top: 3px;
         &:hover { color: $bluegreen1; }
       }
       .mobile-menu { display: none; }
@@ -376,44 +379,53 @@ div[ng-view] {
         background: none;
         width: auto;
         text-align: left;
-        li {
-          display: inline-block;
+      }
+      div[nav-link].right a {
+        position: relative;
+        top: 3px;
+        box-shadow: none;
+        border-bottom-right-radius: 6px;
+      }
+      ul li, div[nav-link].right {
+        display: inline-block;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        a {
+          transition: all 250ms;
+          cursor: pointer;
+          box-shadow: 0 3px $black2;
+          color: inherit;
+          text-decoration: none;
           position: relative;
-          padding: 0;
-          a {
-            transition: all 250ms;
-            cursor: pointer;
-            box-shadow: 0 3px $black2;
-            color: inherit;
-            text-decoration: none;
-            position: relative;
-            &:hover {
-              color: $bluegreen1;
-              .caret {
-                border-top-color: $bluegreen1;
-                border-bottom-color: $bluegreen1;
-                transform: scale(1);
-              }
-              &:active, &.active, &:focus {
-                color: $white1;
-                background-color: $bluegreen1;
-                border-color: $bluegreen2;
-                outline: none;
-                box-shadow: 0 3px $bluegreen2;
-                .caret { border-top-color: $white1; border-bottom-color: $white1; }
-              }
-            }
-            .navlink-mobile { display: none }
-            .navlink-desktop { display: inline }
+          &.active {
+            box-shadow: 0 3px $bluegreen2, 0 -3px $bluegreen1;
+          }
+          &:hover {
+            color: $bluegreen1;
             .caret {
-              border-top-color: #4b6075;
-              border-bottom-color: #4b6075;
-              transform: scale(0.75);
+              border-top-color: $bluegreen1;
+              border-bottom-color: $bluegreen1;
+              transform: scale(1);
+            }
+            &.active {
+              color: $white1;
+              background-color: $bluegreen1;
+              border-color: $bluegreen2;
+              outline: none;
+              .caret { border-top-color: $white1; border-bottom-color: $white1; }
             }
           }
-          .dropdown {
-            a { text-align: left; }
+          .navlink-mobile { display: none }
+          .navlink-desktop { display: inline }
+          .caret {
+            border-top-color: #4b6075;
+            border-bottom-color: #4b6075;
+            transform: scale(0.75);
           }
+        }
+        .dropdown {
+          a { text-align: left; }
         }
       }
     }

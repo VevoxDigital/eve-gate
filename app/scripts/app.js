@@ -171,9 +171,16 @@ angular
             ]
           }
         ],
-        [
-
-        ]
+        {
+          user: {
+            text: 'Account',
+            fa: 'user'
+          },
+          login: {
+            text: 'Sign In',
+            fa: 'user'
+          }
+        }
       ]
     };
 
