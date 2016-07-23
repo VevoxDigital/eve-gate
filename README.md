@@ -1,8 +1,16 @@
 # Tech-3
-[![Build Status](https://travis-ci.org/VevoxDigital/tech-3.svg?branch=dev)](https://travis-ci.org/VevoxDigital/tech-3)
-[![Test Coverage](https://codeclimate.com/github/VevoxDigital/tech-3/badges/coverage.svg)](https://codeclimate.com/github/VevoxDigital/tech-3/coverage)
-[![Code Climate](https://codeclimate.com/github/VevoxDigital/tech-3/badges/gpa.svg)](https://codeclimate.com/github/VevoxDigital/tech-3)
-[![Issue Count](https://codeclimate.com/github/VevoxDigital/tech-3/badges/issue_count.svg)](https://codeclimate.com/github/VevoxDigital/tech-3)
+[![Build Status](https://img.shields.io/travis/VevoxDigital/tech-3.svg?style=flat-square)](https://travis-ci.org/VevoxDigital/tech-3)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3/coverage)
+[![Code Climate](https://img.shields.io/codeclimate/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+[![Issue Count](https://img.shields.io/github/issues/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/issues)
+[![Issue Count](https://img.shields.io/codeclimate/issues/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+
+![Release](https://img.shields.io/github/release/VevoxDigital/tech-3.svg?style=flat-square)
+![NodeJS](https://img.shields.io/badge/node-4.0-blue.svg?style=flat-square)
+[![License](https://img.shields.io/github/license/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/blob/master/LICENSE)
+
+[![Fork](https://img.shields.io/github/forks/VevoxDigital/tech-3.svg?style=social&label=Fork)](#fork-destination-box)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/VevoxDigital.svg?style=social&label=Follow)](https://twitter.com/VevoxDigital)
 
 A collection of premier tools for CCP Games' [Eve Online](http://eveonline.com).
 
