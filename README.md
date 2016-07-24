@@ -1,26 +1,44 @@
 <p align="center">
-  ![Tech 3](https://cdn.rawgit.com/VevoxDigital/tech-3/master/banner.png)
+  <img src="https://cdn.rawgit.com/VevoxDigital/tech-3/master/banner.png">
 </p>
 
-<p align="center"><strong>A collection of premier tools for [EVE Online](http://eveonline.com)</strong></p>
+<p align="center"><strong>
+  A collection of premier tools for <a href="http://eveonline.com">EVE Online</a>
+</strong></p>
 
 <div align="center">
-  [![Build Status](https://img.shields.io/travis/VevoxDigital/tech-3.svg?style=flat-square)](https://travis-ci.org/VevoxDigital/tech-3)
-  [![Test Coverage](https://img.shields.io/codeclimate/coverage/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3/coverage)
-  [![Code Climate](https://img.shields.io/codeclimate/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
-  [![Issue Count](https://img.shields.io/github/issues/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/issues)
-  [![Issue Count](https://img.shields.io/codeclimate/issues/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+  <a href="https://travis-ci.org/VevoxDigital/tech-3">
+    <img src="https://img.shields.io/travis/VevoxDigital/tech-3.svg?style=flat-square" alt="Build Status">
+  </a>
+  <a href="https://codeclimate.com/github/VevoxDigital/tech-3/coverage">
+    <img src="https://img.shields.io/codeclimate/coverage/github/VevoxDigital/tech-3.svg?style=flat-square" alt="Coverage">
+  </a>
+  <a href="https://codeclimate.com/github/VevoxDigital/tech-3">
+    <img src="https://img.shields.io/codeclimate/github/VevoxDigital/tech-3.svg?style=flat-square" alt="Code GPA">
+  </a>
+  <a href="https://github.com/VevoxDigital/tech-3/issues">
+    <img src="https://img.shields.io/github/issues/VevoxDigital/tech-3.svg?style=flat-square" alt="Open Issues">
+  </a>
+  <a href="https://codeclimate.com/github/VevoxDigital/tech-3">
+    <img src="https://img.shields.io/codeclimate/issues/github/VevoxDigital/tech-3.svg?style=flat-square" alt="Code Issues">
+  </a>
 </div>
 
 <p align="center">
-  ![Release](https://img.shields.io/github/release/VevoxDigital/tech-3.svg?style=flat-square)
-  ![NodeJS](https://img.shields.io/badge/node-4.0-blue.svg?style=flat-square)
-  [![License](https://img.shields.io/github/license/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/blob/master/LICENSE)
+  <img src="https://img.shields.io/github/release/VevoxDigital/tech-3.svg?style=flat-square" alt="Release">
+  <img src="https://img.shields.io/badge/node-4.0-blue.svg?style=flat-square" alt="Node Version">
+  <a href="https://github.com/VevoxDigital/tech-3/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/VevoxDigital/tech-3.svg?style=flat-square" alt="LICENSE">
+  </a>
 </p>
 
 <p align="center">
-  [![Fork](https://img.shields.io/github/forks/VevoxDigital/tech-3.svg?style=social&label=Fork)](#fork-destination-box)
-  [![Follow on Twitter](https://img.shields.io/twitter/follow/VevoxDigital.svg?style=social&label=Follow)](https://twitter.com/VevoxDigital)
+  <a href="#fork-destination-box">
+    <img src="https://img.shields.io/github/forks/VevoxDigital/tech-3.svg?style=social&label=Fork" alt="Fork">
+  </a>
+  <a href="https://twitter.com/VevoxDigital">
+    <img src="https://img.shields.io/twitter/follow/VevoxDigital.svg?style=social&label=Follow" alt="Follow">
+  </a>
 </p>
 
 ## Contributing
