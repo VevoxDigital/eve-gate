@@ -120,6 +120,11 @@ angular
         controller: 'IndyReactionsCtrl',
         controllerAs: 'indyReactions'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/error/404'
       });
@@ -178,7 +183,8 @@ angular
           },
           login: {
             text: 'Sign In',
-            fa: 'user'
+            fa: 'user',
+            href: 'login'
           }
         }
       ]

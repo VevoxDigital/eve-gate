@@ -1,0 +1,40 @@
+<div vx-route="/login">
+  <h1 class="title">Welcome, Pilot</h1>
+  <div class="container">
+    <form action="javascript:" ng-submit="login.submit()">
+      <div class="form-inputs">
+        <div>
+          <input type="text" ng-model="login.email" placeholder="Email">
+        </div>
+        <div>
+          <input type="password" ng-model="login.password" placeholder="Password">
+        </div>
+      </div>
+
+      <div class="text-left">
+        <input id="loginCreateCheckbox" type="checkbox" ng-model="login.create">
+        <label for="loginCreateCheckbox">Create a New Account</label>
+
+        <input id="loginRememberCheckbox" type="checkbox" nd-model="login.remember">
+        <label for="loginRememberCheckbox">Remember Me</label>
+      </div>
+
+      <input type="submit" class="btn btn-success" value="Warp Me In" ng-disabled="login.pending">
+      <p class="text-center">
+        By logging in or creating an account, you agree to the <a href="/about/tos">Terms of Serivce</a>.
+      </p>
+    </form>
+
+    <hr>
+
+    <div class="text-center">
+      <h2>Why not "Login with EVE Online"?</h2>
+      <p>
+        Because many pilots have multiple accounts/characters to their name, Tech 3 wanted to create a system
+        that treats pilots per player, not per account. Once your Tech 3 account has been created, you can begin
+        adding all of your characters to your account and manage them from one place, without having to sign out
+        to switch.
+      </p>
+    </div>
+  </div>
+</div>
