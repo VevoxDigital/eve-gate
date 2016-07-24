@@ -35,13 +35,22 @@ exports = module.exports = () => {
       return deferred.promise;
     })
     .then(require('./lib/app-init')) // Init app, hook middleware
-    .then(require('./lib/app-routers')) // Hook routers to app. TODO Write routers.
+    .then((app) => {
+      var deferred = q.defer();
+
+      // Inject the market and token objects into global scope.
+      // This is done here instead of `const.js` because of the needed `client`.
+      // We also need this to run before the routers are injected.
+      global.MARKET = new (require('./market'))(client);
+      global.TOKENS = new (require('./tokens'))(client);
+
+      deferred.resolve(app);
+      return deferred.promise;
+    })
+    .then(require('./lib/app-routers')) // Hook routers to app.
     .then(() => {
       server.listen(PORT);
       LOG.info(`App running on ${PORT}`);
-      // Inject the market object into global scope.
-      // This is done here instead of `const.js` because of the needed `client`.
-      global.MARKET = new (require('./market'))(client);
 
       // Start market update ticker.
       var ticker = () => {
