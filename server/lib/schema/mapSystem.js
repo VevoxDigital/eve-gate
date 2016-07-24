@@ -16,7 +16,7 @@ const MapSystemSchema = new mongoose.Schema({
   constellation: { type: Number, required: true, ref: 'MapRegions' },
   region: { type: Number, required: true, ref: 'MapConstellations' },
   stargates: [{ type: Number, ref: 'MapSystems' }],
-  stations: [{ type: Number, ref: 'StaStations' }];
+  stations: [{ type: Number, ref: 'StaStations' }]
 });
 
 exports = module.exports = MapSystemSchema;
