@@ -17,7 +17,7 @@ const StaStationSchema = new mongoose.Schema({
   security: { type: Number, required: true, min: -1, max: 1 },
   corporation: { type: Number, required: true }
 
-  system: { type: Number, required: true, ref: 'MapSystems' },
+  system: { type: Number, required: true, ref: 'MapSystems' }, // eslint-disable-line
   constellation: { type: Number, required: true, ref: 'MapConstellations' },
   region: { type: Number, required: true, ref: 'MapRegions' }
 });

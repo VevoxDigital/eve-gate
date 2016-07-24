@@ -14,7 +14,7 @@ const MapConstellationSchema = new mongoose.Schema({
   center: { type: Coordinate, required: true },
   name: { type: String, required: true },
   region: { type: Number, required: true, ref: 'MapRegions' }
-  systems: [{ type: Number, ref: 'MapSystems' }]
+  systems: [{ type: Number, ref: 'MapSystems' }] // eslint-disable-line
 });
 
 exports = module.exports = MapConstellationSchema;
