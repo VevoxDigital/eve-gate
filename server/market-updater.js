@@ -44,7 +44,7 @@ exports = module.exports = (redis) => {
         };
 
         // Get the first page so we have the total page count.
-        fetchPage().catch(done).then((json) => {
+        fetchPage().then((json) => {
           var pages = [json], pageNums = [];
           for (var n = 2; n <= json.pageCount; n++) pageNums.push(n);
           // Now start getting the other pages.
@@ -55,13 +55,12 @@ exports = module.exports = (redis) => {
             });
           }, () => {
             LOG.info(` * Parsing ${pages.length} page${pages.length === 1 ? '' : 's'}...`);
-            MARKET.put(region.id, pages)
-              .catch((err) => {
+            MARKET.put(region.id, pages).then(done).catch((err) => {
                 LOG.error(' *  ! Failed to insert market data: ' + err);
                 done(err);
-              }).then(done);
+              });
           });
-        });
+        }).catch(done);
       }
     });
   }, (err) => {
@@ -83,7 +82,7 @@ exports = module.exports = (redis) => {
         return deferredHTTP.promise;
       };
 
-      fetchMarket().catch(deferred.reject).then((marketPrices) => {
+      fetchMarket().then((marketPrices) => {
         var c = 0;
         async.eachSeries(marketPrices.items, (item, cb) => {
           var typeID = item.type.id;
@@ -103,7 +102,6 @@ exports = module.exports = (redis) => {
                 //MARKET.getStationBest(60005686, typeID),
                 //MARKET.getStationBest(60004594, typeID)
               ])
-              .catch(cb)
               .then((results) => {
                 try {
                   type.updateMarket('jita', results[0]);
@@ -111,13 +109,13 @@ exports = module.exports = (redis) => {
                   type.market.est = { adjustedPrice: item.adjustedPrice, averagePrice: item.averagePrice }
                   type.save(cb);
                 } catch (e) { console.log(e); }
-              });
+              }).catch(cb);
             });
         }, (err) => {
           if (err) deferred.reject(err);
           else { console.log(); deferred.resolve(skipped); }
         });
-      });
+      }).catch(deferred.reject);
     }
   });
   return deferred.promise;

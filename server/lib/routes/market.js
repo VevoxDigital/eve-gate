@@ -51,7 +51,6 @@ router.post('/appraisal', (req, res, next) => {
           return cb();
         } else if (Number(req.body.region)) {
           MARKET.getBest(Number(req.body.region), type._id)
-            .catch(cb)
             .then((best) => {
               try {
                 response.push({
@@ -63,7 +62,7 @@ router.post('/appraisal', (req, res, next) => {
                 });
                 return cb();
               } catch (e) { console.log(e); }
-            });
+            }).catch(cb);
         } else {
           response.push({
             _id: type._id,

@@ -55,11 +55,11 @@ exports = module.exports = () => {
       // Start market update ticker.
       var ticker = () => {
         require('./market-updater')(client)
-          .catch((err) => {
+          .then((skipped) => {
+            LOG.info('Market update finished.' + (!skipped ? '' : ` Skipped ${skipped} of ${REGIONS.length} regions.`));
+          }).catch((err) => {
             LOG.warn('Market updater failed to finish execution:');
             LOG.warn(err);
-          }).then((skipped) => {
-            LOG.info('Market update finished.' + (!skipped ? '' : ` Skipped ${skipped} of ${REGIONS.length} regions.`));
           });
       };
       ticker();

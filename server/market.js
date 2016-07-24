@@ -98,7 +98,6 @@ exports = module.exports = function (redis) {
   market.getBest = function (region, item, count) {
     var deferred = q.defer();
     market.get(region, item)
-      .catch(deferred.reject)
       .then((data) => {
         data.buy.sort((a, b) => { return b.price - a.price });
         data.sell.sort((a, b) => { return a.price - b.price });
@@ -110,7 +109,7 @@ exports = module.exports = function (redis) {
           data.sell = data.sell[0];
         }
         deferred.resolve(data);
-      });
+      }).catch(deferred.reject);
     return deferred.promise;
   };
 
@@ -126,13 +125,12 @@ exports = module.exports = function (redis) {
       60004594: 10000030  // Rens
     }
     market.get(stationIDTable[stationID], item)
-      .catch(deferred.reject)
       .then((orders) => {
         var filter = (order) => { return order.station === stationID; };
         orders.buy = orders.buy.filter(filter);
         orders.sell = orders.sell.filter(filter);
         deferred.resolve(orders);
-      });
+      }).catch(deferred.reject);
 
     return deferred.promise;
   };
@@ -141,7 +139,6 @@ exports = module.exports = function (redis) {
     var deferred = q.defer();
 
     market.getStation(stationID, item)
-      .catch(deferred.reject)
       .then((data) => {
         data.buy.sort((a, b) => { return b.price - a.price });
         data.sell.sort((a, b) => { return a.price - b.price });
@@ -153,7 +150,7 @@ exports = module.exports = function (redis) {
           data.sell = data.sell[0];
         }
         deferred.resolve(data);
-      });
+      }).catch(deferred.reject);
 
     return deferred.promise;
   };
