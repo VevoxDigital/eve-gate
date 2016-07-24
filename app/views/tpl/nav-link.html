@@ -1,4 +1,4 @@
-<a href="javascript:" ng-class="{ dropable: !!link.items.length }">
+<a ng-href="{{link.href || 'javascript:'}}" ng-class="{ dropable: !!link.items.length }">
   <span ng-class="'navlink-mobile fa fa-' + link.fa"></span>
   <span class="navlink-desktop" ng-bind="link.text"></span>
   <span ng-if="link.items.length" class="caret"></span>
