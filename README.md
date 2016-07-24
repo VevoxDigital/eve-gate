@@ -1,30 +1,39 @@
-# Tech-3
-[![Build Status](https://img.shields.io/travis/VevoxDigital/tech-3.svg?style=flat-square)](https://travis-ci.org/VevoxDigital/tech-3)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3/coverage)
-[![Code Climate](https://img.shields.io/codeclimate/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
-[![Issue Count](https://img.shields.io/github/issues/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/issues)
-[![Issue Count](https://img.shields.io/codeclimate/issues/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+<p align="center">
+  ![Tech 3](https://cdn.rawgit.com/VevoxDigital/tech-3/master/banner.png)
+</p>
 
-![Release](https://img.shields.io/github/release/VevoxDigital/tech-3.svg?style=flat-square)
-![NodeJS](https://img.shields.io/badge/node-4.0-blue.svg?style=flat-square)
-[![License](https://img.shields.io/github/license/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/blob/master/LICENSE)
+<p align="center"><strong>A collection of premier tools for [EVE Online](http://eveonline.com)</strong></p>
 
-[![Fork](https://img.shields.io/github/forks/VevoxDigital/tech-3.svg?style=social&label=Fork)](#fork-destination-box)
-[![Follow on Twitter](https://img.shields.io/twitter/follow/VevoxDigital.svg?style=social&label=Follow)](https://twitter.com/VevoxDigital)
+<div align="center">
+  [![Build Status](https://img.shields.io/travis/VevoxDigital/tech-3.svg?style=flat-square)](https://travis-ci.org/VevoxDigital/tech-3)
+  [![Test Coverage](https://img.shields.io/codeclimate/coverage/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3/coverage)
+  [![Code Climate](https://img.shields.io/codeclimate/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+  [![Issue Count](https://img.shields.io/github/issues/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/issues)
+  [![Issue Count](https://img.shields.io/codeclimate/issues/github/VevoxDigital/tech-3.svg?style=flat-square)](https://codeclimate.com/github/VevoxDigital/tech-3)
+</div>
 
-A collection of premier tools for CCP Games' [Eve Online](http://eveonline.com).
+<p align="center">
+  ![Release](https://img.shields.io/github/release/VevoxDigital/tech-3.svg?style=flat-square)
+  ![NodeJS](https://img.shields.io/badge/node-4.0-blue.svg?style=flat-square)
+  [![License](https://img.shields.io/github/license/VevoxDigital/tech-3.svg?style=flat-square)](https://github.com/VevoxDigital/tech-3/blob/master/LICENSE)
+</p>
+
+<p align="center">
+  [![Fork](https://img.shields.io/github/forks/VevoxDigital/tech-3.svg?style=social&label=Fork)](#fork-destination-box)
+  [![Follow on Twitter](https://img.shields.io/twitter/follow/VevoxDigital.svg?style=social&label=Follow)](https://twitter.com/VevoxDigital)
+</p>
 
 ## Contributing
 Open-source projects are specifically designed to be community driven, giving us an opportunity to not only create a series tools that are exactly what the community wants without any malicious content. Nothing to hide, everything to show for.
 
-While we are happy to take community contributions to Tech-3, there are a few guidelines we ask you follow, however.
-- Maintain the current code style of Tech-3. CodeClimate should give you an A and it should fit in with existing close.
+While we are happy to take community contributions to Tech 3, there are a few guidelines we ask you follow, however.
+- Maintain the current code style of Tech 3. CodeClimate should give you an A and it should fit in with existing code.
 - CodeClimate should not raise any issues other than TODOs.
 - The build through Travis must pass and tests should cover 100%.
-- Be aware that all code you submit to Tech-3 belongs to Tech-3 (and is therefore under Tech-3's open-source license) after the request is merged.
+- Be aware that all code you submit to Tech-3 belongs to Tech 3 (and is therefore under Tech 3's open-source license) after the request is merged.
 
 ## Local Installation
-Tech 3 can be installed in a local environment if you really don't want to pay for it (although please consider supporting us with donations), assuming you have the machinery to host it yourself. Note that not all portions of Tech-3 (such as the market graphs) will work as intended if installed locally. You can also clone the dev branch to test new features coming soon to Tech-3.
+Tech 3 can be installed in a local environment if you really don't want to pay for it (although please consider supporting us with donations), assuming you have the machinery to host it yourself. Note that not all portions of Tech 3 (such as the market graphs) will work as intended if installed locally. You can also clone the dev branch to test new features coming soon to Tech 3 or help us improve Tech 3 itself.
 
 To install, you will need **NodeJS v4.0** (the `nodejs` package will *not* work) or later, Ruby Development Kit v2.0 or later (The `ruby-dev` package is fine), MongoDB, and Redis. Once you have all of these, proceed with the setup process:
 
