@@ -24,7 +24,14 @@ module.exports = function(config) {
 
     // source files to generate coverage for
     preprocessors: {
-      'app/scripts/**/*.js': ['coverage']
+      'app/scripts/**/*.js': ['coverage'],
+      'app/views/**/*.html': ['ng-html2js']
+    },
+
+    // Preprocessor for injecting views so directive tests work.
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/',
+      moduleName: 'tpl'
     },
 
     // testing framework to use (jasmine/mocha/qunit/...)
@@ -52,6 +59,7 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
+      "app/views/**/*.html",
       "test/spec/**/*.js"
     ],
 
@@ -78,7 +86,8 @@ module.exports = function(config) {
     plugins: [
       "karma-phantomjs-launcher",
       "karma-jasmine",
-      "karma-coverage"
+      "karma-coverage",
+      'karma-ng-html2js-preprocessor'
     ],
 
     // Continuous Integration mode

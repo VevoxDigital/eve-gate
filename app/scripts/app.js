@@ -115,6 +115,11 @@ angular
         controller: 'MarketCtrl',
         controllerAs: 'market'
       })
+      .when('/industry/reactions', {
+        templateUrl: 'views/indy-reactions.html',
+        controller: 'IndyReactionsCtrl',
+        controllerAs: 'indyReactions'
+      })
       .otherwise({
         redirectTo: '/error/404'
       });
@@ -166,9 +171,16 @@ angular
             ]
           }
         ],
-        [
-
-        ]
+        {
+          user: {
+            text: 'Account',
+            fa: 'user'
+          },
+          login: {
+            text: 'Sign In',
+            fa: 'user'
+          }
+        }
       ]
     };
 

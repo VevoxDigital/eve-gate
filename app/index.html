@@ -33,23 +33,9 @@
           <a href="javascript:" class="mobile-menu fa fa-bars"></a>
           <a href="/" class="brand">Tech 3</a>
           <ul>
-            <li ng-repeat="link in $meta.nav[0]">
-              <a href="javascript:">
-                <span ng-class="'navlink-mobile fa fa-' + link.fa"></span>
-                <span class="navlink-desktop" ng-bind="link.text"></span>
-                <span ng-if="link.items" class="caret"></span>
-              </a>
-              <div class="dropdown">
-                <div ng-repeat="item in link.items">
-                  <a ng-if="item.href" ng-href="{{ !item.href.startsWith('@') ? '/' + item.href : item.href.substring(1) }}">
-                    <span class="text" ng-bind="item.text"></span>
-                    <span class="badge badge-orange" ng-if="item.beta">BETA</span>
-                  </a>
-                  <hr ng-if="!item.href">
-                </div>
-              </div>
-            </li>
+            <li ng-repeat="link in $meta.nav[0]" nav-link nav-link-scope="link"></li>
           </ul>
+          <div class="right" nav-link nav-link-scope="$user ? $meta.nav[1].user : $meta.nav[1].login"></div>
           <div class="clear"></div>
         </div>
       </nav>
@@ -109,9 +95,9 @@
               dd.hide();
             } });
           };
-          if ($(event.target).closest('nav li > a').length) {
+          if ($(event.target).closest('nav li > a.dropable').length) {
             if ($('nav li > a.active').length) { closeDD(); }
-            $(event.target).closest('nav li > a').addClass('active');
+            $(event.target).closest('nav li > a.dropable').addClass('active');
             $('.active ~ .dropdown').show().velocity({
               translateY: '-5%',
               translateX: '-50%'
@@ -139,13 +125,13 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/services/user.js"></script>
-        <script src="scripts/controllers/account.js"></script>
         <script src="scripts/controllers/error.js"></script>
         <script src="scripts/controllers/item.js"></script>
         <script src="scripts/controllers/database-search.js"></script>
         <script src="scripts/services/backend-service.js"></script>
         <script src="scripts/controllers/market.js"></script>
+        <script src="scripts/controllers/indy-reactions.js"></script>
+        <script src="scripts/directives/nav-link.js"></script>
         <!-- endbuild -->
 </body>
 </html>

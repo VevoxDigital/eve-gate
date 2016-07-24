@@ -1,0 +1,14 @@
+<a href="javascript:" ng-class="{ dropable: !!link.items.length }">
+  <span ng-class="'navlink-mobile fa fa-' + link.fa"></span>
+  <span class="navlink-desktop" ng-bind="link.text"></span>
+  <span ng-if="link.items.length" class="caret"></span>
+</a>
+<div class="dropdown" ng-if="link.items.length">
+  <div ng-repeat="item in link.items">
+    <a ng-if="item.href" ng-href="{{ item.href.charAt(0) !== '@' ? '/' + item.href : item.href.substring(1) }}">
+      <span class="text" ng-bind="item.text"></span>
+      <span class="badge badge-orange" ng-if="item.beta">BETA</span>
+    </a>
+    <hr ng-if="!item.href">
+  </div>
+</div>
